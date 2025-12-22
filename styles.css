@@ -14,6 +14,16 @@
             overflow-x: hidden;
         }
 
+
+        html {
+                scroll-behavior: smooth; /* Enables the smooth scrolling effect */
+            }
+
+        section {
+                /* Critical: This prevents the fixed header from covering the section title */
+                scroll-margin-top: 120px; 
+            }
+
         /* --- ANNOUNCEMENT BAR --- */
         .announcement-bar {
             background-color: #D4AF37;
@@ -33,12 +43,11 @@
         header {
             background-color: transparent; /* Invisible by default */
             color: #fff;
-            padding: 20px 50px;
+            padding: 5px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: fixed; /* Floats on top of the image */
-            top: 40px; /* Pushed down by announcement bar height */
             width: 100%;
             z-index: 1000;
             transition: background-color 0.5s ease, padding 0.3s ease; /* Smooth transition */
@@ -57,7 +66,7 @@
 
         /* Style the Image itself */
         .logo img {
-          width: 70%;
+          width: 65%;
           height: 90%;
           object-fit: contain; /* Ensures the logo isn't stretched or cut off */
           display: block;
@@ -122,7 +131,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('assets/hero.png'); 
+            background-image: url('assets/her04.jpeg'); 
             background-size: cover;
             background-position: center;
             z-index: -1;
@@ -205,6 +214,66 @@
 
 
 
+
+        /* --- TOGGLE BUTTON (Hidden on Desktop) --- */
+                .menu-toggle {
+                    display: none;
+                    font-size: 1.5rem;
+                    color: #000; /* Or #D4AF37 for Gold */
+                    cursor: pointer;
+                    margin-left: 20px;
+                    z-index: 2000;
+                }
+
+                /* --- MOBILE STYLES (Triggers under 900px width) --- */
+                @media (max-width: 900px) {
+                    
+                    /* 1. Show the Toggle Button */
+                    .menu-toggle {
+                        display: block;
+                    }
+
+                    /* 2. Hide the Desktop Menu initially */
+                    nav ul {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        height: 100vh;
+                        width: 100%;       
+                        background-color: #1a1a1a; /* Dark Background */
+                        
+                        /* Flexbox for centering items vertically */
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 30px;
+                        padding: 0;
+                        margin: 0;
+                        
+                        /* Animation: Slide to the left to hide */
+                        transform: translateX(-100%); 
+                        transition: transform 0.4s ease-in-out;
+                        z-index: 1500; 
+                    }
+
+                    /* 3. The 'Active' Class (Added by JS to show menu) */
+                    nav ul.active {
+                        transform: translateX(0); /* Slides onto screen */
+                    }
+
+                    /* 4. Link Styling for Mobile */
+                    nav ul li {
+                        list-style: none;
+                    }
+
+                    nav ul li a {
+                        font-size: 1.5rem; 
+                        color: #fff; /* White Text */
+                        text-decoration: none;
+                        font-family: 'Cinzel', serif;
+                    }
+                }
 
 
 
@@ -598,7 +667,7 @@
             padding-top: 80px;
             background-color: #fff;
             text-align: center;
-            overflow-x: hidden; /* Prevents scrollbar during animation */
+            
         }
 
         .icons-container {
@@ -877,19 +946,22 @@
         }
 
         /* Brand Column Specifics */
-        .footer-logo {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            color: #D4AF37;
-            border: 2px solid #D4AF37;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
+            .footer-logo {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start; /* Aligns logo to the left */
+                margin-bottom: 20px;
+            }
+
+            /* Style the image itself */
+            .footer-img {
+                width: 150px; /* Adjust this width based on your logo's shape */
+                height: auto; /* Maintains aspect ratio */
+                object-fit: contain;
+                
+                /* Optional: If your logo is black text and needs to be white, use this filter */
+                /* filter: brightness(0) invert(1); */
+            }
 
         .brand-desc {
             color: #aaa;
@@ -970,3 +1042,56 @@
                 text-align: center;
             }
         }
+
+
+
+            /* --- TOGGLE BUTTON STYLES --- */
+            .menu-toggle {
+                display: none;      /* Hidden on Desktop */
+                font-size: 1.5rem;
+                color: #fff;        /* White icon */
+                cursor: pointer;
+                z-index: 2000;      /* Sit on top of everything */
+            }
+
+            /* --- MOBILE STYLES (Max Width 900px) --- */
+            @media (max-width: 900px) {
+                
+                /* 1. Show the Toggle Button */
+                .menu-toggle {
+                    display: block !important;
+                }
+
+                /* 2. The Menu Drawer */
+                nav ul {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    height: 100vh;
+                    width: 100%;       /* Full width on mobile for better touch */
+                    background-color: #1a1a1a;
+                    
+                    /* Flexbox for centering items */
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 30px;
+                    
+                    /* Animation properties */
+                    transform: translateX(-100%); /* Hidden to the left */
+                    transition: transform 0.4s ease-in-out;
+                    z-index: 1500; /* Behind the toggle button but above content */
+                }
+
+                /* 3. The 'Active' Class (Added by JS) */
+                nav ul.active {
+                    transform: translateX(0) !important; /* Slide in */
+                }
+
+                /* 4. Link Styling */
+                nav ul li a {
+                    font-size: 1.5rem; /* Larger text for mobile */
+                    color: #fff;
+                }
+            }

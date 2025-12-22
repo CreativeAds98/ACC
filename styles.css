@@ -1,0 +1,972 @@
+
+
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            color: #333;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+
+        /* --- ANNOUNCEMENT BAR --- */
+        .announcement-bar {
+            background-color: #D4AF37;
+            color: #000;
+            text-align: center;
+            padding: 10px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+            position: relative;
+            z-index: 1001; /* Above the header */
+        }
+
+        /* --- NAVIGATION (UPDATED FOR HOVER EFFECT) --- */
+        header {
+            background-color: transparent; /* Invisible by default */
+            color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed; /* Floats on top of the image */
+            top: 40px; /* Pushed down by announcement bar height */
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.5s ease, padding 0.3s ease; /* Smooth transition */
+            border-bottom: 1px solid transparent; /* No border by default */
+        }
+
+        /* THE HOVER EFFECT */
+        header:hover {
+            background-color: #8b8787; /* Deep Charcoal appears on hover */
+            border-bottom: 1px solid #333;
+            /* Optional: Compact slightly on hover for effect */
+            /* padding: 15px 50px; */ 
+        }
+
+
+
+        /* Style the Image itself */
+        .logo img {
+          width: 70%;
+          height: 90%;
+          object-fit: contain; /* Ensures the logo isn't stretched or cut off */
+          display: block;
+        }
+
+        /* Hover Effect */
+        .logo:hover {
+           transform: scale(1.05);
+           background: transparent;
+           border-color: #fff; /* Optional: Border turns white on hover */
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Shadow makes text readable on image */
+        }
+
+        /* Remove text shadow when background becomes solid */
+        header:hover nav a {
+            text-shadow: none;
+        }
+
+        nav a:hover {
+            color: #D4AF37;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            position: relative;
+            height: 100vh; /* Full screen */
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/hero.png'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            animation: zoomOutEffect 20s infinite alternate;
+        }
+
+        @keyframes zoomOutEffect {
+            0% { transform: scale(1.2); }
+            100% { transform: scale(1.0); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.2) 100%); /* Gradient for better text readability */
+            z-index: 0;
+        }
+
+        /* --- CTA BUTTON --- */
+        .cta-container {
+            z-index: 10;
+            text-align: center;
+        }
+
+        .cta-btn {
+            background-color: #D4AF37;
+            color: #1a1a1a;
+            padding: 18px 50px;
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .cta-btn:hover {
+            background-color: #b59025;
+            transform: translateY(-2px);
+        }
+
+        /* --- DOTS --- */
+        .dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #fff;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            nav ul { display: none; }
+            .logo { width: 60px; height: 60px; font-size: 1.5rem; }
+        }
+
+
+
+
+
+
+
+
+
+
+
+       
+       /* --- BRAND STORY SECTION STYLES --- */
+        .story-section {
+            background-color: #fff;
+            padding: 100px 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .story-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Split 50/50 */
+            gap: 80px;
+            align-items: center;
+        }
+
+        /* Text Styling */
+        .story-content {
+            text-align: left;
+        }
+
+        .sub-heading {
+            font-family: 'Lato', sans-serif;
+            color: #D4AF37; /* Gold */
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .main-heading {
+            font-family: 'Cinzel', serif; /* Royal Font */
+            color: #1a1a1a;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .divider-line {
+            width: 60px;
+            height: 3px;
+            background-color: #D4AF37;
+            margin-bottom: 30px;
+        }
+
+        .story-text {
+            font-family: 'Playfair Display', serif;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Secondary Button Style (Outline) */
+        .text-cta-btn {
+            background: transparent;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
+            padding: 12px 35px;
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .text-cta-btn:hover {
+            background: #1a1a1a;
+            color: #D4AF37;
+            border-color: #1a1a1a;
+        }
+
+        /* Image Styling */
+        .story-image-wrapper {
+            position: relative;
+        }
+
+        .story-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Decorative Gold Frame Offset */
+        .image-frame {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #D4AF37;
+            z-index: -1; /* Behind the image */
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .story-container {
+                grid-template-columns: 1fr; /* Stack on top of each other */
+                gap: 50px;
+            }
+            
+            .story-content {
+                text-align: center;
+            }
+            
+            .divider-line {
+                margin: 0 auto 30px auto; /* Center the line */
+            }
+
+            .main-heading {
+                font-size: 2.2rem;
+            }
+
+            .image-frame {
+                top: 15px;
+                right: 15px; /* Adjust frame for mobile */
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+/* --- VALUES SECTION STYLES --- */
+        .values-section {
+            padding: 80px 0;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .section-header { margin-bottom: 50px; }
+
+        /* THE CONTAINER */
+        .gallery-container {
+            display: flex;
+            width: 100%; /* Full width */
+            max-width: 1600px; /* Constraints very wide screens */
+            height: 600px; /* Taller height for drama */
+            margin: 0 auto;
+            overflow: hidden; /* Ensures no spillover */
+            /* NO GAP SETTINGS: */
+            gap: 0; 
+            padding: 0;
+        }
+
+        /* INDIVIDUAL PANELS */
+        .panel {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100%;
+            cursor: pointer;
+            flex: 1; /* All items start equal width (1/6th) */
+            position: relative;
+            
+            /* TRANSITION SETTINGS */
+            transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease; /* Ultra smooth ease */
+            
+            /* VISUALS */
+            filter: grayscale(100%) brightness(0.7); /* Black & White + Dark initially for "Bold" look */
+            border-right: 1px solid rgba(255,255,255,0.1); /* Tiny separator line */
+        }
+
+        /* Remove border from last item */
+        .panel:last-child {
+            border-right: none;
+        }
+
+        /* --- HOVER EFFECT --- */
+        
+        .panel:hover {
+            flex: 6; /* Expands to take up 50% of the screen (since others are 1) */
+            filter: grayscale(0%) brightness(1); /* Returns to full color */
+            z-index: 2;
+        }
+
+        /* CONTENT INSIDE PANELS */
+        .panel-content {
+            position: absolute;
+            bottom: 40px;
+            left: 20px;
+            text-align: left;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease 0.3s; /* Delay ensures it appears only after expansion starts */
+            width: 80%;
+        }
+
+        .panel:hover .panel-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .panel h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            white-space: nowrap; /* Prevents breaking on animation */
+        }
+
+        .panel p {
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            color: #D4AF37; /* Gold Text */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 900px) {
+            .gallery-container {
+                flex-direction: column; /* Stack vertically */
+                height: 100vh; /* Full screen height */
+            }
+            
+            .panel {
+                width: 100%; /* Full width strips */
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .panel:hover {
+                flex: 4; /* Less dramatic expansion on mobile */
+            }
+
+            .panel h3 { font-size: 1.5rem; }
+        }
+
+
+
+
+
+        /* --- ESSENTIALS MOSAIC STYLES --- */
+        .essentials-section {
+            padding: 20px 0;
+            background-color: #fff;
+        }
+
+        .mosaic-container {
+            max-width: 1400px;
+            width: 95%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Gap between top row and bottom row */
+        }
+
+        /* --- THE GRID ITEMS --- */
+        .mosaic-item {
+            position: relative;
+            overflow: hidden; /* Keeps the zoom inside */
+            cursor: pointer;
+        }
+
+        /* Top Full Width Item */
+        .mosaic-item.full-width {
+            height: 500px; /* Tall header image */
+            width: 100%;
+        }
+
+        /* Bottom Row Container */
+        .bottom-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* 3 Equal Columns */
+            gap: 20px;
+            height: 400px;
+        }
+
+        .mosaic-item.box {
+            height: 100%; /* Fills the row height */
+        }
+
+        /* --- IMAGE STYLING & ANIMATION --- */
+        .mosaic-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); /* Elegant slow ease */
+        }
+
+        /* Hover Effect: Scale Image */
+        .mosaic-item:hover .mosaic-img {
+            transform: scale(1.1);
+        }
+
+        /* --- TEXT CONTENT OVERLAY --- */
+        .mosaic-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0,0,0,0.25); /* Dark tint for text readability */
+            transition: background-color 0.5s ease;
+        }
+
+        .mosaic-item:hover .mosaic-content {
+            background-color: rgba(0,0,0,0.1); /* Lightens on hover */
+        }
+
+        .mosaic-content h3 {
+            font-family: 'Cinzel', serif;
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transform: translateY(0);
+            transition: transform 0.5s ease;
+        }
+
+        /* Hover Effect: Text moves up slightly */
+        .mosaic-item:hover .mosaic-content h3 {
+            transform: translateY(-5px);
+        }
+
+        /* BUTTON STYLING */
+        .shop-btn {
+            font-family: 'Lato', sans-serif;
+            color: #fff;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            border-bottom: 2px solid #D4AF37; /* Gold Underline */
+            padding-bottom: 5px;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .mosaic-item:hover .shop-btn {
+            color: #D4AF37; /* Text turns gold on hover */
+            border-bottom-color: #fff; /* Line turns white */
+            opacity: 1;
+        }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 900px) {
+            .bottom-row {
+                grid-template-columns: 1fr; /* Stack vertically */
+                height: auto; /* Allow height to grow */
+                gap: 20px;
+            }
+            
+            .mosaic-item.full-width {
+                height: 350px;
+            }
+
+            .mosaic-item.box {
+                height: 350px; /* Square shapes on mobile */
+            }
+
+            .mosaic-content h3 {
+                font-size: 1.8rem; /* Smaller text on mobile */
+            }
+        }
+
+
+
+
+
+
+/* --- VALUES SECTION STYLES --- */
+        .values-strip-section {
+            padding-top: 80px;
+            background-color: #fff;
+            text-align: center;
+            overflow-x: hidden; /* Prevents scrollbar during animation */
+        }
+
+        .icons-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+            padding: 0 20px;
+        }
+
+        .value-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 180px;
+            opacity: 0; /* Hidden initially */
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+        }
+
+        /* --- 1. ICON ANIMATIONS (Right & Left) --- */
+        
+        .slide-left {
+            animation-name: slideInLeft;
+        }
+
+        .slide-right {
+            animation-name: slideInRight;
+        }
+
+        @keyframes slideInLeft {
+            0% { opacity: 0; transform: translateX(-100px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            0% { opacity: 0; transform: translateX(100px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Icon Styling */
+        .icon-circle {
+            width: 90px;
+            height: 90px;
+            border: 1.5px solid #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .value-item:hover .icon-circle {
+            background-color: #D4AF37;
+            border-color: #D4AF37;
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .value-item h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .value-item p {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.8rem;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- WAVE & TEXT AREA --- */
+        .wave-content-wrapper {
+            position: relative;
+            margin-bottom: -5px;
+        }
+
+        .wave-separator {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .philosophy-text {
+            background-color: #f4f1ea; 
+            padding: 0 20px 100px 20px;
+            margin-top: -2px;
+        }
+
+        .static-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #1a1a1a;
+            margin: 0;
+            line-height: 1.2;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1.5s; /* Delays until icons are done */
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* --- 2. TYPEWRITER TEXT ANIMATION --- */
+        
+        .typewriter-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #D4AF37; /* Gold */
+            margin: 0;
+            line-height: 1.2;
+            display: inline-block;
+        }
+
+        /* Initial state of letters: Hidden and slightly down */
+        .typewriter-text span {
+            opacity: 0;
+            display: inline-block;
+            transform: translateY(10px);
+            animation: revealLetter 0.05s forwards;
+        }
+
+        @keyframes revealLetter {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- DELAY LOOP FOR EACH LETTER --- */
+        /* This creates the "one by one" effect */
+        .typewriter-text span:nth-child(1) { animation-delay: 2.0s; }
+        .typewriter-text span:nth-child(2) { animation-delay: 2.1s; }
+        .typewriter-text span:nth-child(3) { animation-delay: 2.2s; }
+        .typewriter-text span:nth-child(4) { animation-delay: 2.3s; }
+        .typewriter-text span:nth-child(5) { animation-delay: 2.4s; }
+        .typewriter-text span:nth-child(6) { animation-delay: 2.5s; }
+        .typewriter-text span:nth-child(7) { animation-delay: 2.6s; }
+        .typewriter-text span:nth-child(8) { animation-delay: 2.7s; }
+        .typewriter-text span:nth-child(9) { animation-delay: 2.8s; }
+        .typewriter-text span:nth-child(10) { animation-delay: 2.9s; }
+        .typewriter-text span:nth-child(11) { animation-delay: 3.0s; }
+        .typewriter-text span:nth-child(12) { animation-delay: 3.1s; }
+        .typewriter-text span:nth-child(13) { animation-delay: 3.2s; }
+        .typewriter-text span:nth-child(14) { animation-delay: 3.3s; }
+        .typewriter-text span:nth-child(15) { animation-delay: 3.4s; }
+        .typewriter-text span:nth-child(16) { animation-delay: 3.5s; }
+        .typewriter-text span:nth-child(17) { animation-delay: 3.6s; }
+        .typewriter-text span:nth-child(18) { animation-delay: 3.7s; }
+        .typewriter-text span:nth-child(19) { animation-delay: 3.8s; }
+        .typewriter-text span:nth-child(20) { animation-delay: 3.9s; }
+        .typewriter-text span:nth-child(21) { animation-delay: 4.0s; }
+        .typewriter-text span:nth-child(22) { animation-delay: 4.1s; }
+        .typewriter-text span:nth-child(23) { animation-delay: 4.2s; }
+        .typewriter-text span:nth-child(24) { animation-delay: 4.3s; }
+        .typewriter-text span:nth-child(25) { animation-delay: 4.4s; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .icons-container { gap: 30px; }
+            .static-text, .typewriter-text { font-size: 2.2rem; }
+            
+            /* On mobile, stack text to prevent breaking issues */
+            .typewriter-text { display: block; margin-top: 10px; }
+        }
+
+
+
+
+
+        /* --- FOOTER STYLES --- */
+        .footer-section {
+            background-color: #1a1a1a; /* Deep Charcoal */
+            color: #fff;
+            margin-top: 0;
+        }
+
+        /* Newsletter Strip */
+        .newsletter-strip {
+            background-color: #222; /* Slightly lighter than footer bg */
+            padding: 50px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .newsletter-content h3 {
+            font-family: 'Cinzel', serif;
+            color: #D4AF37; /* Gold */
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .newsletter-content p {
+            font-family: 'Lato', sans-serif;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .email-input {
+            padding: 15px 20px;
+            width: 300px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .subscribe-btn {
+            padding: 15px 30px;
+            background-color: #D4AF37;
+            color: #1a1a1a;
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .subscribe-btn:hover {
+            background-color: #fff;
+        }
+
+        /* Main Footer Area */
+        .footer-main {
+            padding: 80px 50px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr; /* Brand col is wider */
+            gap: 50px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Cinzel', serif;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            text-decoration: none;
+            color: #aaa;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #D4AF37; /* Turns Gold on hover */
+        }
+
+        /* Brand Column Specifics */
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: #D4AF37;
+            border: 2px solid #D4AF37;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .brand-desc {
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            max-width: 300px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons i {
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .social-icons i:hover {
+            color: #D4AF37;
+        }
+
+        /* Contact Info */
+        .contact-col p {
+            color: #aaa;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Footer Bottom */
+        .footer-bottom {
+            background-color: #111; /* Darkest shade */
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .payment-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 1.5rem;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .newsletter-strip {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .email-input { width: 100%; }
+
+            .footer-container {
+                grid-template-columns: 1fr; /* Stack all columns */
+                gap: 40px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }

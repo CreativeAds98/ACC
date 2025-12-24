@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Annammar | Luxury Baby Boutique</title>
-    
+    <link rel="icon" href="assets/favicon.jpg" />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -12,8 +12,8 @@
 </head>
 <body>
 
- <div class="announcement-bar">
-        Welcome to Royalty • Save 10% With Code WELCOME10
+    <div class="announcement-bar">
+       Crown Your Little Heir • Unlock Your Welcome Privilege
     </div>
 
     <header>
@@ -26,7 +26,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="#about-us">About Us</a></li>
             <li><a href="#products">Collections</a></li>
-            <li><a href="#">Baby Boutique</a></li>
+            <li><a href="#essentials">Baby Boutique</a></li>
             <li><a href="#">Gifting</a></li>
             <li><a href="#footer">Contact</a></li>
         </ul>
@@ -43,19 +43,27 @@
     </div>
 </header>
 
-    <section class="hero-section">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
+<section class="hero-section" id="home">
+    <div class="hero-slider">
+        <div class="slide active" style="background-image: url('assets/hero5.jpeg');"></div>
+        <div class="slide" style="background-image: url('assets/hero3.jpeg');"></div>
+        <div class="slide" style="background-image: url('assets/hero4.jpeg');"></div>
+    </div>
+
+    <div class="hero-overlay"></div>
+    
         <div class="cta-container">
-            <button class="cta-btn">Discover Elegance</button>
+            <a href="https://annamarclothing.trustpass.alibaba.com/" style="text-decoration: none;" target="_blank">
+                <button class="cta-btn">Discover Elegance</button>
+            </a>
         </div>
-        <div class="dots">
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-    </section>
+
+    <div class="dots">
+        <div class="dot active" onclick="changeSlide(0)"></div>
+        <div class="dot" onclick="changeSlide(1)"></div>
+        <div class="dot" onclick="changeSlide(2)"></div>
+    </div>
+</section>
 
 
     <section class="story-section" id="about-us">
@@ -74,11 +82,13 @@
                     We believe in "less is more"—fewer chemicals, more organic fibers, and a promise 
                     of safety that feels like a mother's touch.
                 </p>
-                <button class="text-cta-btn">Read Our Full Story</button>
+                  <a href="https://annamarclothing.trustpass.alibaba.com/" style="text-decoration: none;" target="_blank">
+                        <button class="cta-btn">Know More</button>
+                 </a>
             </div>
 
             <div class="story-image-wrapper">
-                <img src="" alt="Soft baby clothing texture" class="story-img">
+                <img src="assets/about.jpg" alt="Soft baby clothing texture" class="story-img">
                 <div class="image-frame"></div> </div>
         </div>
     </section>
@@ -91,49 +101,51 @@
             <div class="divider-line center-line"></div>
         </div>
 
-        <div class="gallery-container">
-            <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1972&auto=format&fit=crop')">
-                <div class="panel-content">
-                    <h3>Handcrafted</h3>
-                    <p>Artistry in every stitch.</p>
-                </div>
-            </div>
-
-            <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1972&auto=format&fit=crop')">
-                <div class="panel-content">
-                    <h3>Pure Joy</h3>
-                    <p>Comfort aimed at smiles.</p>
-                </div>
-            </div>
-
-            <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1972&auto=format&fit=crop')">
-                <div class="panel-content">
-                    <h3>Organic</h3>
-                    <p>Certified by nature.</p>
-                </div>
-            </div>
-
-            <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1972&auto=format&fit=crop')">
-                <div class="panel-content">
-                    <h3>Natural Dyes</h3>
-                    <p>Safe for sensitive skin.</p>
-                </div>
-            </div>
-
-            <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1972&auto=format&fit=crop')">
-                <div class="panel-content">
-                    <h3>Heritage</h3>
-                    <p>Tradition meets luxury.</p>
-                </div>
-            </div>
-
-            <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1972&auto=format&fit=crop')">
-                <div class="panel-content">
-                    <h3>Gentle Bond</h3>
-                    <p>Softness you can trust.</p>
-                </div>
-            </div>
+ <div class="gallery-container">
+    
+    <a href="https://annamarclothing.trustpass.alibaba.com/productgrouplist-912745426/Baby_Barefootie.html" class="panel" style="background-image: url('assets/products/new/Bare-Footies.jpg')" target="_blank">
+        <div class="panel-content">
+            <h3>Bare-Footies</h3>
+            <p>Artistry in every stitch.</p>
         </div>
+    </a>
+
+    <a href="https://annamarclothing.trustpass.alibaba.com/productgrouplist-900285405/Baby_Bibs.html" class="panel" style="background-image: url('assets/products/new/Bibs.jpg')" target="_blank">
+        <div class="panel-content">
+            <h3>Bibs</h3>
+            <p>Comfort aimed at smiles.</p>
+        </div>
+    </a>
+
+    <a href="https://annamarclothing.trustpass.alibaba.com/productgrouplist-900265810/Baby_Footie.html" class="panel" style="background-image: url('assets/products/new/Footies.jpg')" target="_blank">
+        <div class="panel-content">
+            <h3>Footies</h3>
+            <p>Certified by nature.</p>
+        </div>
+    </a>
+
+    <a href="https://annamarclothing.trustpass.alibaba.com/search/product?SearchText=onesie" class="panel" style="background-image: url('assets/products/new/onesie.jpg')" target="_blank">
+        <div class="panel-content">
+            <h3>Onesie</h3>
+            <p>Safe for sensitive skin.</p>
+        </div>
+    </a>
+
+    <a href="https://annamarclothing.trustpass.alibaba.com/productgrouplist-900261316/Baby_Muslin_Swaddle_Blanket.html" class="panel" style="background-image: url('assets/products/new/swadlerap.jpg')" target="_blank">
+        <div class="panel-content">
+            <h3>Swaddlerap</h3>
+            <p>Tradition meets luxury.</p>
+        </div>
+    </a>
+
+    <a href="https://annamarclothing.trustpass.alibaba.com/productgrouplist-913124143/Baby_Dungarees.html" class="panel" style="background-image: url('assets/products/new/dungarees.jpg')" target="_blank">
+        <div class="panel-content">
+            <h3>Dungarees</h3>
+            <p>Softness you can trust.</p>
+        </div>
+    </a>
+
+</div>
     </section>
 
 
@@ -142,36 +154,36 @@
         <div class="mosaic-container">
             
             <div class="mosaic-item full-width">
-                <div class="mosaic-img" style="background-image: url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=2070&auto=format&fit=crop')"></div>
+                <div class="mosaic-img" style="background-image: url('assets/acc-new-born-4.jpg')"></div>
                 <div class="mosaic-content">
                     <h3>The Newborn Edit</h3>
-                    <span class="shop-btn">Shop Essentials</span>
+                    <a href="https://annamarclothing.trustpass.alibaba.com/" class="shop-btn" target="_blank">Shop Essentials</a>
                 </div>
             </div>
 
             <div class="bottom-row">
                 
                 <div class="mosaic-item box">
-                    <div class="mosaic-img" style="background-image: url('https://images.unsplash.com/photo-1560506840-ec148e82a604?q=80&w=2070&auto=format&fit=crop')"></div>
+                    <div class="mosaic-img" style="background-image: url('assets/acc-new-born-2.jpg')"></div>
                     <div class="mosaic-content">
                         <h3>Archival Treasures</h3>
-                        <span class="shop-btn">Explore Sale</span>
+                        <a href="https://annamarclothing.trustpass.alibaba.com/" class="shop-btn" target="_blank">Explore Sale</a>
                     </div>
                 </div>
 
                 <div class="mosaic-item box">
-                    <div class="mosaic-img" style="background-image: url('https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?q=80&w=2000&auto=format&fit=crop')"></div>
+                    <div class="mosaic-img" style="background-image: url('assets/acc-new-born-3.jpg')"></div>
                     <div class="mosaic-content">
                         <h3>Playtime Comfort</h3>
-                        <span class="shop-btn">Shop Play</span>
+                        <a href="https://annamarclothing.trustpass.alibaba.com/" class="shop-btn" target="_blank">Shop Play</a>
                     </div>
                 </div>
 
                 <div class="mosaic-item box">
-                    <div class="mosaic-img" style="background-image: url('https://images.unsplash.com/photo-1560506840-ec148e82a604?q=80&w=2070&auto=format&fit=crop')"></div>
+                    <div class="mosaic-img" style="background-image: url('assets/acc-new-born.jpg')"></div>
                     <div class="mosaic-content">
                         <h3>After Care</h3>
-                        <span class="shop-btn">Shop Care</span>
+                        <a href="https://annamarclothing.trustpass.alibaba.com/" class="shop-btn" target="_blank">Shop Care</a>
                     </div>
                 </div>
 
@@ -200,7 +212,7 @@
                     <i class="fas fa-leaf"></i>
                 </div>
                 <h4>Healing Colours</h4>
-                <p>Ayurvedic natural dyes</p>
+                <p>Safe, natural coloring</p>
             </div>
 
             <div class="value-item slide-left" style="animation-delay: 0.5s;">
@@ -236,13 +248,11 @@
             
             <div class="philosophy-text">
                 <h2 class="static-text">We Created Annammar</h2>
-                
                 <h2 class="typewriter-text bold-text">
-                    <span>s</span><span>o</span> 
-                    <span>y</span><span>o</span><span>u</span><span>r</span> 
-                    <span>c</span><span>h</span><span>o</span><span>i</span><span>c</span><span>e</span> 
-                    <span>i</span><span>s</span> 
-                    <span>s</span><span>i</span><span>m</span><span>p</span><span>l</span><span>e</span><span>.</span>
+                    <span>s</span><span>o</span>
+                    <span>y</span><span>o</span><span>u</span>
+                    <span>n</span><span>e</span><span>v</span><span>e</span><span>r</span>
+                    <span>c</span><span>o</span><span>m</span><span>p</span><span>r</span><span>o</span><span>m</span><span>i</span><span>s</span><span>e</span><span>.</span>
                 </h2>
             </div>
         </div>
@@ -285,11 +295,11 @@
                 <div class="footer-col">
                     <h4>Shop</h4>
                     <ul>
-                        <li><a href="#">New Arrivals</a></li>
-                        <li><a href="#">Baby Essentials</a></li>
-                        <li><a href="#">Toddler Luxury</a></li>
-                        <li><a href="#">Gift Sets</a></li>
-                        <li><a href="#">Traditional Wear</a></li>
+                        <li><a href="https://annamarclothing.trustpass.alibaba.com/productlist.html?spm=a2700.shop_index.88.15.5a5426d7Pk6H46" target="_blank">New Arrivals</a></li>
+                        <li><a href="https://annamarclothing.trustpass.alibaba.com/productlist.html?spm=a2700.shop_index.88.15.5a5426d7Pk6H46" target="_blank">Baby Essentials</a></li>
+                        <li><a href="https://annamarclothing.trustpass.alibaba.com/productlist.html?spm=a2700.shop_index.88.15.5a5426d7Pk6H46" target="_blank">Toddler Luxury</a></li>
+                        <li><a href="https://annamarclothing.trustpass.alibaba.com/productlist.html?spm=a2700.shop_index.88.15.5a5426d7Pk6H46" target="_blank">Gift Sets</a></li>
+                        <li><a href="https://annamarclothing.trustpass.alibaba.com/productlist.html?spm=a2700.shop_index.88.15.5a5426d7Pk6H46" target="_blank">Bulk Order</a></li>
                     </ul>
                 </div>
 
@@ -306,10 +316,10 @@
 
                 <div class="footer-col contact-col">
                     <h4>Get in Touch</h4>
-                    <p><i class="fas fa-envelope"></i> hello@annammar.com</p>
+                    <p><i class="fas fa-envelope"></i> prakash@annamarclothing.com</p>
                     <p><i class="fas fa-phone"></i> +91-9894961225</p>
-                    <p><i class="fas fa-map-marker-alt"></i> 281/2, Sengampalayam, Arulpuram,<br>
-                                                            Palladam Road, Tirupur, Tamil Nadu.<br>
+                    <p><i class="fas fa-map-marker-alt"></i> 281/2, Sengampalayam, Arulpuram,
+                                                            Palladam Road, Tirupur, Tamil Nadu.
                                                             PIN: 641 664</p>
                 </div>
 
@@ -367,6 +377,41 @@
             console.error("Menu elements not found! Check IDs.");
         }
     });
+</script>
+<script>
+// --- HERO SLIDER LOGIC ---
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+let slideInterval;
+
+function showSlide(index) {
+    // 1. Reset all slides/dots
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    // 2. Activate specific slide/dot
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+    
+    // 3. Update current index
+    currentSlide = index;
+}
+
+function nextSlide() {
+    let nextIndex = (currentSlide + 1) % slides.length;
+    showSlide(nextIndex);
+}
+
+// Function for Dot Clicks
+function changeSlide(index) {
+    clearInterval(slideInterval); // Pause auto-play if user clicks
+    showSlide(index);
+    slideInterval = setInterval(nextSlide, 5000); // Restart auto-play
+}
+
+// Start Auto-Play (Every 5 Seconds)
+slideInterval = setInterval(nextSlide, 5000);
 </script>
 </body>
 </html>

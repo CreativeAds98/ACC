@@ -212,50 +212,50 @@
 
 
         /* --- HERO SLIDER STYLES --- */
-.hero-slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Behind content */
-}
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Behind content */
+        }
 
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    
-    /* Fade Transition */
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-    
-    /* The Zoom Effect */
-    animation: zoomOutEffect 20s infinite alternate;
-}
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            
+            /* Fade Transition */
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            
+            /* The Zoom Effect */
+            animation: zoomOutEffect 20s infinite alternate;
+        }
 
-/* The Active Slide is Visible */
-.slide.active {
-    opacity: 1;
-}
+        /* The Active Slide is Visible */
+        .slide.active {
+            opacity: 1;
+        }
 
-/* Reuse your existing Zoom Animation */
-@keyframes zoomOutEffect {
-    0% { transform: scale(1.2); }
-    100% { transform: scale(1.0); }
-}
+        /* Reuse your existing Zoom Animation */
+        @keyframes zoomOutEffect {
+            0% { transform: scale(1.2); }
+            100% { transform: scale(1.0); }
+        }
 
-/* Ensure Overlay stays on top of slides */
-.hero-overlay {
-    z-index: 0; 
-}
-.cta-container, .dots {
-    z-index: 2;
-}
+        /* Ensure Overlay stays on top of slides */
+        .hero-overlay {
+            z-index: 0; 
+        }
+        .cta-container, .dots {
+            z-index: 2;
+        }
 
 
 
@@ -460,7 +460,8 @@
 
 
 
-/* --- VALUES SECTION STYLES --- */
+        /* --- VALUES SECTION STYLES --- */
+        
         .values-section {
             padding: 80px 0;
             background-color: #fff;

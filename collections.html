@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections | Annammar</title>
+    <link rel="icon" href="assets/favicon.jpg" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css"> 
+
+    <style>
+        /* --- PAGE SPECIFIC OVERRIDES --- */
+        
+        /* 1. Prevent Overlap: Push content down because header is fixed */
+        body {
+            padding-top: 120px; 
+            background-color: #fdfbf7; /* Warm white for this page */
+        }
+
+        /* 2. Fix Header Visibility: 
+           Your global header is transparent with white text.
+           On this white page, we must make the header DARK so text is visible. */
+        header {
+             
+            position: fixed;
+            top: 0; 
+            width: 100%;
+            border-bottom: 1px solid #333;
+        }
+
+        /* 3. Adjust Announcement Bar to sit above fixed header */
+        .announcement-bar {
+            position: relative; 
+            z-index: 1002;
+        }
+
+        /* --- COLLECTION PAGE STYLES --- */
+        
+        .page-title-section {
+            text-align: center; 
+            padding: 40px 20px; 
+            margin-top: 20px;
+        }
+
+        /* Category Sections */
+        .category-section { padding: 50px 0; border-bottom: 1px solid #eee; }
+        .section-header { padding: 0 5%; margin-bottom: 20px; }
+        
+        .cat-title { 
+            font-size: 1.8rem; margin: 0; 
+            text-transform: uppercase; letter-spacing: 1px; 
+            color: #1a1a1a; font-family: 'Cinzel', serif; 
+        }
+        .cat-desc { font-size: 0.9rem; color: #666; margin-top: 5px; font-style: italic; }
+
+        /* Carousel & Arrows */
+        .carousel-wrapper { position: relative; padding: 0 2%; }
+
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 25px;
+            padding: 20px 5px;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+        .scroll-container::-webkit-scrollbar { display: none; }
+
+        .scroll-arrow {
+            position: absolute;
+            top: 45%;
+            transform: translateY(-50%);
+            width: 45px; height: 45px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.3s; color: #1a1a1a; cursor: pointer;
+        }
+        .scroll-arrow:hover {
+            background: #1a1a1a; color: #fff; transform: translateY(-50%) scale(1.1);
+        }
+        .arrow-left { left: 10px; }
+        .arrow-right { right: 10px; }
+
+        /* Product Card */
+        .prod-card {
+            flex: 0 0 280px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .prod-card:hover { transform: translateY(-5px); }
+
+        .img-box {
+            width: 100%; aspect-ratio: 3 / 4;
+            background: #f4f4f4; overflow: hidden;
+            border-radius: 4px; margin-bottom: 15px;
+        }
+        .prod-img { width: 90%; height: 90%; object-fit: revert; transition: 0.6s ease; }
+        .prod-card:hover .prod-img { transform: scale(1.08); }
+
+        .details { padding: 0 5px; }
+        .p-sku { font-size: 0.7rem; color: #999; letter-spacing: 1px; font-weight: 700; display: block; margin-bottom: 3px; }
+        .p-name { font-size: 1.05rem; margin: 0 0 5px 0; color: #333; font-family: 'Cinzel', serif; }
+        .p-price { color: #D4AF37; font-weight: 700; font-size: 0.95rem; }
+        
+        .btn-add { 
+            display: inline-block; margin-top: 8px; font-size: 0.7rem; 
+            text-transform: uppercase; letter-spacing: 1px; 
+            border-bottom: 1px solid #ccc; padding-bottom: 2px; color: #666; transition: 0.2s;
+        }
+        .prod-card:hover .btn-add { border-color: #1a1a1a; color: #1a1a1a; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            body { padding-top: 100px; }
+            .scroll-arrow { display: none; }
+            .prod-card { flex: 0 0 220px; }
+        }
+
+
+
+        /* --- 3. PRODUCT POPUP MODAL (COMPACT VERSION) --- */
+        .modal {
+            display: none; 
+            position: fixed; z-index: 2000; 
+            left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+            justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal.active { display: flex; opacity: 1; }
+
+        .modal-content {
+            background-color: #fff; 
+            width: 90%; 
+            max-width: 800px; /* Reduced from 1000px */
+            /* max-height: 85vh; Optional: prevents it from being taller than screen */
+            display: flex; position: relative; border-radius: 4px;
+            overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            animation: slideUp 0.4s ease;
+        }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .close-btn {
+            position: absolute; top: 10px; right: 15px;
+            font-size: 24px; font-weight: bold; color: #333; cursor: pointer; z-index: 10;
+        }
+        .close-btn:hover { color: #D4AF37; }
+
+        .modal-left { 
+            flex: 1; /* Equal split */
+            background: #f9f9f9; 
+            padding: 20px; 
+            display: flex; flex-direction: column; gap: 10px; 
+            justify-content: center;
+        }
+        
+        .main-image-container { 
+            width: 100%; 
+            height: 350px; /* Fixed shorter height */
+            overflow: hidden; border-radius: 4px; 
+            display: flex; align-items: center; justify-content: center;
+        }
+        .modal-main-img { 
+            width: 100%; height: 100%; object-fit: cover; 
+        }
+
+        .modal-gallery { display: flex; gap: 8px; justify-content: center; }
+        .gallery-thumb {
+            width: 50px; height: 50px; /* Smaller thumbs */
+            object-fit: cover; border-radius: 4px;
+            cursor: pointer; border: 2px solid transparent; opacity: 0.7; transition: 0.2s;
+        }
+        .gallery-thumb:hover, .gallery-thumb.active { border-color: #1a1a1a; opacity: 1; }
+
+        .modal-right { 
+            flex: 1; 
+            padding: 30px; /* Reduced padding */
+            display: flex; flex-direction: column; justify-content: center; 
+        }
+        
+        .m-sku { font-size: 0.7rem; color: #999; letter-spacing: 1px; font-weight: 700; margin-bottom: 5px; display: block; }
+        .m-title { font-family: 'Cinzel', serif; font-size: 1.6rem; margin-bottom: 10px; line-height: 1.2; color: #1a1a1a; }
+        .m-price { font-size: 1.3rem; color: #D4AF37; font-weight: 700; margin-bottom: 15px; }
+        .m-desc { font-size: 0.85rem; color: #666; line-height: 1.5; margin-bottom: 20px; }
+        
+        .m-btn {
+            background: #1a1a1a; color: #fff; border: none; padding: 12px 25px;
+            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s;
+            align-self: flex-start; /* Prevents button from stretching full width */
+        }
+        .m-btn:hover { background: #D4AF37; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            body { padding-top: 110px; }
+            header { top: 35px; }
+            .scroll-arrow { display: none; }
+            .prod-card { flex: 0 0 220px; }
+            
+            /* Modal Mobile Styles */
+            .modal-content { flex-direction: column; max-width: 90%; height: auto; max-height: 90vh; overflow-y: auto; }
+            .modal-left { padding: 15px; }
+            .main-image-container { height: 250px; } /* Even shorter on mobile */
+            .modal-right { padding: 20px; }
+            .m-title { font-size: 1.4rem; }
+        }
+
+        
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="assets/logo.png" alt="Annammar Brand Logo">
+        </a>
+
+        <nav>
+            <ul id="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about-us">About Us</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="index.html#essentials">Baby Boutique</a></li>
+                <li><a href="#">Gifting</a></li>
+                <li><a href="#footer">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-icons">
+            <i class="fas fa-search"></i>
+            <i class="far fa-user"></i>
+            <i class="fas fa-shopping-bag"></i>
+        </div>
+
+        <div class="menu-toggle" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+
+ <div class="page-title-section">
+        <h1 style="font-family:'Cinzel', serif; font-size:3rem; margin-bottom:5px;">The Master Collection</h1>
+        <p style="letter-spacing:2px; text-transform:uppercase; color:#888; font-size:0.9rem;">50+ Handcrafted Essentials</p>
+    </div>
+
+    <section class="category-section">
+        <div class="section-header">
+            <h2 class="cat-title">Baby Sleeping</h2>
+            <p class="cat-desc">Comfort & Safety for Peaceful Nights</p>
+        </div>
+        <div class="carousel-wrapper">
+            <button class="scroll-arrow arrow-left" onclick="scrollShelf('shelf-sleeping', 'left')"><i class="fas fa-chevron-left"></i></button>
+            <div class="scroll-container" id="shelf-sleeping"></div> 
+            <button class="scroll-arrow arrow-right" onclick="scrollShelf('shelf-sleeping', 'right')"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section class="category-section">
+        <div class="section-header">
+            <h2 class="cat-title">Baby Bedding</h2>
+            <p class="cat-desc">Organic Linens & Sheets</p>
+        </div>
+        <div class="carousel-wrapper">
+            <button class="scroll-arrow arrow-left" onclick="scrollShelf('shelf-bedding', 'left')"><i class="fas fa-chevron-left"></i></button>
+            <div class="scroll-container" id="shelf-bedding"></div>
+            <button class="scroll-arrow arrow-right" onclick="scrollShelf('shelf-bedding', 'right')"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section class="category-section">
+        <div class="section-header">
+            <h2 class="cat-title">Baby Apparel</h2>
+            <p class="cat-desc">Everyday Wear to Ceremonial Gowns</p>
+        </div>
+        <div class="carousel-wrapper">
+            <button class="scroll-arrow arrow-left" onclick="scrollShelf('shelf-apparel', 'left')"><i class="fas fa-chevron-left"></i></button>
+            <div class="scroll-container" id="shelf-apparel"></div>
+            <button class="scroll-arrow arrow-right" onclick="scrollShelf('shelf-apparel', 'right')"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section class="category-section">
+        <div class="section-header">
+            <h2 class="cat-title">Baby Diapering</h2>
+            <p class="cat-desc">Eco-friendly Cloth Solutions</p>
+        </div>
+        <div class="carousel-wrapper">
+            <button class="scroll-arrow arrow-left" onclick="scrollShelf('shelf-diapering', 'left')"><i class="fas fa-chevron-left"></i></button>
+            <div class="scroll-container" id="shelf-diapering"></div>
+            <button class="scroll-arrow arrow-right" onclick="scrollShelf('shelf-diapering', 'right')"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section class="category-section">
+        <div class="section-header">
+            <h2 class="cat-title">Baby Accessories</h2>
+            <p class="cat-desc">The Perfect Little Add-ons</p>
+        </div>
+        <div class="carousel-wrapper">
+            <button class="scroll-arrow arrow-left" onclick="scrollShelf('shelf-accessories', 'left')"><i class="fas fa-chevron-left"></i></button>
+            <div class="scroll-container" id="shelf-accessories"></div>
+            <button class="scroll-arrow arrow-right" onclick="scrollShelf('shelf-accessories', 'right')"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section class="category-section" style="border-bottom:none;">
+        <div class="section-header">
+            <h2 class="cat-title">Baby Feeding</h2>
+            <p class="cat-desc">Bibs, Burp Cloths & Nursing Essentials</p>
+        </div>
+        <div class="carousel-wrapper">
+            <button class="scroll-arrow arrow-left" onclick="scrollShelf('shelf-feeding', 'left')"><i class="fas fa-chevron-left"></i></button>
+            <div class="scroll-container" id="shelf-feeding"></div>
+            <button class="scroll-arrow arrow-right" onclick="scrollShelf('shelf-feeding', 'right')"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <footer class="footer-section" id="footer">
+        
+
+
+        <div class="footer-main">
+            <div class="footer-container">
+                
+                <div class="footer-col brand-col">
+                        <div class="footer-logo">
+                            <img src="assets/logo.png" alt="Annamar Clothing Company" class="footer-img">
+                        </div>
+                    <p class="brand-desc">
+                        Annammar wraps your little ones in the luxury of nature. 
+                        Born from tradition, crafted for comfort.
+                    </p>
+                    <div class="social-icons">
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-pinterest-p"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="">New Arrivals</a></li>
+                        <li><a href="">Baby Essentials</a></li>
+                        <li><a href="">Toddler Luxury</a></li>
+                        <li><a href="">Gift Sets</a></li>
+                        <li><a href="">Bulk Order</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Customer Care</h4>
+                    <ul>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Fabric Care</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col contact-col">
+                    <h4>Get in Touch</h4>
+                    <p><i class="fas fa-envelope"></i> prakash@annamarclothing.com</p>
+                    <p><i class="fas fa-phone"></i> +91-9894961225</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 281/2, Sengampalayam, Arulpuram,
+                                                            Palladam Road, Tirupur, Tamil Nadu.
+                                                            PIN: 641 664</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Annammar Clothing. All Rights Reserved.</p>
+            <div class="payment-icons">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-paypal"></i>
+            </div>
+        </div>
+    </footer>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
+            <div class="modal-left">
+                <div class="main-image-container">
+                    <img id="modal-img" src="" class="modal-main-img">
+                </div>
+                <div class="modal-gallery" id="modal-gallery-container">
+                    </div>
+            </div>
+
+            <div class="modal-right">
+                <span id="modal-sku" class="m-sku">SKU</span>
+                <h2 id="modal-title" class="m-title">Product Name</h2>
+                <div id="modal-price" class="m-price">Price</div>
+                <p class="m-desc">
+                    Handcrafted from 100% GOTS certified organic cotton. 
+                    Designed for ultimate breathability and softness, ensuring your little one sleeps in pure comfort. 
+                    Hypoallergenic and free from harmful chemicals.
+                </p>
+                <button class="m-btn">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+        // --- 1. PRODUCT CATALOG (DATA) ---
+        const catalog = {
+            'shelf-sleeping': [
+                { id: 'AC - 001', name: 'Sleeping bag Tog 0.5', price: '₹' },
+                { id: 'AC - 002', name: 'Sleeping bag Tog 1.5', price: '₹' },
+                { id: 'AC - 003', name: 'Sleeping bag Tog 2.5', price: '₹' },
+                { id: 'AC - 004', name: 'Sleeping bag Tog 3.5', price: '₹' },
+                { id: 'AC - 005', name: 'Adjustable Swaddle Wrap', price: '₹' },
+                { id: 'AC - 006', name: 'Knotted Swaddle Wrap', price: '₹' },
+                { id: 'AC - 007', name: 'Quilt Blanket', price: '₹' },
+                { id: 'AC - 008', name: 'Cocoon Swaddle', price: '₹' },
+                { id: 'AC - 009', name: 'Muslin Swaddle Blanket', price: '₹' }
+            ],
+            'shelf-bedding': [
+                { id: 'AC - 010', name: 'Crib Sheet', price: '₹' },
+                { id: 'AC - 011', name: 'Bassinet Sheet', price: '₹' },
+                { id: 'AC - 012', name: 'Bed Sheet', price: '₹' },
+                { id: 'AC - 013', name: 'Duvet Cover', price: '₹' },
+                { id: 'AC - 014', name: 'Pillow Cover', price: '₹' }
+            ],
+            'shelf-apparel': [
+                { id: 'AC - 015', name: 'Onesie', price: '₹' },
+                { id: 'AC - 016', name: 'Romper', price: '₹' },
+                { id: 'AC - 017', name: 'Bodysuit', price: '₹' },
+                { id: 'AC - 018', name: 'Two-piece Pajamas', price: '₹' },
+                { id: 'AC - 019', name: 'Leggings', price: '₹' },
+                { id: 'AC - 020', name: 'T-shirt', price: '₹' },
+                { id: 'AC - 021', name: 'Swimsuit', price: '₹' },
+                { id: 'AC - 022', name: 'Sweat Shirt', price: '₹' },
+                { id: 'AC - 023', name: 'Sweat Pants', price: '₹' },
+                { id: 'AC - 024', name: 'Baby Gown', price: '₹' }
+            ],
+            'shelf-diapering': [
+                { id: 'AC - 025', name: 'Changing Pad Cover', price: '₹' },
+                { id: 'AC - 026', name: 'Diaper Changing Mat', price: '₹' },
+                { id: 'AC - 027', name: 'Cloth Diaper', price: '₹' },
+                { id: 'AC - 028', name: 'Diaper Inserts', price: '₹' },
+                { id: 'AC - 029', name: 'Pre-fold', price: '₹' },
+                { id: 'AC - 030', name: 'Sanitary Pads', price: '₹' },
+                { id: 'AC - 031', name: 'Training Pants', price: '₹' },
+                { id: 'AC - 032', name: 'Wet Bags', price: '₹' }
+            ],
+            'shelf-accessories': [
+                { id: 'AC - 033', name: 'Mittens', price: '₹' },
+                { id: 'AC - 034', name: 'Bonnets', price: '₹' },
+                { id: 'AC - 035', name: 'Booties', price: '₹' },
+                { id: 'AC - 036', name: 'Knot Hats', price: '₹' },
+                { id: 'AC - 037', name: 'Beanie Hats', price: '₹' },
+                { id: 'AC - 038', name: 'Beach Hats', price: '₹' },
+                { id: 'AC - 039', name: 'Wash Clothes', price: '₹' },
+                { id: 'AC - 040', name: 'Hooded Towel', price: '₹' },
+                { id: 'AC - 041', name: 'Milestone Blanket', price: '₹' }
+            ],
+            'shelf-feeding': [
+                { id: 'AC - 042', name: 'Waterproof Bibs', price: '₹' },
+                { id: 'AC - 043', name: 'Teether Pad Cover', price: '₹' },
+                { id: 'AC - 044', name: 'Bandana Drool Bibs', price: '₹' },
+                { id: 'AC - 045', name: 'Muslin Bibs', price: '₹' },
+                { id: 'AC - 046', name: 'Pocket Bibs', price: '₹' },
+                { id: 'AC - 047', name: 'Burp Cloth', price: '₹' },
+                { id: 'AC - 048', name: 'Canopy / Car Seat Cover', price: '₹' },
+                { id: 'AC - 049', name: 'Nursing Cover', price: '₹' },
+                { id: 'AC - 050', name: 'Cuddle Goose', price: '₹' }
+            ]
+        };
+
+// --- 2. IMAGE DATABASE (FULL ASSETS FOR GALLERY) ---
+        const productAssets = {
+            // --- SLEEPING ---
+            'AC - 001': ["assets/product-images/sleeping-bag-tog0.5.jpg", "assets/product-images/sleeping-bag-tog0.5-1.jpg", "assets/product-images/sleeping-bag-tog0.5-2.jpg", "assets/product-images/sleeping-bag-tog0.5-3.jpg"],
+            'AC - 002': ["assets/product-images/sleeping-bag-tog1.5.jpg", "assets/product-images/sleeping-bag-tog1.5-1.jpg", "assets/product-images/sleeping-bag-tog1.5-2.jpg", "assets/product-images/sleeping-bag-tog1.5-3.jpg"],
+            'AC - 003': ["assets/product-images/sleeping-bag-tog2.5.jpg", "assets/product-images/sleeping-bag-tog2.5-1.jpg", "assets/product-images/sleeping-bag-tog2.5-2.jpg", "assets/product-images/sleeping-bag-tog2.5-3.jpg"],
+            'AC - 004': ["assets/product-images/sleeping-bag-tog3.5.jpg", "assets/product-images/sleeping-bag-tog3.5-1.jpg", "assets/product-images/sleeping-bag-tog3.5-2.jpg", "assets/product-images/sleeping-bag-tog3.5-3.jpg"],
+            'AC - 005': ["assets/product-images/adjustable-swaddle-wrap.jpg", "assets/product-images/adjustable-swaddle-wrap1.jpg", "assets/product-images/adjustable-swaddle-wrap2.jpg", "assets/product-images/adjustable-swaddle-wrap3.jpg"],
+            'AC - 006': ["assets/product-images/knotted-swaddle-wrap.jpg", "assets/product-images/knotted-swaddle-wrap1.jpg", "assets/product-images/knotted-swaddle-wrap2.jpg", "assets/product-images/knotted-swaddle-wrap3.jpg"],
+            'AC - 007': ["assets/product-images/quilt-banket.jpg", "assets/product-images/quilt-banket1.jpg", "assets/product-images/quilt-banket2.jpg", "assets/product-images/quilt-banket3.jpg"],
+            'AC - 008': ["assets/product-images/cocoon-swaddle.jpg", "assets/product-images/cocoon-swaddle-1.jpg", "assets/product-images/cocoon-swaddle2.jpg", "assets/product-images/cocoon-swaddle3.jpg"],
+            'AC - 009': ["assets/product-images/muslin-swaddle.jpg", "assets/product-images/muslin-swaddle1.jpg", "assets/product-images/muslin-swaddle2.jpg", "assets/product-images/muslin-swaddle3.jpg"],
+            
+            // --- BEDDING ---
+            'AC - 010': ["assets/product-images/crib-sheet.jpg", "assets/product-images/crib-sheet1.jpg", "assets/product-images/crib-sheet2.jpg", "assets/product-images/crib-sheet3.jpg"],
+            'AC - 011': ["assets/product-images/bassinet-sheet.jpg", "assets/product-images/bassinet-sheet1.jpg", "assets/product-images/bassinet-sheet2.jpg", "assets/product-images/bassinet-sheet3.jpg"],
+            'AC - 012': ["assets/product-images/bed-sheet.jpg", "assets/product-images/bed-sheet1.jpg", "assets/product-images/bed-sheet2.jpg", "assets/product-images/bed-sheet3.jpg"],
+            'AC - 013': ["assets/product-images/duvet-covers.jpg", "assets/product-images/duvet-covers1.jpg", "assets/product-images/duvet-covers2.jpg", "assets/product-images/duvet-covers3.jpg"],
+            'AC - 014': ["assets/product-images/pillow-cover.jpg", "assets/product-images/pillow-cover1.jpg", "assets/product-images/pillow-cover2.jpg", "assets/product-images/pillow-cover3.jpg"],
+
+            // --- APPAREL ---
+            'AC - 015': ["assets/product-images/onesie.jpg", "assets/product-images/onesie1.jpg", "assets/product-images/onesie2.jpg", "assets/product-images/onesie3.jpg"],
+            'AC - 016': ["assets/product-images/rompers.jpg", "assets/product-images/rompers1.jpg", "assets/product-images/rompers2.jpg", "assets/product-images/rompers3.jpg"],
+            'AC - 017': ["assets/product-images/bodysuit.jpg", "assets/product-images/bodysuit1.jpg", "assets/product-images/bodysuit2.jpg", "assets/product-images/bodysuit3.jpg"],
+            'AC - 018': ["assets/product-images/two-piece-pajamas.jpg", "assets/product-images/two-piece-pajamas1.jpg", "assets/product-images/two-piece-pajamas2.jpg", "assets/product-images/two-piece-pajamas3.jpg"],
+            'AC - 019': ["assets/product-images/leggings.jpg", "assets/product-images/leggings1.jpg", "assets/product-images/leggings2.jpg", "assets/product-images/leggings3.jpg"],
+            'AC - 020': ["assets/product-images/t-shirt.jpg", "assets/product-images/t-shirt1.jpg", "assets/product-images/t-shirt2.jpg", "assets/product-images/t-shirt3.jpg"],
+            'AC - 021': ["assets/product-images/swimsuit.jpg", "assets/product-images/swimsuit1.jpg", "assets/product-images/swimsuit2.jpg", "assets/product-images/swimsuit3.jpg"],
+            'AC - 022': ["assets/product-images/sweat-shirt.jpg", "assets/product-images/sweat-shirt1.jpg", "assets/product-images/sweat-shirt2.jpg", "assets/product-images/sweat-shirt3.jpg"],
+            'AC - 023': ["assets/product-images/sweat-pants.jpg", "assets/product-images/sweat-pants1.jpg", "assets/product-images/sweat-pants2.jpg", "assets/product-images/sweat-pants3.jpg"],
+            'AC - 024': ["assets/product-images/baby-gown.jpg", "assets/product-images/baby-gown1.jpg", "assets/product-images/baby-gown2.jpg", "assets/product-images/baby-gown3.jpg"],
+
+            // --- DIAPERING ---
+            'AC - 025': ["assets/product-images/changing-pad-cover.jpg", "assets/product-images/changing-pad-cover1.jpg", "assets/product-images/changing-pad-cover2.jpg", "assets/product-images/changing-pad-cover3.jpg"],
+            'AC - 026': ["assets/product-images/diaper-changing-mat.jpg", "assets/product-images/diaper-changing-mat1.jpg", "assets/product-images/diaper-changing-mat2.jpg", "assets/product-images/diaper-changing-mat3.jpg"],
+            'AC - 027': ["assets/product-images/cloth-diaper.jpg", "assets/product-images/cloth-diaper1.jpg", "assets/product-images/cloth-diaper2.jpg", "assets/product-images/cloth-diaper3.jpg"],
+            'AC - 028': ["assets/product-images/diaper-insert.jpg", "assets/product-images/diaper-insert1.jpg", "assets/product-images/diaper-insert2.jpg", "assets/product-images/diaper-insert3.jpg"],
+            'AC - 029': ["assets/product-images/pre-fold.jpg", "assets/product-images/pre-fold1.jpg", "assets/product-images/pre-fold2.jpg", "assets/product-images/pre-fold3.jpg"],
+            'AC - 030': ["assets/product-images/sanitary-pads.jpg", "assets/product-images/sanitary-pads1.jpg", "assets/product-images/sanitary-pads2.jpg", "assets/product-images/sanitary-pads3.jpg"],
+            'AC - 031': ["assets/product-images/training-pants.jpg", "assets/product-images/training-pants1.jpg", "assets/product-images/training-pants2.jpg", "assets/product-images/training-pants3.jpg"],
+            'AC - 032': ["assets/product-images/wet-bags.jpg", "assets/product-images/wet-bags1.jpg", "assets/product-images/wet-bags2.jpg", "assets/product-images/wet-bags3.jpg"],
+
+            // --- ACCESSORIES ---
+            'AC - 033': ["assets/product-images/mittens.jpg", "assets/product-images/mittens1.jpg", "assets/product-images/mittens2.jpg", "assets/product-images/mittens3.jpg"],
+            'AC - 034': ["assets/product-images/bonnets.jpg", "assets/product-images/bonnets1.jpg", "assets/product-images/bonnets2.jpg", "assets/product-images/bonnets3.jpg"],
+            'AC - 035': ["assets/product-images/booties.jpg", "assets/product-images/booties1.jpg", "assets/product-images/booties2.jpg", "assets/product-images/booties3.jpg"],
+            'AC - 036': ["assets/product-images/knot-hats.jpg", "assets/product-images/knot-hats1.jpg", "assets/product-images/knot-hats2.jpg", "assets/product-images/knot-hats3.jpg"],
+            'AC - 037': ["assets/product-images/beanie-hats.jpg", "assets/product-images/beanie-hats1.jpg", "assets/product-images/beanie-hats2.jpg", "assets/product-images/beanie-hats3.jpg"],
+            'AC - 038': ["assets/product-images/beach-hats.jpg", "assets/product-images/beach-hats1.jpg", "assets/product-images/beach-hats2.jpg", "assets/product-images/beach-hats3.jpg"],
+            'AC - 039': ["assets/product-images/wash-clothes.jpg", "assets/product-images/wash-clothes1.jpg", "assets/product-images/wash-clothes2.jpg", "assets/product-images/wash-clothes3.jpg"],
+            'AC - 040': ["assets/product-images/hooded-towels.jpg", "assets/product-images/hooded-towels1.jpg", "assets/product-images/hooded-towels2.jpg", "assets/product-images/hooded-towels3.jpg"],
+            'AC - 041': ["assets/product-images/milestone-blanket.jpg", "assets/product-images/milestone-blanket1.jpg", "assets/product-images/milestone-blanket-2.jpg", "assets/product-images/milestone-blanket3.jpg"],
+
+            // --- FEEDING ---
+            'AC - 042': ["assets/product-images/waterproof-bibs.jpg", "assets/product-images/waterproof-bibs1.jpg", "assets/product-images/waterproof-bibs2.jpg", "assets/product-images/waterproof-bibs3.jpg"],
+            'AC - 043': ["assets/product-images/teether-pad-cover.jpg", "assets/product-images/teether-pad-cover1.jpg", "assets/product-images/teether-pad-cover2.jpg", "assets/product-images/teether-pad-cover3.jpg"],
+            'AC - 044': ["assets/product-images/bandana-drool-bibs.jpg", "assets/product-images/bandana-drool-bibs1.jpg", "assets/product-images/bandana-drool-bibs2.jpg", "assets/product-images/bandana-drool-bibs3.jpg"],
+            'AC - 045': ["assets/product-images/muslin-bibs.jpg", "assets/product-images/muslin-bibs1.jpg", "assets/product-images/muslin-bibs2.jpg", "assets/product-images/muslin-bibs3.jpg"],
+            'AC - 046': ["assets/product-images/pocket-bibs.jpg", "assets/product-images/pocket-bibs1.jpg", "assets/product-images/pocket-bibs2.jpg", "assets/product-images/pocket-bibs3.jpg"],
+            'AC - 047': ["assets/product-images/burp-cloth.jpg", "assets/product-images/burp-cloth1.jpg", "assets/product-images/burp-cloth2.jpg", "assets/product-images/burp-cloth3.jpg"],
+            'AC - 048': ["assets/product-images/canopy-feeding-towel.jpg", "assets/product-images/canopy-feeding-towel-1.jpg", "assets/product-images/canopy-feeding-towel2.jpg", "assets/product-images/canopy-feeding-towel3.jpg"],
+            'AC - 049': ["assets/product-images/nursing-cover.jpg", "assets/product-images/nursing-cover1.jpg", "assets/product-images/nursing-cover2.jpg", "assets/product-images/nursing-cover3.jpg"],
+            'AC - 050': ["assets/product-images/cuddle-goose.jpg", "assets/product-images/cuddle-goose1.jpg", "assets/product-images/cuddle-goose2.jpg", "assets/product-images/cuddle-goose3.jpg"]
+        };
+
+        // --- 3. RENDER SHELVES ---
+        function renderShelves() {
+            for (const [shelfId, items] of Object.entries(catalog)) {
+                const container = document.getElementById(shelfId);
+                let html = "";
+                
+                items.forEach((item) => {
+                    // Look up specific images for this ID, or fallback if missing
+                    const assets = productAssets[item.id] || ["https://via.placeholder.com/300x400?text=No+Image"];
+                    const mainImg = assets[0]; // First image is main
+                    
+                    html += `
+                        <div class="prod-card" onclick="openModal('${item.id}')">
+                            <div class="img-box">
+                                <img src="${mainImg}" class="prod-img" alt="${item.name}">
+                            </div>
+                            <div class="details">
+                              
+                                <h3 class="p-name">${item.name}</h3>
+       
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            }
+        }
+
+        // --- 4. MODAL LOGIC (UPDATED FOR INDIVIDUAL PHOTOS) ---
+        function openModal(productId) {
+            // Find product data from catalog (Scan all shelves)
+            let product = null;
+            for (const shelf of Object.values(catalog)) {
+                const found = shelf.find(p => p.id === productId);
+                if (found) { product = found; break; }
+            }
+            
+            // Get specific assets for this ID
+            const assets = productAssets[productId] || ["https://via.placeholder.com/300x400?text=No+Image"];
+
+            // Fill Text
+            document.getElementById('modal-sku').innerText = product.id;
+            document.getElementById('modal-title').innerText = product.name;
+            document.getElementById('modal-price').innerText = product.price;
+
+            // Fill Main Image (Asset 0)
+            document.getElementById('modal-img').src = assets[0];
+
+            // Fill Gallery (Assets 0, 1, 2, 3)
+            const galleryContainer = document.getElementById('modal-gallery-container');
+            let galleryHTML = '';
+            
+            assets.forEach((imgUrl, index) => {
+                let activeClass = (index === 0) ? 'active' : '';
+                galleryHTML += `<img src="${imgUrl}" class="gallery-thumb ${activeClass}" onclick="changeModalImage(this)">`;
+            });
+            
+            galleryContainer.innerHTML = galleryHTML;
+
+            // Show Modal
+            const modal = document.getElementById('product-modal');
+            modal.style.display = 'flex';
+            setTimeout(() => { modal.classList.add('active'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('product-modal');
+            modal.classList.remove('active');
+            setTimeout(() => { modal.style.display = 'none'; }, 300);
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeModalImage(thumb) {
+            document.getElementById('modal-img').src = thumb.src;
+            document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        }
+
+        // Close if clicked outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('product-modal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // --- 5. SCROLL ARROWS ---
+        function scrollShelf(shelfId, direction) {
+            const container = document.getElementById(shelfId);
+            const scrollAmount = 600; 
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        renderShelves();
+    </script>   
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const navList = document.getElementById('nav-list');
+        const icon = menuBtn.querySelector('i');
+
+        // Check if elements exist to prevent errors
+        if (menuBtn && navList) {
+            
+            menuBtn.addEventListener('click', function() {
+                // 1. Slide the menu in/out
+                navList.classList.toggle('active');
+
+                // 2. Switch Icon (Bars <-> X)
+                if (navList.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                    icon.style.color = '#D4AF37'; // Gold
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    icon.style.color = '#fff'; // White
+                }
+            });
+
+            // 3. Close menu when a link is clicked
+            const links = navList.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navList.classList.remove('active');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        } else {
+            console.error("Menu elements not found! Check IDs.");
+        }
+    });
+</script>   
+</body>
+</html>

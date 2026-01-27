@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collections | Annammar</title>
+    <title>Collections | Annamar</title>
     <link rel="icon" href="assets/favicon.jpg" />
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
@@ -221,7 +221,7 @@
 
     <header>
         <a href="index.html" class="logo">
-            <img src="assets/logo.png" alt="Annammar Brand Logo">
+            <img src="assets/logo.png" alt="Annamar Brand Logo">
         </a>
 
         <nav>
@@ -336,7 +336,7 @@
                             <img src="assets/logo.png" alt="Annamar Clothing Company" class="footer-img">
                         </div>
                     <p class="brand-desc">
-                        Annammar wraps your little ones in the luxury of nature. 
+                        Annamar wraps your little ones in the luxury of nature. 
                         Born from tradition, crafted for comfort.
                     </p>
                     <div class="social-icons">
@@ -382,7 +382,7 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 Annammar Clothing. All Rights Reserved.</p>
+            <p>&copy; 2026 Annamar Clothing. All Rights Reserved.</p>
             <div class="payment-icons">
                 <i class="fab fa-cc-visa"></i>
                 <i class="fab fa-cc-mastercard"></i>
@@ -404,86 +404,86 @@
                     </div>
             </div>
 
-            <div class="modal-right">
-                <span id="modal-sku" class="m-sku">SKU</span>
-                <h2 id="modal-title" class="m-title">Product Name</h2>
-                <div id="modal-price" class="m-price">Price</div>
-                <p class="m-desc">
-                    Handcrafted from 100% GOTS certified organic cotton. 
-                    Designed for ultimate breathability and softness, ensuring your little one sleeps in pure comfort. 
-                    Hypoallergenic and free from harmful chemicals.
-                </p>
-                <button class="m-btn">Add to Cart</button>
-            </div>
+                <div class="modal-right">
+                    <span id="modal-sku" class="m-sku">SKU</span>
+                    <h2 id="modal-title" class="m-title">Product Name</h2>
+                    <div id="modal-price" class="m-price">Price</div>
+                    
+                    <p id="modal-desc" class="m-desc">
+                        Description loading...
+                    </p>
+                    
+                    <button class="m-btn">Add to Cart</button>
+                </div>
         </div>
     </div>
 
 <script>
-        // --- 1. PRODUCT CATALOG (DATA) ---
-        const catalog = {
-            'shelf-sleeping': [
-                { id: 'AC - 001', name: 'Sleeping bag Tog 0.5', price: '₹' },
-                { id: 'AC - 002', name: 'Sleeping bag Tog 1.5', price: '₹' },
-                { id: 'AC - 003', name: 'Sleeping bag Tog 2.5', price: '₹' },
-                { id: 'AC - 004', name: 'Sleeping bag Tog 3.5', price: '₹' },
-                { id: 'AC - 005', name: 'Adjustable Swaddle Wrap', price: '₹' },
-                { id: 'AC - 006', name: 'Knotted Swaddle Wrap', price: '₹' },
-                { id: 'AC - 007', name: 'Quilt Blanket', price: '₹' },
-                { id: 'AC - 008', name: 'Cocoon Swaddle', price: '₹' },
-                { id: 'AC - 009', name: 'Muslin Swaddle Blanket', price: '₹' }
-            ],
-            'shelf-bedding': [
-                { id: 'AC - 010', name: 'Crib Sheet', price: '₹' },
-                { id: 'AC - 011', name: 'Bassinet Sheet', price: '₹' },
-                { id: 'AC - 012', name: 'Bed Sheet', price: '₹' },
-                { id: 'AC - 013', name: 'Duvet Cover', price: '₹' },
-                { id: 'AC - 014', name: 'Pillow Cover', price: '₹' }
-            ],
-            'shelf-apparel': [
-                { id: 'AC - 015', name: 'Onesie', price: '₹' },
-                { id: 'AC - 016', name: 'Romper', price: '₹' },
-                { id: 'AC - 017', name: 'Bodysuit', price: '₹' },
-                { id: 'AC - 018', name: 'Two-piece Pajamas', price: '₹' },
-                { id: 'AC - 019', name: 'Leggings', price: '₹' },
-                { id: 'AC - 020', name: 'T-shirt', price: '₹' },
-                { id: 'AC - 021', name: 'Swimsuit', price: '₹' },
-                { id: 'AC - 022', name: 'Sweat Shirt', price: '₹' },
-                { id: 'AC - 023', name: 'Sweat Pants', price: '₹' },
-                { id: 'AC - 024', name: 'Baby Gown', price: '₹' }
-            ],
-            'shelf-diapering': [
-                { id: 'AC - 025', name: 'Changing Pad Cover', price: '₹' },
-                { id: 'AC - 026', name: 'Diaper Changing Mat', price: '₹' },
-                { id: 'AC - 027', name: 'Cloth Diaper', price: '₹' },
-                { id: 'AC - 028', name: 'Diaper Inserts', price: '₹' },
-                { id: 'AC - 029', name: 'Pre-fold', price: '₹' },
-                { id: 'AC - 030', name: 'Sanitary Pads', price: '₹' },
-                { id: 'AC - 031', name: 'Training Pants', price: '₹' },
-                { id: 'AC - 032', name: 'Wet Bags', price: '₹' }
-            ],
-            'shelf-accessories': [
-                { id: 'AC - 033', name: 'Mittens', price: '₹' },
-                { id: 'AC - 034', name: 'Bonnets', price: '₹' },
-                { id: 'AC - 035', name: 'Booties', price: '₹' },
-                { id: 'AC - 036', name: 'Knot Hats', price: '₹' },
-                { id: 'AC - 037', name: 'Beanie Hats', price: '₹' },
-                { id: 'AC - 038', name: 'Beach Hats', price: '₹' },
-                { id: 'AC - 039', name: 'Wash Clothes', price: '₹' },
-                { id: 'AC - 040', name: 'Hooded Towel', price: '₹' },
-                { id: 'AC - 041', name: 'Milestone Blanket', price: '₹' }
-            ],
-            'shelf-feeding': [
-                { id: 'AC - 042', name: 'Waterproof Bibs', price: '₹' },
-                { id: 'AC - 043', name: 'Teether Pad Cover', price: '₹' },
-                { id: 'AC - 044', name: 'Bandana Drool Bibs', price: '₹' },
-                { id: 'AC - 045', name: 'Muslin Bibs', price: '₹' },
-                { id: 'AC - 046', name: 'Pocket Bibs', price: '₹' },
-                { id: 'AC - 047', name: 'Burp Cloth', price: '₹' },
-                { id: 'AC - 048', name: 'Canopy / Car Seat Cover', price: '₹' },
-                { id: 'AC - 049', name: 'Nursing Cover', price: '₹' },
-                { id: 'AC - 050', name: 'Cuddle Goose', price: '₹' }
-            ]
-        };
+    // --- 1. PRODUCT CATALOG (DATA + UNIQUE DESCRIPTIONS) ---
+    const catalog = {
+        'shelf-sleeping': [
+            { id: 'AC - 001', name: 'Sleeping bag Tog 0.5', price: '₹', desc: 'Sleeveless summer sleeping bag available in sizes Small to Extra-large. Crafted from 100% organic cotton Interlock (220 GSM, Single Layer) for maximum breathability. Features premium YKK zipper and YKK snaps. Custom options available for zipper placement' },
+            { id: 'AC - 002', name: 'Sleeping bag Tog 1.5', price: '₹', desc: 'Sleeveless sleeping bag for mild temperatures. Made from 100% organic cotton Interlock with a 220 GSM double-layer construction for added comfort. Equipped with durable YKK zippers and snaps. Available in Small, Medium, Large, and Extra-large.' },
+            { id: 'AC - 003', name: 'Sleeping bag Tog 2.5', price: '₹', desc: 'Standard weight sleeveless bag (Tog 2.5). Constructed from 100% organic cotton Interlock (220 GSM, double layer) with an additional 100 GSM poly wadding for insulation. Features secure YKK hardware.' },
+            { id: 'AC - 004', name: 'Sleeping bag Tog 3.5', price: '₹', desc: 'Winter-weight bag with short sleeves. Features a double-layer 220 GSM organic cotton Interlock shell filled with thick 150 GSM poly wadding. Includes YKK zipper and snaps. Custom options for arm/leg shape available.' },
+            { id: 'AC - 005', name: 'Adjustable Swaddle Wrap', price: '₹', desc: 'Newborn to 6-month swaddle wrap. Made from 220 GSM single-layer 100% organic cotton Interlock. Features imported baby Velcro with zigzag stitching to prevent skin scratching, plus YKK zippers and snaps. Optional bottom zipper for easy diaper changes.' },
+            { id: 'AC - 006', name: 'Knotted Swaddle Wrap', price: '₹', desc: 'Full-sleeve knotted gown (Sizes 0-36 months). Made from 220 GSM double-layer organic cotton Interlock. Finished with stylish Wooden Buttons and YKK snaps. Customizable sleeve and collar options.' },
+            { id: 'AC - 007', name: 'Quilt Blanket', price: '₹', desc: 'Large 47x47 inch baby quilt. Composed of 220 GSM double-layer 100% organic cotton Interlock with a plush 150 GSM poly wadding core. Custom options available for quilt shape and corner design' },
+            { id: 'AC - 008', name: 'Cocoon Swaddle', price: '₹', desc: 'Snug cocoon swaddle (Newborn to 36 months). Crafted from 220 GSM single-layer 100% organic cotton Interlock. Equipped with a YKK zipper. Optional bottom zipper available for easy diaper access' },
+            { id: 'AC - 009', name: 'Muslin Swaddle Blanket', price: '₹', desc: 'Classic 47x47 inch swaddle. Made from 100% organic muslin cotton (100 GSM, single layer). Custom layering options available: 2, 3, 4, 6, or 8 layers for varying warmth.' }
+        ],
+        'shelf-bedding': [
+            { id: 'AC - 010', name: 'Crib Sheet', price: '₹', desc: 'Style: Printed & Solid. Size: 56 x 28 x 9 inches. Fabric: 100% organic cotton Single Jersey (160 GSM, Single Layer). Custom Options: Waterproofing & Quilting available. Category: Baby Bedding.' },
+            { id: 'AC - 011', name: 'Bassinet Sheet', price: '₹', desc: 'Style: Printed & Solid. Size: 32 x 16 x 2 inches. Fabric: 100% organic cotton Single Jersey (160 GSM, Single Layer). Custom Options: Waterproofing & Shape customization. Category: Baby Bedding.' },
+            { id: 'AC - 012', name: 'Bed Sheet', price: '₹', desc: 'Style: Printed & Solid. Size: 160 x 140 cm. Fabric: 100% organic cotton Single Jersey (220 GSM, Double Layer) with 150 GSM poly wadding insulation. Custom Options: Waterproofing & Quilting. Category: Baby Bedding.' },
+            { id: 'AC - 013', name: 'Duvet Cover', price: '₹', desc: 'Style: Printed & Solid. Size: 210 x 180 cm. Fabric: 100% organic cotton Single Jersey (220 GSM, Double Layer) with 150 GSM poly wadding. Custom Options: Waterproofing & Quilting. Category: Baby Bedding.' },
+            { id: 'AC - 014', name: 'Pillow Cover', price: '₹', desc: 'Style: Printed & Solid. Size: 30 x 60 cm. Fabric: 100% organic cotton Single Jersey (160 GSM, Single Layer). Trims: High-quality YKK zipper. Custom Options: Shape & Waterproofing. Category: Baby Bedding.' }
+        ],
+        'shelf-apparel': [
+            { id: 'AC - 015', name: 'Onesie', price: '₹', desc: 'Style: Short Sleeve. Size: 0 - 36 months. Fabric: 100% organic cotton Interlock. Trims: YKK snaps & Imported baby Velcro with zigzag stitching to prevent scratching. Custom Options: TPU sublimation, Sleeve, & Neck. Category: Baby Apparel.' },
+            { id: 'AC - 016', name: 'Romper', price: '₹', desc: 'Style: Full sleeve with feet. Size: 0 - 36 months. Fabric: 100% organic cotton Interlock (220 GSM, Single Layer). Trims: YKK zipper, YKK snaps, & Magnet closure. Custom Options: Sleeve, feet, neck, & frill. Category: Baby Apparel.' },
+            { id: 'AC - 017', name: 'Bodysuit', price: '₹', desc: 'Style: Long sleeve. Size: 0 - 36 months. Fabric: 100% organic cotton Interlock (220 GSM Single Layer). Trims: YKK zip & YKK snap. Custom Options: Sleeve, neck, TPU sublimation. Category: Baby Apparel.' },
+            { id: 'AC - 018', name: 'Two-piece Pajamas', price: '₹', desc: 'Style: Full Sleeve. Size: 2T to 6T. Fabric: 100% organic cotton Interlock (220 GSM, Single Layer). Trim: Draw-string. Custom Options: Sleeve, feet, & neck. Category: Baby Apparel' },
+            { id: 'AC - 019', name: 'Leggings', price: '₹', desc: 'Style: Printed & Solid. Size: Newborn to 6T. Fabric: 100% organic cotton Interlock (220 GSM, Single Jersey). Custom Options: Feet length & draw-string. Category: Baby Apparel.' },
+            { id: 'AC - 020', name: 'T-shirt', price: '₹', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% organic cotton Interlock (220 GSM, Single Layer). Trim: YKK Zipper & YKK Snap. Custom Options: Sleeve, Collar, & Pocket. Category: Baby Apparel' },
+            { id: 'AC - 021', name: 'Swimsuit', price: '₹', desc: 'Style: Printed & Solid. Size: 0 - 36 months. Fabric: TPU laminated 100% Polyester (160 GSM, Single Layer). Trims: YKK zip & YKK snap. Custom Options: Frill, Sleeve, Collar, & Zipper. Category: Baby Apparel.' },
+            { id: 'AC - 022', name: 'Sweat Shirt', price: '₹', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% organic cotton Interlock with 300 GSM terry inside. Trim: Elastic. Custom Options: Sleeve, pocket, hood & Collar. Category: Baby Apparel.' },
+            { id: 'AC - 023', name: 'Sweat Pants', price: '₹', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% organic cotton Interlock with 300 GSM terry inside. Trim: YKK zipper, Elastic & Drawstring. Custom Options: Feet length & Pocket. Category: Baby Apparel' },
+            { id: 'AC - 024', name: 'Baby Gown', price: '₹', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% organic cotton Interlock (220 GSM, Single Layer). Trim: YKK zipper. Custom Options: Length, Frill, & Sleeve. Category: Baby Apparel.' }
+        ],
+        'shelf-diapering': [
+            { id: 'AC - 025', name: 'Changing Pad Cover', price: '₹', desc: 'Style: Printed & Solid. Size: 16*32*5 inches & Custom. Fabric: 100% Organic Cotton Single Jersey (160 GSM, single layer). Custom Option: Shape, waterproof. Category: Baby Diapering' },
+            { id: 'AC - 026', name: 'Diaper Changing Mat', price: '₹', desc: 'Style: Printed & Solid. Size: 60*45 cm. Fabric: 100% Polyester (160 GSM, double layer) with 150 GSM poly wadding. Trim: YKK snaps. Custom Option: Shape, Quilt & waterproof.' },
+            { id: 'AC - 027', name: 'Cloth Diaper', price: '₹', desc: 'Style: Printed & Solid. Size: Fitted size & Custom. Fabric: 100% waterproof polyester (160 GSM TPU fabric). Trim: Imported baby Velcro to prevent skin scratch. Custom Option: Snaps, Velcro, shape, pocket' },
+            { id: 'AC - 028', name: 'Diaper Inserts', price: '₹', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% organic cotton Interlock (220 GSM, single layer). Trims: YKK snaps. Custom Option: Shape & Layer. Category: Baby Diapering.' },
+            { id: 'AC - 029', name: 'Pre-fold', price: '₹', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% Organic Muslin Cotton (100 GSM, single layer). Custom Option: Shape & layers. Category: Baby Diapering' },
+            { id: 'AC - 030', name: 'Sanitary Pads', price: '₹', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% Polyester (160 GSM, double layer) with 150 GSM micro-fleece. Trim: YKK snaps. Custom Option: Shape & layers' },
+            { id: 'AC - 031', name: 'Training Pants', price: '₹', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% Organic Cotton Interlock (220 GSM single) with 150 GSM microfleece. Trim: YKK snaps & Elastic. Custom Option: Shape.' },
+            { id: 'AC - 032', name: 'Wet Bags', price: '₹', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% Polyester (160 GSM, single layer). Trims: YKK snaps, YKK zipper, & Velcro. Custom Option: Shape & waterproof.' }
+        ],
+        'shelf-accessories': [
+            { id: 'AC - 033', name: 'Mittens', price: '₹', desc: 'Style: Printed & Solid. Fabric: 100% Organic Cotton (220 GSM, single layer). Trims: YKK snap, Imported baby Velcro to prevent skin scratch. Custom Option: Shape, Snap & Velcro placement.' },
+            { id: 'AC - 034', name: 'Bonnets', price: '₹', desc: 'Style: Printed & Solid. Fabric: 100% Organic Cotton (220 GSM Interlock). Custom Option: Shape & layers. Category: Baby Diapering' },
+            { id: 'AC - 035', name: 'Booties', price: '₹', desc: 'Style: Printed & Solid. Fabric: 100% Organic Cotton Interlock (220 GSM) with 250 GSM Polyester Fleece. Trim: YKK snaps & Imported baby Velcro with zigzag stitching. Custom Option: Grippers & Closure.' },
+            { id: 'AC - 036', name: 'Knot Hats', price: '₹', desc: 'Style: Printed & Solid. Fabric: 100% Organic cotton (220 GSM Interlock). Custom Option: Shape & Knot. Category: Baby Accessories.' },
+            { id: 'AC - 037', name: 'Beanie Hats', price: '₹', desc: 'Style: Printed & Solid. Fabric: 100% Organic cotton (220 GSM Interlock). Classic double-layer jersey beanie for regulating newborn temperature.' },
+            { id: 'AC - 038', name: 'Beach Hats', price: '₹', desc: 'Style: Printed & Solid. Fabric: 100% Organic cotton (220 GSM Interlock). Custom Option: Shape & Knot. Category: Baby Accessories.' },
+            { id: 'AC - 039', name: 'Wash Clothes', price: '₹', desc: 'Style: Printed & Solid. Size: 12*12 inches & Custom. Fabric: 100% Organic Muslin Cotton (100 GSM single layer). Trim: Hang hole. Custom Option: Shape & Layers' },
+            { id: 'AC - 040', name: 'Hooded Towel', price: '₹', desc: 'Style: Printed & Solid. Size: 100*100 cm & Custom. Fabric: 100% Organic cotton (220 GSM Interlock) with 300 GSM terry inside. Custom Option: Hooded shape & layer.' },
+            { id: 'AC - 041', name: 'Milestone Blanket', price: '₹', desc: 'Style: Printed & Solid. Size: 100*100 CM & Custom. Fabric: 100% Organic Muslin Cotton (100 GSM single layer). Custom Option: Layer. Perfect for tracking baby growth.' }
+        ],
+        'shelf-feeding': [
+            { id: 'AC - 042', name: 'Waterproof Bibs', price: '₹', desc: 'Style: Printed & Solid. Size: 27.5 x 24.5 x 2.1 CM. Fabric: 100% Polyester (160 GSM single layer). Trim: YKK snap, Magnet & Imported baby Velcro. Custom Option: Closure, Pocket, Sleeve, & Neck.' },
+            { id: 'AC - 043', name: 'Teether Pad Cover', price: '₹', desc: 'Style: Printed & Solid. Size: 7.6 x 1.3 x 15.2 CM. Fabric: 100% Organic cotton (220 GSM Interlock with 100 GSM Micro Fleece Inside). Trims: YKK Snap & Imported baby Velcro to prevent skin scratch. Custom Option: Closure' },
+            { id: 'AC - 044', name: 'Bandana Drool Bibs', price: '₹', desc: 'Style: Printed & Solid. Size: 25.4 x 3.3 x 15.7 CM. Fabric: 100% Organic Cotton Single Jersey (160 GSM single layer with 100 GSM micro fleece back). Trim: YKK snap, Magnet & Velcro. Custom Option: Closure & Shape.' },
+            { id: 'AC - 045', name: 'Muslin Bibs', price: '₹', desc: 'Style: Printed & Solid. Size: 25.4 x 3.3 x 15.7 CM. Fabric: 100% Organic cotton (100 GSM single layer). Trims: YKK snap, Magnet & Imported baby Velcro to prevent skin scratch. Custom Option: Closure & Layer' },
+            { id: 'AC - 046', name: 'Pocket Bibs', price: '₹', desc: 'Style: Printed & Solid. Size: 27.5 x 24.5 x 2.1 CM. Fabric: 100% Polyester (160 GSM single layer). Trim: YKK snap, Magnet & Imported baby Velcro to prevent skin scratch. Custom Option: Closure, Pocket, Sleeve, & Neck' },
+            { id: 'AC - 047', name: 'Burp Cloth', price: '₹', desc: 'Style: Printed & Solid. Size: 50 * 25 CM. Fabric: 100% Organic cotton (100 GSM single layer). Custom Option: Shape & Layer. Maximum absorbency triple-layer fabric.' },
+            { id: 'AC - 048', name: 'Canopy / Car Seat Cover', price: '₹1,299', desc: 'Style: Printed & Solid. Fabric: 95% Organic Cotton 5% Spandex (220 GSM Single layer). Custom Option: Shape. Multi-use cover for car seats or nursing privacy.' },
+            { id: 'AC - 049', name: 'Nursing Cover', price: '₹999', desc: 'Apron-style nursing cover with a rigid neckline. Allows you to maintain eye contact with baby and airflow while feeding in public.' },
+            { id: 'AC - 050', name: 'Cuddle Goose', price: '₹1,499', desc: 'Organic cotton comfort toy. Filled with cherry stones which can be warmed in the microwave to soothe colic tummy aches.' }
+        ]
+    };
 
 // --- 2. IMAGE DATABASE (FULL ASSETS FOR GALLERY) ---
         const productAssets = {
@@ -494,9 +494,9 @@
             'AC - 004': ["assets/product-images/sleeping-bag-tog3.5.jpg", "assets/product-images/sleeping-bag-tog3.5-1.jpg", "assets/product-images/sleeping-bag-tog3.5-2.jpg", "assets/product-images/sleeping-bag-tog3.5-3.jpg"],
             'AC - 005': ["assets/product-images/adjustable-swaddle-wrap.jpg", "assets/product-images/adjustable-swaddle-wrap1.jpg", "assets/product-images/adjustable-swaddle-wrap2.jpg", "assets/product-images/adjustable-swaddle-wrap3.jpg"],
             'AC - 006': ["assets/product-images/knotted-swaddle-wrap.jpg", "assets/product-images/knotted-swaddle-wrap1.jpg", "assets/product-images/knotted-swaddle-wrap2.jpg", "assets/product-images/knotted-swaddle-wrap3.jpg"],
-            'AC - 007': ["assets/product-images/quilt-banket.jpg", "assets/product-images/quilt-banket1.jpg", "assets/product-images/quilt-banket2.jpg", "assets/product-images/quilt-banket3.jpg"],
+            'AC - 007': ["assets/product-images/quilt-blanket.jpg", "assets/product-images/quilt-blanket1.jpg", "assets/product-images/quilt-blanket2.jpg", "assets/product-images/quilt-blanket3.jpg"],
             'AC - 008': ["assets/product-images/cocoon-swaddle.jpg", "assets/product-images/cocoon-swaddle-1.jpg", "assets/product-images/cocoon-swaddle2.jpg", "assets/product-images/cocoon-swaddle3.jpg"],
-            'AC - 009': ["assets/product-images/muslin-swaddle.jpg", "assets/product-images/muslin-swaddle1.jpg", "assets/product-images/muslin-swaddle2.jpg", "assets/product-images/muslin-swaddle3.jpg"],
+            'AC - 009': ["assets/product-images/muslin-swaddle-blanket.jpg", "assets/product-images/muslin-swaddle-blanket1.jpg", "assets/product-images/muslin-swaddle-blanket2.jpg", "assets/product-images/muslin-swaddle-blanket3.jpg"],
             
             // --- BEDDING ---
             'AC - 010': ["assets/product-images/crib-sheet.jpg", "assets/product-images/crib-sheet1.jpg", "assets/product-images/crib-sheet2.jpg", "assets/product-images/crib-sheet3.jpg"],
@@ -578,64 +578,61 @@
             }
         }
 
-        // --- 4. MODAL LOGIC (UPDATED FOR INDIVIDUAL PHOTOS) ---
-        function openModal(productId) {
-            // Find product data from catalog (Scan all shelves)
-            let product = null;
-            for (const shelf of Object.values(catalog)) {
-                const found = shelf.find(p => p.id === productId);
-                if (found) { product = found; break; }
-            }
-            
-            // Get specific assets for this ID
-            const assets = productAssets[productId] || ["https://via.placeholder.com/300x400?text=No+Image"];
-
-            // Fill Text
-            document.getElementById('modal-sku').innerText = product.id;
-            document.getElementById('modal-title').innerText = product.name;
-            document.getElementById('modal-price').innerText = product.price;
-
-            // Fill Main Image (Asset 0)
-            document.getElementById('modal-img').src = assets[0];
-
-            // Fill Gallery (Assets 0, 1, 2, 3)
-            const galleryContainer = document.getElementById('modal-gallery-container');
-            let galleryHTML = '';
-            
-            assets.forEach((imgUrl, index) => {
-                let activeClass = (index === 0) ? 'active' : '';
-                galleryHTML += `<img src="${imgUrl}" class="gallery-thumb ${activeClass}" onclick="changeModalImage(this)">`;
-            });
-            
-            galleryContainer.innerHTML = galleryHTML;
-
-            // Show Modal
-            const modal = document.getElementById('product-modal');
-            modal.style.display = 'flex';
-            setTimeout(() => { modal.classList.add('active'); }, 10);
-            document.body.style.overflow = 'hidden';
+      // --- 4. MODAL LOGIC (UPDATED WITH DESCRIPTIONS) ---
+    function openModal(productId) {
+        let product = null;
+        for (const shelf of Object.values(catalog)) {
+            const found = shelf.find(p => p.id === productId);
+            if (found) { product = found; break; }
         }
+        
+        const assets = productAssets[productId] || ["https://via.placeholder.com/300x400?text=No+Image"];
 
-        function closeModal() {
-            const modal = document.getElementById('product-modal');
-            modal.classList.remove('active');
-            setTimeout(() => { modal.style.display = 'none'; }, 300);
-            document.body.style.overflow = 'auto';
-        }
+        // Fill Text Info
+        document.getElementById('modal-sku').innerText = product.id;
+        document.getElementById('modal-title').innerText = product.name;
+        document.getElementById('modal-price').innerText = product.price;
+        document.getElementById('modal-desc').innerText = product.desc; // INJECT DESCRIPTION HERE
 
-        function changeModalImage(thumb) {
-            document.getElementById('modal-img').src = thumb.src;
-            document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
-            thumb.classList.add('active');
-        }
+        // Fill Main Image
+        document.getElementById('modal-img').src = assets[0];
 
-        // Close if clicked outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('product-modal');
-            if (event.target == modal) {
-                closeModal();
-            }
+        // Fill Gallery
+        const galleryContainer = document.getElementById('modal-gallery-container');
+        let galleryHTML = '';
+        
+        assets.forEach((imgUrl, index) => {
+            let activeClass = (index === 0) ? 'active' : '';
+            galleryHTML += `<img src="${imgUrl}" class="gallery-thumb ${activeClass}" onclick="changeModalImage(this)">`;
+        });
+        
+        galleryContainer.innerHTML = galleryHTML;
+
+        const modal = document.getElementById('product-modal');
+        modal.style.display = 'flex';
+        setTimeout(() => { modal.classList.add('active'); }, 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('product-modal');
+        modal.classList.remove('active');
+        setTimeout(() => { modal.style.display = 'none'; }, 300);
+        document.body.style.overflow = 'auto';
+    }
+
+    function changeModalImage(thumb) {
+        document.getElementById('modal-img').src = thumb.src;
+        document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('product-modal');
+        if (event.target == modal) {
+            closeModal();
         }
+    }
 
         // --- 5. SCROLL ARROWS ---
         function scrollShelf(shelfId, direction) {

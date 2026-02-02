@@ -27,16 +27,9 @@
             <li><a href="#about-us">About Us</a></li>
             <li><a href="collections.html">Collections</a></li>
             <li><a href="#essentials">Baby Boutique</a></li>
-            <li><a href="#">Gifting</a></li>
-            <li><a href="#footer">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
-
-    <div class="nav-icons">
-        <i class="fas fa-search"></i>
-        <i class="far fa-user"></i>
-        <i class="fas fa-shopping-bag"></i>
-    </div>
 
     <div class="menu-toggle" id="mobile-menu-btn">
         <i class="fas fa-bars"></i>
@@ -52,11 +45,6 @@
 
     <div class="hero-overlay"></div>
     
-        <div class="cta-container">
-            <a href="" style="text-decoration: none;">
-                <button class="cta-btn">Discover Elegance</button>
-            </a>
-        </div>
 
     <div class="dots">
         <div class="dot active" onclick="changeSlide(0)"></div>
@@ -82,9 +70,9 @@
                     We believe in "less is more"—fewer chemicals, more organic fibers, and a promise 
                     of safety that feels like a mother's touch.
                 </p>
-                  <a href="" style="text-decoration: none;">
+                <!--  <a href="" style="text-decoration: none;">
                         <button class="cta-btn">Know More</button>
-                 </a>
+                 </a>-->
             </div>
 
             <div class="story-image-wrapper">
@@ -103,47 +91,47 @@
 
  <div class="gallery-container">
     
-    <a href="" class="panel" style="background-image: url('assets/products/new/Bare-Footies.jpg')">
+<div class="panel" style="background-image: url('assets/products/new/Bare-Footies.jpg')">
         <div class="panel-content">
             <h3>Bare-Footies</h3>
             <p>Artistry in every stitch.</p>
         </div>
-    </a>
+    </div>
 
-    <a href="" class="panel" style="background-image: url('assets/products/new/Bibs.jpg')">
+    <div class="panel" style="background-image: url('assets/products/new/Bibs.jpg')">
         <div class="panel-content">
             <h3>Bibs</h3>
             <p>Comfort aimed at smiles.</p>
         </div>
-    </a>
+    </div>
 
-    <a href="" class="panel" style="background-image: url('assets/products/new/Footies.jpg')">
+    <div class="panel" style="background-image: url('assets/products/new/Footies.jpg')">
         <div class="panel-content">
             <h3>Footies</h3>
             <p>Certified by nature.</p>
         </div>
-    </a>
+    </div>
 
-    <a href="" class="panel" style="background-image: url('assets/products/new/onesie.jpg')">
+    <div class="panel" style="background-image: url('assets/products/new/onesie.jpg')">
         <div class="panel-content">
             <h3>Onesie</h3>
             <p>Safe for sensitive skin.</p>
         </div>
-    </a>
+    </div>
 
-    <a href="" class="panel" style="background-image: url('assets/products/new/swadlerap.jpg')">
+    <div class="panel" style="background-image: url('assets/products/new/swadlerap.jpg')">
         <div class="panel-content">
             <h3>Swaddle Wrap</h3>
             <p>Tradition meets luxury.</p>
         </div>
-    </a>
+    </div>
 
-    <a href="" class="panel" style="background-image: url('assets/products/new/dungarees.jpg')">
+    <div class="panel" style="background-image: url('assets/products/new/dungarees.jpg')">
         <div class="panel-content">
             <h3>Dungarees</h3>
             <p>Softness you can trust.</p>
         </div>
-    </a>
+    </div>
 
 </div>
     </section>
@@ -262,16 +250,35 @@
 
     <footer class="footer-section" id="footer">
         
-        <div class="newsletter-strip">
-            <div class="newsletter-content">
-                <h3>Join Our Heritage</h3>
-                <p>Subscribe to receive early access to new collections and exclusive lullabies.</p>
-            </div>
-            <div class="newsletter-form">
-                <input type="email" placeholder="Your Email Address" class="email-input">
-                <button class="subscribe-btn">Subscribe</button>
-            </div>
-        </div>
+                <div class="newsletter-strip">
+                <div class="newsletter-content">
+                    <h3>Join Our Heritage</h3>
+                    <p>Subscribe to receive early access to new collections and exclusive lullabies.</p>
+                </div>
+
+                <form 
+                    class="newsletter-form"
+                    action="https://api.web3forms.com/submit"
+                    method="POST"
+                >
+                    <!-- Web3Forms Access Key -->
+                    <input type="hidden" name="access_key" value="82ddfa77-cc30-4b61-8cb5-2e5a3ede8950">
+
+                    <!-- Optional subject -->
+                    <input type="hidden" name="subject" value="Newsletter Subscription">
+
+                    <input 
+                    type="email" 
+                    name="email"
+                    placeholder="Your Email Address" 
+                    class="email-input"
+                    required>
+
+                    <button type="submit" class="subscribe-btn">
+                    Subscribe
+                    </button>
+                </form>
+                </div>
 
         <div class="footer-main">
             <div class="footer-container">
@@ -285,31 +292,38 @@
                         Born from tradition, crafted for comfort.
                     </p>
                     <div class="social-icons">
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-facebook-f"></i>
-                        <i class="fab fa-pinterest-p"></i>
-                        <i class="fab fa-youtube"></i>
+                        <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.pinterest.com" target="_blank" aria-label="Pinterest">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                        <a href="https://wwww.youtube.com" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
                 </div>
 
                 <div class="footer-col">
                     <h4>Shop</h4>
                     <ul>
-                        <li><a href="">New Arrivals</a></li>
-                        <li><a href="">Baby Essentials</a></li>
-                        <li><a href="">Toddler Luxury</a></li>
-                        <li><a href="">Gift Sets</a></li>
-                        <li><a href="">Bulk Order</a></li>
+                        <li><a href="#products">New Arrivals</a></li>
+                        <li><a href="collections.html#">Baby Essentials</a></li>
+                        <li><a href="collections.html">Toddler Luxury</a></li>
+                        <li><a href="contact.html">Gift Sets</a></li>
+                        <li><a href="contact.html">Bulk Order</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <h4>Customer Care</h4>
                     <ul>
-                        <li><a href="#">Track Order</a></li>
-                        <li><a href="#">Shipping & Returns</a></li>
-                        <li><a href="#">Size Guide</a></li>
-                        <li><a href="#">Fabric Care</a></li>
+                        <li><a href="assets/pdf/ACC-Terms&Conditions.pdf" target="_blank">Terms & Conditions</a></li>
+                        <li><a href="assets/pdf/ACC-Shipping Policy.pdf" target="_blank">Shipping & Returns</a></li>
+                        <li><a href="assets/pdf/ACC-Size chart.pdf" target="_blank">Size Guide</a></li>
                         <li><a href="#">Contact Us</a></li>
                     </ul>
                 </div>
@@ -338,80 +352,6 @@
     </footer>
 
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const navList = document.getElementById('nav-list');
-        const icon = menuBtn.querySelector('i');
-
-        // Check if elements exist to prevent errors
-        if (menuBtn && navList) {
-            
-            menuBtn.addEventListener('click', function() {
-                // 1. Slide the menu in/out
-                navList.classList.toggle('active');
-
-                // 2. Switch Icon (Bars <-> X)
-                if (navList.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                    icon.style.color = '#D4AF37'; // Gold
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                    icon.style.color = '#fff'; // White
-                }
-            });
-
-            // 3. Close menu when a link is clicked
-            const links = navList.querySelectorAll('a');
-            links.forEach(link => {
-                link.addEventListener('click', () => {
-                    navList.classList.remove('active');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                });
-            });
-        } else {
-            console.error("Menu elements not found! Check IDs.");
-        }
-    });
-</script>
-<script>
-// --- HERO SLIDER LOGIC ---
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.dot');
-let slideInterval;
-
-function showSlide(index) {
-    // 1. Reset all slides/dots
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-
-    // 2. Activate specific slide/dot
-    slides[index].classList.add('active');
-    dots[index].classList.add('active');
-    
-    // 3. Update current index
-    currentSlide = index;
-}
-
-function nextSlide() {
-    let nextIndex = (currentSlide + 1) % slides.length;
-    showSlide(nextIndex);
-}
-
-// Function for Dot Clicks
-function changeSlide(index) {
-    clearInterval(slideInterval); // Pause auto-play if user clicks
-    showSlide(index);
-    slideInterval = setInterval(nextSlide, 5000); // Restart auto-play
-}
-
-// Start Auto-Play (Every 5 Seconds)
-slideInterval = setInterval(nextSlide, 5000);
-</script>
+    <script src="script.js"></script>
 </body>
 </html>

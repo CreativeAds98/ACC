@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Annamar</title>
+    <link rel="icon" href="assets/favicon.jpg" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css"> 
+
+    <style>
+        /* --- PAGE RESET --- */
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #1a1a1a;
+            background-color: #fdfbf7;
+            margin: 0;
+            padding-top: 200px; 
+        }
+
+        /* Fixed Header */
+        header {
+            background-color: #8b8787 !important; 
+            position: fixed;
+            top: 0; 
+            width: 100%;
+            border-bottom: 1px solid #333;
+            z-index: 1000;
+        }
+
+        /* --- THE COLLAGE LAYOUT --- */
+        .collage-container {
+            max-width: 1200px;
+            margin: 0 auto 100px; 
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr; /* Form is wider */
+            grid-template-rows: auto; /* Let content dictate height */
+            gap: 30px; 
+        }
+
+        /* 1. THE FORM CELL */
+        .cell-form {
+            background: #fff;
+            padding: 60px;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #D4AF37;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 700;
+        }
+
+        .headline {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .sub-headline {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 450px;
+        }
+
+        /* Form Inputs */
+        .form-grid-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .input-wrap { position: relative; }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            background: transparent;
+            outline: none;
+            transition: 0.3s;
+            border-radius: 0; 
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-bottom-color: #1a1a1a;
+        }
+
+        ::placeholder { color: #aaa; font-weight: 300; }
+
+        .submit-btn {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 18px 40px;
+            border: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            align-self: flex-start;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            background-color: #D4AF37;
+            color: #000;
+        }
+
+        /* 2. THE DARK INFO CELL */
+        .cell-info {
+            /* UPDATED: Takes full height to match form since image is gone */
+            height: 100%; 
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle Gold Circle Decoration */
+        .cell-info::after {
+            content: '';
+            position: absolute;
+            top: -30px; right: -30px;
+            width: 100px; height: 100px;
+            border: 1px solid #D4AF37;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .info-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-row i {
+            color: #D4AF37;
+            font-size: 1.1rem;
+            margin-top: 4px;
+        }
+
+        .contact-row div {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #ddd;
+        }
+
+        .contact-row a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            transition: 0.3s;
+        }
+        .contact-row a:hover { color: #D4AF37; border-color: #D4AF37; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            body { padding-top: 130px; } 
+            
+            .collage-container {
+                grid-template-columns: 1fr;
+                gap: 0;
+                margin-top: 20px;
+            }
+            .cell-form { padding: 40px 20px; }
+            .cell-info { padding: 40px 20px; }
+            
+            .form-grid-inner { grid-template-columns: 1fr; gap: 20px; }
+            .headline { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+    <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Annamar Brand Logo">
+    </a>
+
+    <nav>
+        <ul id="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about-us">About Us</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="index.html#essentials">Baby Boutique</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="menu-toggle" id="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+   </header>
+
+    <div class="collage-container">
+        
+        <div class="cell-form">
+            <span class="section-tag">Concierge</span>
+            <h1 class="headline">Let's Start a Conversation</h1>
+            <p class="sub-headline">For custom orders, wholesale inquiries, or just to share your Annammar experience.</p>
+
+                <form action="https://api.web3forms.com/submit" method="POST">
+
+                <input type="hidden" name="access_key" value="82ddfa77-cc30-4b61-8cb5-2e5a3ede8950">
+
+                <input type="hidden" name="subject" value="Website Inquiry">
+
+                <div class="form-grid-inner">
+                    <div class="input-wrap">
+                    <input 
+                        type="text" 
+                        name="first_name"
+                        placeholder="First Name" 
+                        required>
+                    </div>
+                    <div class="input-wrap">
+                    <input 
+                        type="text" 
+                        name="last_name"
+                        placeholder="Last Name" 
+                        required>
+                    </div>
+                </div>
+
+                <div class="form-grid-inner">
+                    <div class="input-wrap">
+                    <input 
+                        type="email" 
+                        name="email"
+                        placeholder="Email Address" 
+                        required>
+                    </div>
+                    <div class="input-wrap">
+                    <input 
+                        type="text" 
+                        name="phone"
+                        placeholder="Phone (Optional)">
+                    </div>
+                </div>
+
+                <div class="input-wrap" style="margin-bottom: 30px;">
+                    <select 
+                    name="topic"
+                    required
+                    style="color: #555;">
+                    <option value="" disabled selected>Topic of Inquiry</option>
+                    <option value="Order Status">Order Status</option>
+                    <option value="Customization Request">Customization Request</option>
+                    <option value="Wholesale Partnership">Wholesale Partnership</option>
+                    </select>
+                </div>
+
+                <div class="input-wrap" style="margin-bottom: 30px;">
+                    <textarea 
+                    name="message"
+                    rows="3" 
+                    placeholder="Tell us more..." 
+                    required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Send Message
+                </button>
+
+                </form>
+
+        </div>
+
+        <div class="cell-info">
+            <h3 class="info-title">Get in Touch</h3>
+            
+            <div class="contact-row">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    281/2, Sengampalayam, Arulpuram<br>
+                    Palladam Road, Tirupur<br>
+                    Tamil Nadu 641 664
+                </div>
+            </div>
+
+            <div class="contact-row">
+                <i class="fas fa-phone"></i>
+                <div>
+                    <a href="tel:+919894961225">+91-9894961225</a>
+                </div>
+            </div>
+
+            <div class="contact-row">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <a href="mailto:prakash@annamarclothing.com">prakash@annamarclothing.com</a>
+                </div>
+            </div>
+
+            <div class="contact-row" style="margin-top: 20px;">
+                <div style="display:flex; gap:15px; font-size:1.2rem;">
+                    <a href="https://www.instagram.com" style="border:none;" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com" style="border:none;" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.pinterest.com" style="border:none;" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+    <footer class="footer-section" id="footer">
+        <div style="background:#1a1a1a; color:#fff; padding:60px 20px; text-align:center;">
+            <p style="font-family:'Cinzel', serif; font-size:1.5rem;">ANNAMMAR</p>
+            <p style="font-size:0.8rem; color:#888;">© 2026 Annammar Clothing. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const navList = document.getElementById('nav-list');
+            const icon = menuBtn.querySelector('i');
+
+            if (menuBtn && navList) {
+                menuBtn.addEventListener('click', function() {
+                    navList.classList.toggle('active');
+                    if (navList.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                        icon.style.color = '#D4AF37';
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        icon.style.color = '#fff';
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

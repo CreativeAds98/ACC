@@ -192,6 +192,7 @@
             background: #1a1a1a; color: #fff; border: none; padding: 12px 25px;
             font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s;
             align-self: flex-start;
+            text-decoration: none;
         }
         .m-btn:hover { background: #D4AF37; }
 
@@ -228,10 +229,10 @@
 
     <div class="page-title-section">
         <h1 style="font-family:'Cinzel', serif; font-size:3rem; margin-bottom:5px; color:#636032;">The Master Collection</h1>
-        <p style="letter-spacing:2px; text-transform:uppercase; color:#888; font-size:0.9rem;">50+ Handcrafted Essentials</p>
+        <p style="letter-spacing:2px; text-transform:uppercase; color:#888; font-size:0.9rem;">90+ Handcrafted Essentials</p>
     </div>
 
-    <section class="category-section" id="baby-sleeping">
+<section class="category-section">
         <div class="section-header">
             <h2 class="cat-title">Baby Sleeping</h2>
             <p class="cat-desc">Comfort & Safety for Peaceful Nights</p>
@@ -243,19 +244,7 @@
         </div>
     </section>
 
-    <section class="category-section" id="baby-bedding">
-        <div class="section-header">
-            <h2 class="cat-title">Baby Bedding</h2>
-            <p class="cat-desc">Organic Linens & Sheets</p>
-        </div>
-        <div class="carousel-wrapper">
-            <button class="scroll-arrow arrow-left" onclick="scrollShelf('shelf-bedding', 'left')"><i class="fas fa-chevron-left"></i></button>
-            <div class="scroll-container" id="shelf-bedding"></div>
-            <button class="scroll-arrow arrow-right" onclick="scrollShelf('shelf-bedding', 'right')"><i class="fas fa-chevron-right"></i></button>
-        </div>
-    </section>
-
-    <section class="category-section" id="baby-apparel">
+    <section class="category-section">
         <div class="section-header">
             <h2 class="cat-title">Baby Apparel</h2>
             <p class="cat-desc">Everyday Wear to Ceremonial Gowns</p>
@@ -267,19 +256,7 @@
         </div>
     </section>
 
-    <section class="category-section" id="baby-diapering">
-        <div class="section-header">
-            <h2 class="cat-title">Baby Diapering</h2>
-            <p class="cat-desc">Eco-friendly Cloth Solutions</p>
-        </div>
-        <div class="carousel-wrapper">
-            <button class="scroll-arrow arrow-left" onclick="scrollShelf('shelf-diapering', 'left')"><i class="fas fa-chevron-left"></i></button>
-            <div class="scroll-container" id="shelf-diapering"></div>
-            <button class="scroll-arrow arrow-right" onclick="scrollShelf('shelf-diapering', 'right')"><i class="fas fa-chevron-right"></i></button>
-        </div>
-    </section>
-
-    <section class="category-section" id="baby-accessories">
+    <section class="category-section">
         <div class="section-header">
             <h2 class="cat-title">Baby Accessories</h2>
             <p class="cat-desc">The Perfect Little Add-ons</p>
@@ -291,7 +268,7 @@
         </div>
     </section>
 
-    <section class="category-section" style="border-bottom:none;" id="baby-feeding">
+    <section class="category-section">
         <div class="section-header">
             <h2 class="cat-title">Baby Feeding</h2>
             <p class="cat-desc">Bibs, Burp Cloths & Nursing Essentials</p>
@@ -300,6 +277,30 @@
             <button class="scroll-arrow arrow-left" onclick="scrollShelf('shelf-feeding', 'left')"><i class="fas fa-chevron-left"></i></button>
             <div class="scroll-container" id="shelf-feeding"></div>
             <button class="scroll-arrow arrow-right" onclick="scrollShelf('shelf-feeding', 'right')"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section class="category-section">
+        <div class="section-header">
+            <h2 class="cat-title">Baby Bedding</h2>
+            <p class="cat-desc">Organic Linens & Sheets</p>
+        </div>
+        <div class="carousel-wrapper">
+            <button class="scroll-arrow arrow-left" onclick="scrollShelf('shelf-bedding', 'left')"><i class="fas fa-chevron-left"></i></button>
+            <div class="scroll-container" id="shelf-bedding"></div>
+            <button class="scroll-arrow arrow-right" onclick="scrollShelf('shelf-bedding', 'right')"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section class="category-section" style="border-bottom:none;">
+        <div class="section-header">
+            <h2 class="cat-title">Baby Diapering</h2>
+            <p class="cat-desc">Eco-friendly Cloth Solutions</p>
+        </div>
+        <div class="carousel-wrapper">
+            <button class="scroll-arrow arrow-left" onclick="scrollShelf('shelf-diapering', 'left')"><i class="fas fa-chevron-left"></i></button>
+            <div class="scroll-container" id="shelf-diapering"></div>
+            <button class="scroll-arrow arrow-right" onclick="scrollShelf('shelf-diapering', 'right')"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
@@ -387,180 +388,1103 @@
     </div>
 
     <script>
-    // --- 1. PRODUCT CATALOG (DATA + UNIQUE DESCRIPTIONS) ---
-    const catalog = {
-        'shelf-sleeping': [
-            { 
-                id: 'AC - 001', 
-                name: 'Sleeping bag Tog 0.5', 
-                price: '', 
-                desc: '<strong>Style:</strong> Without Sleeve<br><strong>Size:</strong> Small, Medium, Large & Extra-large<br><strong>Fabric:</strong> 100% organic cotton Interlock<br><strong>GSM:</strong> 220, single layer<br><strong>Trims:</strong> YKK zipper & YKK snaps<br><strong>Custom Option:</strong> Arm, leg, shape, zip placement' 
-            },
-            { 
-                id: 'AC - 002', 
-                name: 'Sleeping bag Tog 1.5', 
-                price: '', 
-                desc: '<strong>Style:</strong> Without Sleeve<br><strong>Size:</strong> Small, Medium, Large & Extra-large<br><strong>Fabric:</strong> 100% organic cotton Interlock<br><strong>GSM:</strong> 220, double layer<br><strong>Trims:</strong> YKK zipper & YKK snaps<br><strong>Custom Option:</strong> Arm, leg, shape, zip placement' 
-            },
-            { 
-                id: 'AC - 003', 
-                name: 'Sleeping bag Tog 2.5', 
-                price: '', 
-                desc: '<strong>Style:</strong> Without Sleeve<br><strong>Size:</strong> Small, Medium, Large & Extra-large<br><strong>Fabric:</strong> 100% organic cotton Interlock<br><strong>GSM:</strong> 220, double layer with 100 GSM poly wadding<br><strong>Trims:</strong> YKK zipper & YKK snaps<br><strong>Custom Option:</strong> Arm, leg, shape, zip placement' 
-            },
-            { 
-                id: 'AC - 004', 
-                name: 'Sleeping bag Tog 3.5', 
-                price: '', 
-                desc: '<strong>Style:</strong> Short Sleeve<br><strong>Size:</strong> Small, Medium, Large & Extra-large<br><strong>Fabric:</strong> 100% organic cotton Interlock<br><strong>GSM:</strong> 220, double layer with 150 GSM poly wadding<br><strong>Trims:</strong> YKK zipper & YKK snaps<br><strong>Custom Option:</strong> Arm, leg, shape, zip placement' 
-            },
-            { 
-                id: 'AC - 005', 
-                name: 'Adjustable Swaddle Wrap', 
-                price: '', 
-                desc: '<strong>Style:</strong> Swaddling<br><strong>Size:</strong> Newborn, 3 to 6 months & Custom<br><strong>Fabric:</strong> 100% organic cotton Interlock<br><strong>GSM:</strong> 220, single layer<br><strong>Trims:</strong> YKK zipper, YKK snaps & Imported baby Velcro<br><strong>Custom Option:</strong> Velcro & Zipper at bottom for easy diaper change' 
-            },
-            { 
-                id: 'AC - 006', 
-                name: 'Knotted Swaddle Wrap', 
-                price: '', 
-                desc: '<strong>Style:</strong> Full Sleeve<br><strong>Size:</strong> 0 to 36 months & Custom<br><strong>Fabric:</strong> 100% organic cotton Interlock<br><strong>GSM:</strong> 220, double layer<br><strong>Trims:</strong> Wooden Buttons & YKK snaps<br><strong>Custom Option:</strong> Sleeve, Collar, and Hat' 
-            },
-            { 
-                id: 'AC - 007', 
-                name: 'Quilt Blanket', 
-                price: '', 
-                desc: '<strong>Style:</strong> Quilt<br><strong>Size:</strong> 47 * 47 Inches & Custom<br><strong>Fabric:</strong> 100% organic cotton Interlock<br><strong>GSM:</strong> 220, double layer with 150 GSM poly wadding<br><strong>Custom Option:</strong> Quilt shape, quilt size & corner' 
-            },
-            { 
-                id: 'AC - 008', 
-                name: 'Cocoon Swaddle', 
-                price: '', 
-                desc: '<strong>Style:</strong> Swaddling<br><strong>Size:</strong> Newborn, 0 - 36 months & Custom<br><strong>Fabric:</strong> 100% organic cotton Interlock<br><strong>GSM:</strong> 220, single layer<br><strong>Trims:</strong> YKK zipper<br><strong>Custom Option:</strong> Hat, bottom zipper for easy diaper changing' 
-            },
-            { 
-                id: 'AC - 009', 
-                name: 'Muslin Swaddle Blanket', 
-                price: '', 
-                desc: '<strong>Style:</strong> Swaddling<br><strong>Size:</strong> 47 * 47 inches & custom<br><strong>Fabric:</strong> 100% organic muslin cotton<br><strong>GSM:</strong> 100, single layer<br><strong>Custom Option:</strong> 2 layer, 3 layer, 4 layer, 6 layer & 8 layer' 
-            }
-        ],
-        'shelf-bedding': [
-            { id: 'AC - 010', name: 'Crib Sheet', price: '', desc: 'Style: Printed & Solid. Size: 56 x 28 x 9 inches. Fabric: 100% organic cotton Single Jersey (160 GSM, Single Layer). Custom Options: Waterproofing & Quilting available. Category: Baby Bedding.' },
-            { id: 'AC - 011', name: 'Bassinet Sheet', price: '', desc: 'Style: Printed & Solid. Size: 32 x 16 x 2 inches. Fabric: 100% organic cotton Single Jersey (160 GSM, Single Layer). Custom Options: Waterproofing & Shape customization. Category: Baby Bedding.' },
-            { id: 'AC - 012', name: 'Bed Sheet', price: '', desc: 'Style: Printed & Solid. Size: 160 x 140 cm. Fabric: 100% organic cotton Single Jersey (220 GSM, Double Layer) with 150 GSM poly wadding insulation. Custom Options: Waterproofing & Quilting. Category: Baby Bedding.' },
-            { id: 'AC - 013', name: 'Duvet Cover', price: '', desc: 'Style: Printed & Solid. Size: 210 x 180 cm. Fabric: 100% organic cotton Single Jersey (220 GSM, Double Layer) with 150 GSM poly wadding. Custom Options: Waterproofing & Quilting. Category: Baby Bedding.' },
-            { id: 'AC - 014', name: 'Pillow Cover', price: '', desc: 'Style: Printed & Solid. Size: 30 x 60 cm. Fabric: 100% organic cotton Single Jersey (160 GSM, Single Layer). Trims: High-quality YKK zipper. Custom Options: Shape & Waterproofing. Category: Baby Bedding.' }
-        ],
-        'shelf-apparel': [
-            { id: 'AC - 015', name: 'Onesie', price: '', desc: 'Style: Short Sleeve. Size: 0 - 36 months. Fabric: 100% organic cotton Interlock. Trims: YKK snaps & Imported baby Velcro with zigzag stitching to prevent scratching. Custom Options: TPU sublimation, Sleeve, & Neck. Category: Baby Apparel.' },
-            { id: 'AC - 016', name: 'Romper', price: '', desc: 'Style: Full sleeve with feet. Size: 0 - 36 months. Fabric: 100% organic cotton Interlock (220 GSM, Single Layer). Trims: YKK zipper, YKK snaps, & Magnet closure. Custom Options: Sleeve, feet, neck, & frill. Category: Baby Apparel.' },
-            { id: 'AC - 017', name: 'Bodysuit', price: '', desc: 'Style: Long sleeve. Size: 0 - 36 months. Fabric: 100% organic cotton Interlock (220 GSM Single Layer). Trims: YKK zip & YKK snap. Custom Options: Sleeve, neck, TPU sublimation. Category: Baby Apparel.' },
-            { id: 'AC - 018', name: 'Two-piece Pajamas', price: '', desc: 'Style: Full Sleeve. Size: 2T to 6T. Fabric: 100% organic cotton Interlock (220 GSM, Single Layer). Trim: Draw-string. Custom Options: Sleeve, feet, & neck. Category: Baby Apparel' },
-            { id: 'AC - 019', name: 'Leggings', price: '', desc: 'Style: Printed & Solid. Size: Newborn to 6T. Fabric: 100% organic cotton Interlock (220 GSM, Single Jersey). Custom Options: Feet length & draw-string. Category: Baby Apparel.' },
-            { id: 'AC - 020', name: 'T-shirt', price: '', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% organic cotton Interlock (220 GSM, Single Layer). Trim: YKK Zipper & YKK Snap. Custom Options: Sleeve, Collar, & Pocket. Category: Baby Apparel' },
-            { id: 'AC - 021', name: 'Swimsuit', price: '', desc: 'Style: Printed & Solid. Size: 0 - 36 months. Fabric: TPU laminated 100% Polyester (160 GSM, Single Layer). Trims: YKK zip & YKK snap. Custom Options: Frill, Sleeve, Collar, & Zipper. Category: Baby Apparel.' },
-            { id: 'AC - 022', name: 'Sweat Shirt', price: '', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% organic cotton Interlock with 300 GSM terry inside. Trim: Elastic. Custom Options: Sleeve, pocket, hood & Collar. Category: Baby Apparel.' },
-            { id: 'AC - 023', name: 'Sweat Pants', price: '', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% organic cotton Interlock with 300 GSM terry inside. Trim: YKK zipper, Elastic & Drawstring. Custom Options: Feet length & Pocket. Category: Baby Apparel' },
-            { id: 'AC - 024', name: 'Baby Gown', price: '', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% organic cotton Interlock (220 GSM, Single Layer). Trim: YKK zipper. Custom Options: Length, Frill, & Sleeve. Category: Baby Apparel.' }
-        ],
-        'shelf-diapering': [
-            { id: 'AC - 025', name: 'Changing Pad Cover', price: '', desc: 'Style: Printed & Solid. Size: 16*32*5 inches & Custom. Fabric: 100% Organic Cotton Single Jersey (160 GSM, single layer). Custom Option: Shape, waterproof. Category: Baby Diapering' },
-            { id: 'AC - 026', name: 'Diaper Changing Mat', price: '', desc: 'Style: Printed & Solid. Size: 60*45 cm. Fabric: 100% Polyester (160 GSM, double layer) with 150 GSM poly wadding. Trim: YKK snaps. Custom Option: Shape, Quilt & waterproof.' },
-            { id: 'AC - 027', name: 'Cloth Diaper', price: '', desc: 'Style: Printed & Solid. Size: Fitted size & Custom. Fabric: 100% waterproof polyester (160 GSM TPU fabric). Trim: Imported baby Velcro to prevent skin scratch. Custom Option: Snaps, Velcro, shape, pocket' },
-            { id: 'AC - 028', name: 'Diaper Inserts', price: '', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% organic cotton Interlock (220 GSM, single layer). Trims: YKK snaps. Custom Option: Shape & Layer. Category: Baby Diapering.' },
-            { id: 'AC - 029', name: 'Pre-fold', price: '', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% Organic Muslin Cotton (100 GSM, single layer). Custom Option: Shape & layers. Category: Baby Diapering' },
-            { id: 'AC - 030', name: 'Sanitary Pads', price: '', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% Polyester (160 GSM, double layer) with 150 GSM micro-fleece. Trim: YKK snaps. Custom Option: Shape & layers' },
-            { id: 'AC - 031', name: 'Training Pants', price: '', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% Organic Cotton Interlock (220 GSM single) with 150 GSM microfleece. Trim: YKK snaps & Elastic. Custom Option: Shape.' },
-            { id: 'AC - 032', name: 'Wet Bags', price: '', desc: 'Style: Printed & Solid. Size: Custom. Fabric: 100% Polyester (160 GSM, single layer). Trims: YKK snaps, YKK zipper, & Velcro. Custom Option: Shape & waterproof.' }
-        ],
-        'shelf-accessories': [
-            { id: 'AC - 033', name: 'Mittens', price: '', desc: 'Style: Printed & Solid. Fabric: 100% Organic Cotton (220 GSM, single layer). Trims: YKK snap, Imported baby Velcro to prevent skin scratch. Custom Option: Shape, Snap & Velcro placement.' },
-            { id: 'AC - 034', name: 'Bonnets', price: '', desc: 'Style: Printed & Solid. Fabric: 100% Organic Cotton (220 GSM Interlock). Custom Option: Shape & layers. Category: Baby Diapering' },
-            { id: 'AC - 035', name: 'Booties', price: '', desc: 'Style: Printed & Solid. Fabric: 100% Organic Cotton Interlock (220 GSM) with 250 GSM Polyester Fleece. Trim: YKK snaps & Imported baby Velcro with zigzag stitching. Custom Option: Grippers & Closure.' },
-            { id: 'AC - 036', name: 'Knot Hats', price: '', desc: 'Style: Printed & Solid. Fabric: 100% Organic cotton (220 GSM Interlock). Custom Option: Shape & Knot. Category: Baby Accessories.' },
-            { id: 'AC - 037', name: 'Beanie Hats', price: '', desc: 'Style: Printed & Solid. Fabric: 100% Organic cotton (220 GSM Interlock). Classic double-layer jersey beanie for regulating newborn temperature.' },
-            { id: 'AC - 038', name: 'Beach Hats', price: '', desc: 'Style: Printed & Solid. Fabric: 100% Organic cotton (220 GSM Interlock). Custom Option: Shape & Knot. Category: Baby Accessories.' },
-            { id: 'AC - 039', name: 'Wash Clothes', price: '', desc: 'Style: Printed & Solid. Size: 12*12 inches & Custom. Fabric: 100% Organic Muslin Cotton (100 GSM single layer). Trim: Hang hole. Custom Option: Shape & Layers' },
-            { id: 'AC - 040', name: 'Hooded Towel', price: '', desc: 'Style: Printed & Solid. Size: 100*100 cm & Custom. Fabric: 100% Organic cotton (220 GSM Interlock) with 300 GSM terry inside. Custom Option: Hooded shape & layer.' },
-            { id: 'AC - 041', name: 'Milestone Blanket', price: '', desc: 'Style: Printed & Solid. Size: 100*100 CM & Custom. Fabric: 100% Organic Muslin Cotton (100 GSM single layer). Custom Option: Layer. Perfect for tracking baby growth.' }
-        ],
-        'shelf-feeding': [
-            { id: 'AC - 042', name: 'Waterproof Bibs', price: '', desc: 'Style: Printed & Solid. Size: 27.5 x 24.5 x 2.1 CM. Fabric: 100% Polyester (160 GSM single layer). Trim: YKK snap, Magnet & Imported baby Velcro. Custom Option: Closure, Pocket, Sleeve, & Neck.' },
-            { id: 'AC - 043', name: 'Teether Pad Cover', price: '', desc: 'Style: Printed & Solid. Size: 7.6 x 1.3 x 15.2 CM. Fabric: 100% Organic cotton (220 GSM Interlock with 100 GSM Micro Fleece Inside). Trims: YKK Snap & Imported baby Velcro to prevent skin scratch. Custom Option: Closure' },
-            { id: 'AC - 044', name: 'Bandana Drool Bibs', price: '', desc: 'Style: Printed & Solid. Size: 25.4 x 3.3 x 15.7 CM. Fabric: 100% Organic Cotton Single Jersey (160 GSM single layer with 100 GSM micro fleece back). Trim: YKK snap, Magnet & Velcro. Custom Option: Closure & Shape.' },
-            { id: 'AC - 045', name: 'Muslin Bibs', price: '', desc: 'Style: Printed & Solid. Size: 25.4 x 3.3 x 15.7 CM. Fabric: 100% Organic cotton (100 GSM single layer). Trims: YKK snap, Magnet & Imported baby Velcro to prevent skin scratch. Custom Option: Closure & Layer' },
-            { id: 'AC - 046', name: 'Pocket Bibs', price: '', desc: 'Style: Printed & Solid. Size: 27.5 x 24.5 x 2.1 CM. Fabric: 100% Polyester (160 GSM single layer). Trim: YKK snap, Magnet & Imported baby Velcro to prevent skin scratch. Custom Option: Closure, Pocket, Sleeve, & Neck' },
-            { id: 'AC - 047', name: 'Burp Cloth', price: '', desc: 'Style: Printed & Solid. Size: 50 * 25 CM. Fabric: 100% Organic cotton (100 GSM single layer). Custom Option: Shape & Layer. Maximum absorbency triple-layer fabric.' },
-            { id: 'AC - 048', name: 'Canopy / Car Seat Cover', price: '', desc: 'Style: Printed & Solid. Fabric: 95% Organic Cotton 5% Spandex (220 GSM Single layer). Custom Option: Shape. Multi-use cover for car seats or nursing privacy.' },
-            { id: 'AC - 049', name: 'Nursing Cover', price: '', desc: 'Apron-style nursing cover with a rigid neckline. Allows you to maintain eye contact with baby and airflow while feeding in public.' },
-            { id: 'AC - 050', name: 'Cuddle Goose', price: '', desc: 'Organic cotton comfort toy. Filled with cherry stones which can be warmed in the microwave to soothe colic tummy aches.' }
-        ]
-    };
+// --- 1. PRODUCT CATALOG (DATA + ENHANCED DESCRIPTIONS) ---
+const catalog = {
+    'shelf-sleeping': [
+        { 
+            id: 'AC- 001', 
+            name: 'Sleep Bag Swaddler', 
+            price: '', 
+            desc: '<strong>Style:</strong> Newborn Swaddler Bag<br><strong>Fabric:</strong> 100% Organic Cotton<br><strong>Comfort:</strong> Designed to mimic the womb with adjustable wings for a secure fit, preventing the startle reflex for better sleep.' 
+        },
+        { 
+            id: 'AC- 002', 
+            name: '0.5 TOG Sleep Bag Swaddler - NEW!', 
+            price: '', 
+            desc: '<strong>Style:</strong> Summer Swaddler<br><strong>TOG:</strong> 0.5 (Lightweight)<br><strong>Fabric:</strong> Breathable Organic Mesh/Cotton<br><strong>Usage:</strong> Ideal for hot nights (24°C+), maximizing airflow to prevent overheating while keeping baby secure.' 
+        },
+        { 
+            id: 'AC- 003', 
+            name: '0.5 TOG Sleep Bag', 
+            price: '', 
+            desc: '<strong>Style:</strong> Sleeveless Bag<br><strong>TOG:</strong> 0.5<br><strong>Fabric:</strong> Single layer Organic Cotton<br><strong>Detail:</strong> An ultra-lightweight sleeping bag for peak summer heat, replacing loose blankets for safer sleep.' 
+        },
+        { 
+            id: 'AC- 004', 
+            name: '1.0 TOG Sleep Bag', 
+            price: '', 
+            desc: '<strong>Style:</strong> All-Season Bag<br><strong>TOG:</strong> 1.0<br><strong>Fabric:</strong> Double layer Organic Interlock<br><strong>Comfort:</strong> The perfect everyday bag for standard room temperatures (21-23°C). Soft, breathable, and cozy.' 
+        },
+        { 
+            id: 'AC- 005', 
+            name: '1.0 TOG Sleep Bag Walker', 
+            price: '', 
+            desc: '<strong>Style:</strong> Walker Bag with Feet<br><strong>TOG:</strong> 1.0<br><strong>Features:</strong> Designed for active toddlers. Foot openings allow mobility before bedtime while ensuring warmth during sleep.' 
+        },
+        { 
+            id: 'AC- 006', 
+            name: '0.5 TOG Sleep Bag Walker', 
+            price: '', 
+            desc: '<strong>Style:</strong> Summer Walker<br><strong>TOG:</strong> 0.5<br><strong>Fabric:</strong> Lightweight Organic Cotton<br><strong>Usage:</strong> A single-layer wearable blanket with legs, perfect for active warm-weather sleepers.' 
+        },
+        { 
+            id: 'AC- 007', 
+            name: 'Swaddle Blanket', 
+            price: '', 
+            desc: '<strong>Style:</strong> Classic Swaddle<br><strong>Size:</strong> Standard Square<br><strong>Fabric:</strong> Soft Organic Cotton<br><strong>Versatility:</strong> Stretchy and breathable, perfect for tight swaddling, nursing coverage, or as a stroller shade.' 
+        },
+        { 
+            id: 'AC- 008', 
+            name: 'Baby Blanket', 
+            price: '', 
+            desc: '<strong>Style:</strong> General Purpose<br><strong>Fabric:</strong> Multi-layer Organic Cotton<br><strong>Touch:</strong> Buttery soft feel. Ideal for tummy time, cuddling, or as an extra layer in the stroller.' 
+        },
+        { 
+            id: 'AC- 009', 
+            name: '1.0 TOG Toddler Blanket', 
+            price: '', 
+            desc: '<strong>Style:</strong> Toddler Bedding<br><strong>TOG:</strong> 1.0<br><strong>Size:</strong> Toddler Bed Sized<br><strong>Detail:</strong> A weighted, quilted feel without bulk. Keeps toddlers warm without restricting movement.' 
+        },
+        { 
+            id: 'AC- 010', 
+            name: '1.0 TOG Youth Blanket', 
+            price: '', 
+            desc: '<strong>Style:</strong> Youth Bedding<br><strong>TOG:</strong> 1.0<br><strong>Size:</strong> Twin/Youth<br><strong>Comfort:</strong> Generously sized for growing kids. Breathable organic cotton prevents night sweats.' 
+        },
+        { 
+            id: 'AC- 011', 
+            name: '1.0 TOG Adult Blanket', 
+            price: '', 
+            desc: '<strong>Style:</strong> Adult Bedding<br><strong>TOG:</strong> 1.0<br><strong>Size:</strong> Queen/King<br><strong>Luxury:</strong> Experience the same organic comfort as your baby. Lightweight warmth for year-round use.' 
+        },
+        { 
+            id: 'AC- 012', 
+            name: '2.5 TOG Adult Blanket', 
+            price: '', 
+            desc: '<strong>Style:</strong> Winter Adult Blanket<br><strong>TOG:</strong> 2.5<br><strong>Fabric:</strong> Quilted with Poly-fill<br><strong>Warmth:</strong> Heavyweight insulation for cold nights. Hypoallergenic and incredibly soft.' 
+        },
+        { 
+            id: 'AC- 013', 
+            name: 'Mini Crib Sheet', 
+            price: '', 
+            desc: '<strong>Style:</strong> Fitted Sheet<br><strong>Size:</strong> Fits Mini Cribs/Pack n Plays<br><strong>Fabric:</strong> Organic Jersey<br><strong>Fit:</strong> Features premium elastic for a safe, snug fit that won\'t pop off.' 
+        },
+        { 
+            id: 'AC- 014', 
+            name: 'Change Pad Cover', 
+            price: '', 
+            desc: '<strong>Style:</strong> Contoured Fit<br><strong>Fabric:</strong> Wipeable/Cotton<br><strong>Utility:</strong> Protects your changing pad while providing a soft surface for baby. Easy to remove and wash.' 
+        },
+        { 
+            id: 'AC- 015', 
+            name: 'Playing sheet', 
+            price: '', 
+            desc: '<strong>Style:</strong> Floor Mat/Sheet<br><strong>Usage:</strong> Tummy time & Play<br><strong>Durability:</strong> A thicker organic sheet designed to create a clean, safe play area on any floor.' 
+        },
+        { 
+            id: 'AC- 016', 
+            name: 'Cocoon Swaddle', 
+            price: '', 
+            desc: '<strong>Style:</strong> Zip-up Swaddle<br><strong>Features:</strong> Snug fit with 2-way zipper<br><strong>Design:</strong> Mimics the womb. No wrapping required—just zip up. Easy diaper access.' 
+        },
+        { 
+            id: 'AC- 017', 
+            name: 'Knotted Swaddle Wrap', 
+            price: '', 
+            desc: '<strong>Style:</strong> Adjustable Gown<br><strong>Features:</strong> Tie-bottom<br><strong>Convenience:</strong> Just untie the knot for diaper changes. Grows with your baby and keeps feet warm.' 
+        },
+        { 
+            id: 'AC- 018', 
+            name: 'Muslin Swaddle Blanket', 
+            price: '', 
+            desc: '<strong>Style:</strong> Breathable Swaddle<br><strong>Fabric:</strong> 100% Organic Muslin<br><strong>Texture:</strong> Open weave fabric that gets softer with every wash. Highly breathable to reduce SIDS risk.' 
+        },
+        { 
+            id: 'AC- 019', 
+            name: 'Sleeping bag Tog 1.5', 
+            price: '', 
+            desc: '<strong>Style:</strong> All-Season Bag<br><strong>TOG:</strong> 1.5<br><strong>Fabric:</strong> Organic Cotton Interlock<br><strong>Detail:</strong> A versatile weight for standard nurseries. Lined with soft jersey for premium comfort.' 
+        },
+        { 
+            id: 'AC- 020', 
+            name: 'Sleeping bag Tog 2.5', 
+            price: '', 
+            desc: '<strong>Style:</strong> Winter Bag<br><strong>TOG:</strong> 2.5<br><strong>Fabric:</strong> Quilted padding<br><strong>Warmth:</strong> Keeps baby toasty in cool rooms (16-20°C). Replaces loose blankets for safety.' 
+        },
+        { 
+            id: 'AC- 021', 
+            name: 'Sleeping bag Tog 3.5', 
+            price: '', 
+            desc: '<strong>Style:</strong> Heavy Winter Bag<br><strong>TOG:</strong> 3.5<br><strong>Features:</strong> Detachable Sleeves<br><strong>Usage:</strong> Extreme cold protection. Plush velour lining ensures maximum warmth.' 
+        },
+        { 
+            id: 'AC- 022', 
+            name: 'Adjustable Swaddle Wrap', 
+            price: '', 
+            desc: '<strong>Style:</strong> Velcro Swaddle<br><strong>Features:</strong> Easy-wing adjustment<br><strong>Design:</strong> The "foolproof" swaddle. Achieve the perfect tightness every time to soothe fussy babies.' 
+        },
+        { 
+            id: 'AC- 023', 
+            name: 'Quilt Blanket', 
+            price: '', 
+            desc: '<strong>Style:</strong> Hand-stitched Quilt<br><strong>Fabric:</strong> Organic Cotton with batting<br><strong>Heirloom Quality:</strong> Beautifully stitched and durable. Perfect for cribs or as a keepsake gift.' 
+        }
+    ],
+    'shelf-apparel': [
+        { 
+            id: 'AC- 024', 
+            name: 'Snap Romper', 
+            price: '', 
+            desc: '<strong>Style:</strong> Full Body<br><strong>Closure:</strong> YKK Snaps<br><strong>Fabric:</strong> Organic Interlock<br><strong>Comfort:</strong> Classic design with easy-access snaps. Soft, durable fabric gentle on sensitive skin.' 
+        },
+        { 
+            id: 'AC- 025', 
+            name: 'Snap Footie', 
+            price: '', 
+            desc: '<strong>Style:</strong> Footed Romper<br><strong>Closure:</strong> Snap buttons<br><strong>Fabric:</strong> Soft Organic Cotton<br><strong>Detail:</strong> Keeps tiny toes warm. Features reinforced snaps and a roomy fit for diapers.' 
+        },
+        { 
+            id: 'AC- 026', 
+            name: 'Zipper Romper', 
+            price: '', 
+            desc: '<strong>Style:</strong> Full Body<br><strong>Closure:</strong> 2-way YKK Zipper<br><strong>Convenience:</strong> Makes diaper changes a breeze. Zipper guard protects baby’s chin.' 
+        },
+        { 
+            id: 'AC- 027', 
+            name: 'Short Sleeve Bodysuit', 
+            price: '', 
+            desc: '<strong>Style:</strong> Bodysuit<br><strong>Sleeve:</strong> Short<br><strong>Fabric:</strong> Breathable Cotton<br><strong>Essential:</strong> The ultimate base layer. Envelope neck for easy dressing.' 
+        },
+        { 
+            id: 'AC- 028', 
+            name: 'Sleeveless Bodysuit', 
+            price: '', 
+            desc: '<strong>Style:</strong> Tank Bodysuit<br><strong>Season:</strong> Summer<br><strong>Fabric:</strong> Organic Cotton<br><strong>Usage:</strong> Perfect for hot days or layering under sweaters.' 
+        },
+        { 
+            id: 'AC- 029', 
+            name: 'Bummies', 
+            price: '', 
+            desc: '<strong>Style:</strong> High-waist Diaper Cover<br><strong>Fabric:</strong> Stretchy Organic Rib<br><strong>Trend:</strong> Cute, short-style bottoms perfect for pairing with bodysuits in summer.' 
+        },
+        { 
+            id: 'AC- 030', 
+            name: 'Zippered Sleeveless Romper', 
+            price: '', 
+            desc: '<strong>Style:</strong> Summer Romper<br><strong>Closure:</strong> Zip front<br><strong>Fabric:</strong> Organic Cotton<br><strong>Comfort:</strong> A one-piece outfit perfect for play. No buttons, just zip and go.' 
+        },
+        { 
+            id: 'AC- 031', 
+            name: 'Long Sleeve Toddler Pajamas', 
+            price: '', 
+            desc: '<strong>Style:</strong> 2-Piece Set<br><strong>Sleeve:</strong> Long<br><strong>Size:</strong> 2T-6T<br><strong>Fit:</strong> Snug-fitting for safety. Soft elastic waistband is gentle on tummies.' 
+        },
+        { 
+            id: 'AC- 032', 
+            name: 'Short Sleeve Toddler Pajamas', 
+            price: '', 
+            desc: '<strong>Style:</strong> 2-Piece Set<br><strong>Sleeve:</strong> Short<br><strong>Size:</strong> 2T-6T<br><strong>Season:</strong> Warmer nights. Breathable organic cotton keeps active toddlers cool.' 
+        },
+        { 
+            id: 'AC- 033', 
+            name: 'Toddler Legging', 
+            price: '', 
+            desc: '<strong>Style:</strong> Unisex Leggings<br><strong>Fabric:</strong> Organic Rib/Interlock<br><strong>Durability:</strong> Stretchy and durable for crawling and climbing. Retains shape after washing.' 
+        },
+        { 
+            id: 'AC- 035', 
+            name: 'Short Sleeve Toddler Crew Neck Tee', 
+            price: '', 
+            desc: '<strong>Style:</strong> Classic T-Shirt<br><strong>Neck:</strong> Crew<br><strong>Fabric:</strong> Organic Jersey<br><strong>Detail:</strong> Tag-free label for comfort. A wardrobe staple that matches everything.' 
+        },
+        { 
+            id: 'AC- 036', 
+            name: 'Toddler Brief', 
+            price: '', 
+            desc: '<strong>Style:</strong> Underwear<br><strong>Waist:</strong> Soft Elastic<br><strong>Fabric:</strong> Organic Cotton<br><strong>Comfort:</strong> Breathable and chemical-free, perfect for potty training and sensitive skin.' 
+        },
+        { 
+            id: 'AC- 037', 
+            name: 'Men’s Crew Neck Tee', 
+            price: '', 
+            desc: '<strong>Style:</strong> Adult Tee<br><strong>Fit:</strong> Regular<br><strong>Fabric:</strong> 100% Organic Cotton<br><strong>Match:</strong> Ultra-soft dad tee. Coordinate with your little one for matching family looks.' 
+        },
+        { 
+            id: 'AC- 038', 
+            name: 'Bamboo Jersey Tank Jogger Set', 
+            price: '', 
+            desc: '<strong>Style:</strong> Tank & Jogger<br><strong>Fabric:</strong> Bamboo/Cotton Blend<br><strong>Feel:</strong> Silky soft and cooling. Perfect for active play or lounging.' 
+        },
+        { 
+            id: 'AC- 039', 
+            name: 'Bamboo Jersey Short Sleeve Jogger Set', 
+            price: '', 
+            desc: '<strong>Style:</strong> Tee & Jogger<br><strong>Fabric:</strong> Bamboo/Cotton Blend<br><strong>Luxury:</strong> Premium fabric blend that creates a luxurious, lightweight outfit.' 
+        },
+        { 
+            id: 'AC- 040', 
+            name: 'Bubble Romper', 
+            price: '', 
+            desc: '<strong>Style:</strong> Loose Fit Romper<br><strong>Legs:</strong> Elasticated<br><strong>Fabric:</strong> Organic Woven/Knit<br><strong>Look:</strong> Adorable vintage silhouette. Roomy fit accommodates cloth diapers easily.' 
+        },
+        { 
+            id: 'AC- 042', 
+            name: 'Twirl Bodysuit Dress', 
+            price: '', 
+            desc: '<strong>Style:</strong> Dress with attached body<br><strong>Skirt:</strong> Full circle twirl<br><strong>Fun:</strong> A practical bodysuit with a fun, spinning skirt. Stays in place during play.' 
+        },
+        { 
+            id: 'AC- 045', 
+            name: 'Dangarees', 
+            price: '', 
+            desc: '<strong>Style:</strong> Overalls<br><strong>Straps:</strong> Adjustable Button<br><strong>Look:</strong> Classic and durable. Pairs perfectly with our bodysuits for a timeless look.' 
+        },
+        { 
+            id: 'AC- 046', 
+            name: 'Onesie', 
+            price: '', 
+            desc: '<strong>Style:</strong> Essential Onesie<br><strong>Neck:</strong> Envelope<br><strong>Detail:</strong> Expandable neckline allows you to pull the garment down over legs for messy changes.' 
+        },
+        { 
+            id: 'AC- 047', 
+            name: 'Two-piece pajamas', 
+            price: '', 
+            desc: '<strong>Style:</strong> PJ Set<br><strong>Waist:</strong> Elastic<br><strong>Safety:</strong> Snug-fitting organic cotton without flame retardants.' 
+        },
+        { 
+            id: 'AC- 048', 
+            name: 'T-shirt', 
+            price: '', 
+            desc: '<strong>Style:</strong> Basic Tee<br><strong>Fabric:</strong> Organic Jersey<br><strong>Comfort:</strong> Soft, breathable, and an everyday essential.' 
+        },
+        { 
+            id: 'AC- 049', 
+            name: 'Legging', 
+            price: '', 
+            desc: '<strong>Style:</strong> Stretch Legging<br><strong>Fabric:</strong> Ribbed Cotton<br><strong>Feature:</strong> Features a U-shaped crotch panel to fit diapers comfortably.' 
+        },
+        { 
+            id: 'AC- 050', 
+            name: 'Swimsuit', 
+            price: '', 
+            desc: '<strong>Style:</strong> UPF 50+ Swimwear<br><strong>Fabric:</strong> Recycled Poly<br><strong>Protection:</strong> Blocks 98% of harmful UV rays. Quick-drying and lined for comfort.' 
+        },
+        { 
+            id: 'AC- 051', 
+            name: 'Sweat shirt', 
+            price: '', 
+            desc: '<strong>Style:</strong> Pullover<br><strong>Fabric:</strong> French Terry<br><strong>Warmth:</strong> Cozy loop-back cotton interior. Perfect for layering on chilly days.' 
+        },
+        { 
+            id: 'AC- 052', 
+            name: 'Sweat pants', 
+            price: '', 
+            desc: '<strong>Style:</strong> Joggers<br><strong>Fabric:</strong> French Terry<br><strong>Detail:</strong> Functional pockets and drawstring waist. Durable knees for crawlers.' 
+        },
+        { 
+            id: 'AC- 053', 
+            name: 'Baby Gown', 
+            price: '', 
+            desc: '<strong>Style:</strong> Elastic bottom gown<br><strong>Use:</strong> Easy night changes<br><strong>Fabric:</strong> Silk-cotton blend for special occasions or ultra-soft sleep.' 
+        }
+    ],
+    'shelf-accessories': [
+        { 
+            id: 'AC- 054', 
+            name: 'Hats', 
+            price: '', 
+            desc: '<strong>Style:</strong> Standard Hat<br><strong>Fabric:</strong> Organic Cotton<br><strong>Care:</strong> Essential for regulating newborn body temperature. Soft and stretchy.' 
+        },
+        { 
+            id: 'AC- 055', 
+            name: 'Bow', 
+            price: '', 
+            desc: '<strong>Style:</strong> Headband Bow<br><strong>Fabric:</strong> Soft Nylon/Cotton<br><strong>Comfort:</strong> Stretchy, non-marking band. Adds a sweet touch to any outfit.' 
+        },
+        { 
+            id: 'AC- 056', 
+            name: 'Lovey', 
+            price: '', 
+            desc: '<strong>Style:</strong> Comfort Object<br><strong>Fabric:</strong> Muslin/Fleece<br><strong>Safety:</strong> Breathable and safe for snuggling. Helps soothe anxiety.' 
+        },
+        { 
+            id: 'AC- 057', 
+            name: 'Booties', 
+            price: '', 
+            desc: '<strong>Style:</strong> Snap Booties<br><strong>Lining:</strong> Fleece/Sherpa<br><strong>Function:</strong> They actually stay on! Adjustable snaps ensure a secure fit.' 
+        },
+        { 
+            id: 'AC- 058', 
+            name: 'Mittens', 
+            price: '', 
+            desc: '<strong>Style:</strong> Scratch Mittens<br><strong>Wrist:</strong> Gentle Elastic<br><strong>Safety:</strong> Prevents newborns from scratching their face. Roomy enough to open hands.' 
+        },
+        { 
+            id: 'AC- 059', 
+            name: 'Bonnets', 
+            price: '', 
+            desc: '<strong>Style:</strong> Vintage Bonnet<br><strong>Tie:</strong> Under chin<br><strong>Look:</strong> Classic heirloom style. Protects ears from wind and drafts.' 
+        },
+        { 
+            id: 'AC- 060', 
+            name: 'Knot hats', 
+            price: '', 
+            desc: '<strong>Style:</strong> Adjustable Knot<br><strong>Fabric:</strong> Ribbed Cotton<br><strong>Fit:</strong> Adjust the top knot to fit your baby’s head perfectly as they grow.' 
+        },
+        { 
+            id: 'AC- 061', 
+            name: 'Beanie hats', 
+            price: '', 
+            desc: '<strong>Style:</strong> Slouchy Beanie<br><strong>Layer:</strong> Double layer<br><strong>Warmth:</strong> Extra warmth for winter months. Trendy slouch fit.' 
+        },
+        { 
+            id: 'AC- 062', 
+            name: 'Beach hats', 
+            price: '', 
+            desc: '<strong>Style:</strong> Sun Hat<br><strong>Protection:</strong> UPF 50+<br><strong>Coverage:</strong> Wide brim and neck flap to protect delicate skin from the sun.' 
+        },
+        { 
+            id: 'AC- 063', 
+            name: 'Wash clothes', 
+            price: '', 
+            desc: '<strong>Style:</strong> Square Cloth<br><strong>Set:</strong> Pack of 3/5<br><strong>Texture:</strong> Gently textured to help exfoliate cradle cap. Ultra-soft for bath time.' 
+        },
+        { 
+            id: 'AC- 064', 
+            name: 'Hooded towel', 
+            price: '', 
+            desc: '<strong>Style:</strong> Bath Towel<br><strong>Fabric:</strong> Absorbent Terry<br><strong>Comfort:</strong> 500 GSM thickness absorbs water instantly. Hood keeps head warm after bath.' 
+        },
+        { 
+            id: 'AC- 065', 
+            name: 'Milestone Blanket', 
+            price: '', 
+            desc: '<strong>Style:</strong> Photo Prop<br><strong>Includes:</strong> Markers<br><strong>Memory:</strong> Capture monthly growth with this beautiful organic muslin backdrop.' 
+        }
+    ],
+    'shelf-feeding': [
+        { 
+            id: 'AC- 066', 
+            name: 'Cushy bibs', 
+            price: '', 
+            desc: '<strong>Style:</strong> Padded Bib<br><strong>Fabric:</strong> Soft absorbency<br><strong>Comfort:</strong> Extra thick to protect clothing from heavy spills. Soft on the neck.' 
+        },
+        { 
+            id: 'AC- 067', 
+            name: 'Bibs', 
+            price: '', 
+            desc: '<strong>Style:</strong> Standard Bib<br><strong>Closure:</strong> Snap/Velcro<br><strong>Essential:</strong> Everyday protection for meal times. Easy to wash and dry.' 
+        },
+        { 
+            id: 'AC- 068', 
+            name: 'Reminder Band', 
+            price: '', 
+            desc: '<strong>Style:</strong> Wrist Band<br><strong>Use:</strong> Nursing tracking<br><strong>Utility:</strong> Helps moms track feeding sides or times. Soft silicone or fabric options.' 
+        },
+        { 
+            id: 'AC- 069', 
+            name: 'Nursing pad', 
+            price: '', 
+            desc: '<strong>Style:</strong> Reusable Pad<br><strong>Fabric:</strong> Bamboo/Cotton<br><strong>Eco-friendly:</strong> Washable and leak-proof. Contoured to fit discreetly inside bras.' 
+        },
+        { 
+            id: 'AC- 070', 
+            name: 'Waterproof Bibs', 
+            price: '', 
+            desc: '<strong>Style:</strong> Feeding Bib<br><strong>Feature:</strong> Wipe-clean<br><strong>Clean-up:</strong> Repels liquids and foods. Just wipe down after meals. Includes catch pocket.' 
+        },
+        { 
+            id: 'AC- 071', 
+            name: 'Teether pad cover', 
+            price: '', 
+            desc: '<strong>Style:</strong> Strap Cover<br><strong>Use:</strong> Carrier/Stroller<br><strong>Hygiene:</strong> Protects carrier straps from drool and gives baby a clean surface to chew.' 
+        },
+        { 
+            id: 'AC- 072', 
+            name: 'Bandana drool bibs', 
+            price: '', 
+            desc: '<strong>Style:</strong> Bandana Shape<br><strong>Backing:</strong> Fleece<br><strong>Function:</strong> Keeps chest dry for teething babies. Stylish accessory that absorbs drool.' 
+        },
+        { 
+            id: 'AC- 073', 
+            name: 'Muslin bibs', 
+            price: '', 
+            desc: '<strong>Style:</strong> Snap Bib<br><strong>Fabric:</strong> Multi-layer Muslin<br><strong>Softness:</strong> Extremely soft and absorbent. Perfect for wiping milk dribbles.' 
+        },
+        { 
+            id: 'AC- 074', 
+            name: 'Pocket bibs', 
+            price: '', 
+            desc: '<strong>Style:</strong> Catch-all Bib<br><strong>Feature:</strong> Food pocket<br><strong>Design:</strong> Silicone or structure fabric pocket stays open to catch dropped food.' 
+        },
+        { 
+            id: 'AC- 075', 
+            name: 'Burp cloth', 
+            price: '', 
+            desc: '<strong>Style:</strong> Contoured Cloth<br><strong>Absorbency:</strong> High<br><strong>Shape:</strong> Kidney-bean shape fits perfectly over your shoulder. Protects clothes from spit-up.' 
+        },
+        { 
+            id: 'AC- 076', 
+            name: 'Canopy feeding towel / Car seat cover', 
+            price: '', 
+            desc: '<strong>Style:</strong> Multi-use Cover<br><strong>Fabric:</strong> Stretchy<br><strong>Versatility:</strong> 4-in-1 use: Nursing cover, car seat canopy, cart cover, and scarf.' 
+        },
+        { 
+            id: 'AC- 077', 
+            name: 'Nursing cover', 
+            price: '', 
+            desc: '<strong>Style:</strong> Apron Cover<br><strong>Feature:</strong> Rigid Neckline<br><strong>Privacy:</strong> Allows eye contact with baby while feeding. Breathable fabric prevents overheating.' 
+        },
+        { 
+            id: 'AC- 078', 
+            name: 'Cuddle Goose', 
+            price: '', 
+            desc: '<strong>Style:</strong> Comfort Toy<br><strong>Filling:</strong> Cherry Stones<br><strong>Relief:</strong> Can be warmed in the microwave to provide gentle heat for colic or tummy aches.' 
+        }
+    ],
+    'shelf-bedding': [
+        { 
+            id: 'AC- 079', 
+            name: 'Bedding sheet', 
+            price: '', 
+            desc: '<strong>Style:</strong> Flat Sheet<br><strong>Fabric:</strong> Organic Cotton<br><strong>Comfort:</strong> Crisp, cool percale weave. Gets softer with every wash.' 
+        },
+        { 
+            id: 'AC- 080', 
+            name: 'Twin Sheet', 
+            price: '', 
+            desc: '<strong>Style:</strong> Fitted Sheet<br><strong>Size:</strong> Twin Bed<br><strong>Transition:</strong> Perfect for the big kid bed transition. Deep pockets fit standard mattresses.' 
+        },
+        { 
+            id: 'AC- 081', 
+            name: 'Toddler Pillowcase', 
+            price: '', 
+            desc: '<strong>Size:</strong> 13x18 inches<br><strong>Fabric:</strong> Organic Sateen<br><strong>Hypoallergenic:</strong> Smooth surface is gentle on hair and sensitive facial skin.' 
+        },
+        { 
+            id: 'AC- 082', 
+            name: 'Bassinet sheet', 
+            price: '', 
+            desc: '<strong>Style:</strong> Oval/Rectangular<br><strong>Fit:</strong> Snug Elastic<br><strong>Safety:</strong> Designed for smaller mattresses. Stays tight to prevent bunching.' 
+        },
+        { 
+            id: 'AC- 083', 
+            name: 'Duvet cover', 
+            price: '', 
+            desc: '<strong>Style:</strong> Quilt Cover<br><strong>Closure:</strong> Button/Zip<br><strong>Design:</strong> Reversible prints. Internal ties keep the duvet insert in place.' 
+        },
+        { 
+            id: 'AC- 084', 
+            name: 'Pillow cover', 
+            price: '', 
+            desc: '<strong>Style:</strong> Standard Case<br><strong>Fabric:</strong> Organic Cotton<br><strong>Essential:</strong> Breathable and soft for a good night\'s rest.' 
+        },
+        { 
+            id: 'AC- 085', 
+            name: 'Crib Sheet', 
+            price: '', 
+            desc: '<strong>Style:</strong> Standard Crib<br><strong>Elastic:</strong> 360-degree<br><strong>Fit:</strong> Premium elastic ensures the sheet stays securely on the mattress.' 
+        }
+    ],
+    'shelf-diapering': [
+        { 
+            id: 'AC- 086', 
+            name: 'Changing pad cover', 
+            price: '', 
+            desc: '<strong>Style:</strong> Contoured Fit<br><strong>Fabric:</strong> Minky/Cotton<br><strong>Comfort:</strong> Adds a warm, soft layer to cold changing pads. Machine washable.' 
+        },
+        { 
+            id: 'AC- 087', 
+            name: 'Diaper changing mat', 
+            price: '', 
+            desc: '<strong>Style:</strong> Portable Mat<br><strong>Feature:</strong> Waterproof<br><strong>Travel:</strong> Compact and foldable. Essential for clean diaper changes on the go.' 
+        },
+        { 
+            id: 'AC- 088', 
+            name: 'Cloth Diaper', 
+            price: '', 
+            desc: '<strong>Style:</strong> Pocket Diaper<br><strong>Size:</strong> One Size Fits Most<br><strong>Eco:</strong> Waterproof outer shell with stay-dry inner. Adjustable snaps grow with baby.' 
+        },
+        { 
+            id: 'AC- 089', 
+            name: 'Diaper Inserts', 
+            price: '', 
+            desc: '<strong>Style:</strong> Absorbent Insert<br><strong>Material:</strong> Bamboo Charcoal<br><strong>Performance:</strong> 5-layer absorption locks away moisture. Naturally odor-resistant.' 
+        },
+        { 
+            id: 'AC- 090', 
+            name: 'Pre-fold', 
+            price: '', 
+            desc: '<strong>Style:</strong> Traditional Diaper<br><strong>Fabric:</strong> Unbleached Cotton<br><strong>Versatile:</strong> Can be used as a diaper, burp cloth, or cleaning rag. High durability.' 
+        },
+        { 
+            id: 'AC- 091', 
+            name: 'Sanitary Pads', 
+            price: '', 
+            desc: '<strong>Style:</strong> Reusable Pad<br><strong>Use:</strong> Postpartum/Cycle<br><strong>Health:</strong> Breathable organic top layer reduces irritation. Waterproof backing prevents leaks.' 
+        },
+        { 
+            id: 'AC- 092', 
+            name: 'Training Pants', 
+            price: '', 
+            desc: '<strong>Style:</strong> Padded Underwear<br><strong>Use:</strong> Potty Training<br><strong>Function:</strong> Looks like big-kid underwear but catches small accidents. Helps toddler feel wetness.' 
+        },
+        { 
+            id: 'AC- 093', 
+            name: 'Wet bags', 
+            price: '', 
+            desc: '<strong>Style:</strong> Waterproof Bag<br><strong>Closure:</strong> Zipper<br><strong>Storage:</strong> Contains smells and moisture. Perfect for soiled diapers or wet swimsuits.' 
+        }
+    ]
+};
 
-    // --- 2. IMAGE DATABASE (FULL ASSETS FOR GALLERY) ---
+// --- 2. IMAGE DATABASE (4 IMAGES PER PRODUCT - CORRECT FOLDER STRUCTURE) ---
     const productAssets = {
-        // --- SLEEPING ---
-        'AC - 001': ["assets/product-images/sleeping-bag-tog0.5.jpg", "assets/product-images/sleeping-bag-tog0.5-1.jpg", "assets/product-images/sleeping-bag-tog0.5-2.jpg", "assets/product-images/sleeping-bag-tog0.5-3.jpg"],
-        'AC - 002': ["assets/product-images/sleeping-bag-tog1.5.jpg", "assets/product-images/sleeping-bag-tog1.5-1.jpg", "assets/product-images/sleeping-bag-tog1.5-2.jpg", "assets/product-images/sleeping-bag-tog1.5-3.jpg"],
-        'AC - 003': ["assets/product-images/sleeping-bag-tog2.5.jpg", "assets/product-images/sleeping-bag-tog2.5-1.jpg", "assets/product-images/sleeping-bag-tog2.5-2.jpg", "assets/product-images/sleeping-bag-tog2.5-3.jpg"],
-        'AC - 004': ["assets/product-images/sleeping-bag-tog3.5.jpg", "assets/product-images/sleeping-bag-tog3.5-1.jpg", "assets/product-images/sleeping-bag-tog3.5-2.jpg", "assets/product-images/sleeping-bag-tog3.5-3.jpg"],
-        'AC - 005': ["assets/product-images/adjustable-swaddle-wrap.jpg", "assets/product-images/adjustable-swaddle-wrap1.jpg", "assets/product-images/adjustable-swaddle-wrap2.jpg", "assets/product-images/adjustable-swaddle-wrap3.jpg"],
-        'AC - 006': ["assets/product-images/knotted-swaddle-wrap.jpg", "assets/product-images/knotted-swaddle-wrap1.jpg", "assets/product-images/knotted-swaddle-wrap2.jpg", "assets/product-images/knotted-swaddle-wrap3.jpg"],
-        'AC - 007': ["assets/product-images/quilt-blanket.jpg", "assets/product-images/quilt-blanket1.jpg", "assets/product-images/quilt-blanket2.jpg", "assets/product-images/quilt-blanket3.jpg"],
-        'AC - 008': ["assets/product-images/cocoon-swaddle.jpg", "assets/product-images/cocoon-swaddle1.jpg", "assets/product-images/cocoon-swaddle2.jpg", "assets/product-images/cocoon-swaddle3.jpg"],
-        'AC - 009': ["assets/product-images/muslin-swaddle-blanket.jpg", "assets/product-images/muslin-swaddle-blanket1.jpg", "assets/product-images/muslin-swaddle-blanket2.jpg", "assets/product-images/muslin-swaddle-blanket3.jpg"],
-        
-        // --- BEDDING ---
-        'AC - 010': ["assets/product-images/crib-sheet.jpg", "assets/product-images/crib-sheet1.jpg", "assets/product-images/crib-sheet2.jpg", "assets/product-images/crib-sheet3.jpg"],
-        'AC - 011': ["assets/product-images/bassinet-sheet.jpg", "assets/product-images/bassinet-sheet1.jpg", "assets/product-images/bassinet-sheet2.jpg", "assets/product-images/bassinet-sheet3.jpg"],
-        'AC - 012': ["assets/product-images/bed-sheet.jpg", "assets/product-images/bed-sheet1.jpg", "assets/product-images/bed-sheet2.jpg", "assets/product-images/bed-sheet3.jpg"],
-        'AC - 013': ["assets/product-images/duvet-covers.jpg", "assets/product-images/duvet-covers1.jpg", "assets/product-images/duvet-covers2.jpg", "assets/product-images/duvet-covers3.jpg"],
-        'AC - 014': ["assets/product-images/pillow-cover.jpg", "assets/product-images/pillow-cover1.jpg", "assets/product-images/pillow-cover2.jpg", "assets/product-images/pillow-cover3.jpg"],
+        // --- BABY SLEEPING ---
+        'AC- 001': [
+            "assets/product-images/Baby-Sleeping/Sleep-Bag-Swaddler/a.png",
+            "assets/product-images/Baby-Sleeping/Sleep-Bag-Swaddler/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/Sleep-Bag-Swaddler/a-2.png",
+            "assets/product-images/Baby-Sleeping/Sleep-Bag-Swaddler/a-3.png"
+        ],
+        'AC- 002': [
+            "assets/product-images/Baby-Sleeping/0.5-TOG-Sleep-Bag-Swaddler/a.jpg",
+            "assets/product-images/Baby-Sleeping/0.5-TOG-Sleep-Bag-Swaddler/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/0.5-TOG-Sleep-Bag-Swaddler/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/0.5-TOG-Sleep-Bag-Swaddler/a-3.jpg"
+        ],
+        'AC- 003': [
+            "assets/product-images/Baby-Sleeping/0.5-TOG-Sleep-Bag/a.jpg",
+            "assets/product-images/Baby-Sleeping/0.5-TOG-Sleep-Bag/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/0.5-TOG-Sleep-Bag/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/0.5-TOG-Sleep-Bag/a-3.jpg"
+        ],
+        'AC- 004': [
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Sleep-Bag/a.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Sleep-Bag/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Sleep-Bag/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Sleep-Bag/a-3.jpg"
+        ],
+        'AC- 005': [
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Sleep-Bag-Walker/a.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Sleep-Bag-Walker/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Sleep-Bag-Walker/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Sleep-Bag-Walker/a-3.jpg"
+        ],
+        'AC- 006': [
+            "assets/product-images/Baby-Sleeping/0.5-TOG-Sleep-Bag-Walker/a.jpg",
+            "assets/product-images/Baby-Sleeping/0.5-TOG-Sleep-Bag-Walker/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/0.5-TOG-Sleep-Bag-Walker/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/0.5-TOG-Sleep-Bag-Walker/a-3.png"
+        ],
+        'AC- 007': [
+            "assets/product-images/Baby-Sleeping/Swaddle-Blanket/a.jpg",
+            "assets/product-images/Baby-Sleeping/Swaddle-Blanket/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/Swaddle-Blanket/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/Swaddle-Blanket/a-3.jpg"
+        ],
+        'AC- 008': [
+            "assets/product-images/Baby-Sleeping/Baby-Blanket/a.jpg",
+            "assets/product-images/Baby-Sleeping/Baby-Blanket/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/Baby-Blanket/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/Baby-Blanket/a-3.jpg"
+        ],
+        'AC- 009': [
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Toddler-Blanket/a.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Toddler-Blanket/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Toddler-Blanket/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Toddler-Blanket/a-3.jpg"
+        ],
+        'AC- 010': [
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Youth-Blanket/a.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Youth-Blanket/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Youth-Blanket/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Youth-Blanket/a-3.png"
+        ],
+        'AC- 011': [
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Adult-Blanket/a.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Adult-Blanket/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Adult-Blanket/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/1.0-TOG-Adult-Blanket/a-3.jpg"
+        ],
+        'AC- 012': [
+            "assets/product-images/Baby-Sleeping/2.5-TOG-Adult-Blanket/a.jpg",
+            "assets/product-images/Baby-Sleeping/2.5-TOG-Adult-Blanket/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/2.5-TOG-Adult-Blanket/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/2.5-TOG-Adult-Blanket/a-3.jpg"
+        ],
+        'AC- 013': [
+            "assets/product-images/Baby-Sleeping/Mini-Crib-Sheet/a.jpg",
+            "assets/product-images/Baby-Sleeping/Mini-Crib-Sheet/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/Mini-Crib-Sheet/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/Mini-Crib-Sheet/a-3.jpg"
+        ],
+        'AC- 014': [
+            "assets/product-images/Baby-Sleeping/Change-Pad-Cover/a.jpg",
+            "assets/product-images/Baby-Sleeping/Change-Pad-Cover/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/Change-Pad-Cover/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/Change-Pad-Cover/a-3.jpg"
+        ],
+        'AC- 015': [
+            "assets/product-images/Baby-Sleeping/Playing-sheet/a.png",
+            "assets/product-images/Baby-Sleeping/Playing-sheet/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/Playing-sheet/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/Playing-sheet/a-3.jpg"
+        ],
+        'AC- 016': [
+            "assets/product-images/Baby-Sleeping/Cocoon-Swaddle/a.jpg",
+            "assets/product-images/Baby-Sleeping/Cocoon-Swaddle/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/Cocoon-Swaddle/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/Cocoon-Swaddle/a-3.jpg"
+        ],
+        'AC- 017': [
+            "assets/product-images/Baby-Sleeping/Knotted-Swaddle-Wrap/a.jpg",
+            "assets/product-images/Baby-Sleeping/Knotted-Swaddle-Wrap/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/Knotted-Swaddle-Wrap/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/Knotted-Swaddle-Wrap/a-3.jpg"
+        ],
+        'AC- 018': [
+            "assets/product-images/Baby-Sleeping/Muslin-Swaddle-Blanket/a.jpg",
+            "assets/product-images/Baby-Sleeping/Muslin-Swaddle-Blanket/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/Muslin-Swaddle-Blanket/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/Muslin-Swaddle-Blanket/a-3.jpg"
+        ],
+        'AC- 019': [
+            "assets/product-images/Baby-Sleeping/1.5-Tog-Sleeping-Bag/a.jpg",
+            "assets/product-images/Baby-Sleeping/1.5-Tog-Sleeping-Bag/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/1.5-Tog-Sleeping-Bag/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/1.5-Tog-Sleeping-Bag/a-3.jpg"
+        ],
+        'AC- 020': [
+            "assets/product-images/Baby-Sleeping/2.5-Tog-Sleeping-bag/a.jpg",
+            "assets/product-images/Baby-Sleeping/2.5-Tog-Sleeping-bag/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/2.5-Tog-Sleeping-bag/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/2.5-Tog-Sleeping-bag/a-3.jpg"
+        ],
+        'AC- 021': [
+            "assets/product-images/Baby-Sleeping/3.5-Tog-Sleeping-bag/a.jpg",
+            "assets/product-images/Baby-Sleeping/3.5-Tog-Sleeping-bag/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/3.5-Tog-Sleeping-bag/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/3.5-Tog-Sleeping-bag/a-3.jpg"
+        ],
+        'AC- 022': [
+            "assets/product-images/Baby-Sleeping/Adjustable-Swaddle-Wrap/a.jpg",
+            "assets/product-images/Baby-Sleeping/Adjustable-Swaddle-Wrap/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/Adjustable-Swaddle-Wrap/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/Adjustable-Swaddle-Wrap/a-3.jpg"
+        ],
+        'AC- 023': [
+            "assets/product-images/Baby-Sleeping/Quilt-Blanket/a.jpg",
+            "assets/product-images/Baby-Sleeping/Quilt-Blanket/a-1.jpg",
+            "assets/product-images/Baby-Sleeping/Quilt-Blanket/a-2.jpg",
+            "assets/product-images/Baby-Sleeping/Quilt-Blanket/a-3.jpg"
+        ],
 
-        // --- APPAREL ---
-        'AC - 015': ["assets/product-images/onesie.jpg", "assets/product-images/onesie1.jpg", "assets/product-images/onesie2.jpg", "assets/product-images/onesie3.jpg"],
-        'AC - 016': ["assets/product-images/rompers.jpg", "assets/product-images/rompers1.jpg", "assets/product-images/rompers2.jpg", "assets/product-images/rompers3.jpg"],
-        'AC - 017': ["assets/product-images/bodysuit.jpg", "assets/product-images/bodysuit1.jpg", "assets/product-images/bodysuit2.jpg", "assets/product-images/bodysuit3.jpg"],
-        'AC - 018': ["assets/product-images/two-piece-pajamas.jpg", "assets/product-images/two-piece-pajamas1.jpg", "assets/product-images/two-piece-pajamas2.jpg", "assets/product-images/two-piece-pajamas3.jpg"],
-        'AC - 019': ["assets/product-images/leggings.jpg", "assets/product-images/leggings1.jpg", "assets/product-images/leggings2.jpg", "assets/product-images/leggings3.jpg"],
-        'AC - 020': ["assets/product-images/t-shirt.jpg", "assets/product-images/t-shirt1.jpg", "assets/product-images/t-shirt2.jpg", "assets/product-images/t-shirt3.jpg"],
-        'AC - 021': ["assets/product-images/swimsuit.jpg", "assets/product-images/swimsuit1.jpg", "assets/product-images/swimsuit2.jpg", "assets/product-images/swimsuit3.jpg"],
-        'AC - 022': ["assets/product-images/sweat-shirt.jpg", "assets/product-images/sweat-shirt1.jpg", "assets/product-images/sweat-shirt2.jpg", "assets/product-images/sweat-shirt3.jpg"],
-        'AC - 023': ["assets/product-images/sweat-pants.jpg", "assets/product-images/sweat-pants1.jpg", "assets/product-images/sweat-pants2.jpg", "assets/product-images/sweat-pants3.jpg"],
-        'AC - 024': ["assets/product-images/baby-gown.jpg", "assets/product-images/baby-gown1.jpg", "assets/product-images/baby-gown2.jpg", "assets/product-images/baby-gown3.jpg"],
+        // --- BABY APPARELS ---
+        'AC- 024': [
+            "assets/product-images/Baby-Appraels/Snap-Romper/a.jpg",
+            "assets/product-images/Baby-Appraels/Snap-Romper/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Snap-Romper/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Snap-Romper/a-3.jpg"
+        ],
+        'AC- 025': [
+            "assets/product-images/Baby-Appraels/Snap-Footie/a.jpg",
+            "assets/product-images/Baby-Appraels/Snap-Footie/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Snap-Footie/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Snap-Footie/a-3.jpg"
+        ],
+        'AC- 026': [
+            "assets/product-images/Baby-Appraels/Zipper-Romper/a.jpg",
+            "assets/product-images/Baby-Appraels/Zipper-Romper/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Zipper-Romper/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Zipper-Romper/a-3.jpg"
+        ],
+        'AC- 027': [
+            "assets/product-images/Baby-Appraels/Short-Sleeve-Bodysuit/a.jpg",
+            "assets/product-images/Baby-Appraels/Short-Sleeve-Bodysuit/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Short-Sleeve-Bodysuit/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Short-Sleeve-Bodysuit/a-3.png"
+        ],
+        'AC- 028': [
+            "assets/product-images/Baby-Appraels/Sleeveless-Bodysuit/a.jpg",
+            "assets/product-images/Baby-Appraels/Sleeveless-Bodysuit/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Sleeveless-Bodysuit/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Sleeveless-Bodysuit/a-3.jpg"
+        ],
+        'AC- 029': [
+            "assets/product-images/Baby-Appraels/Bummies/a.jpg",
+            "assets/product-images/Baby-Appraels/Bummies/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Bummies/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Bummies/a-3.jpg"
+        ],
+        'AC- 030': [
+            "assets/product-images/Baby-Appraels/Zippered-Sleeveless-Romper/a.jpg",
+            "assets/product-images/Baby-Appraels/Zippered-Sleeveless-Romper/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Zippered-Sleeveless-Romper/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Zippered-Sleeveless-Romper/a-3.png"
+        ],
+        'AC- 031': [
+            "assets/product-images/Baby-Appraels/Long-Sleeve-Toddler-Pajamas/a.jpg",
+            "assets/product-images/Baby-Appraels/Long-Sleeve-Toddler-Pajamas/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Long-Sleeve-Toddler-Pajamas/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Long-Sleeve-Toddler-Pajamas/a-3.jpg"
+        ],
+        'AC- 032': [
+            "assets/product-images/Baby-Appraels/Short-Sleeve-Toddler-Pajamas/a.jpg",
+            "assets/product-images/Baby-Appraels/Short-Sleeve-Toddler-Pajamas/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Short-Sleeve-Toddler-Pajamas/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Short-Sleeve-Toddler-Pajamas/a-3.jpg"
+        ],
+        'AC- 033': [
+            "assets/product-images/Baby-Appraels/Toddler-Legging/a.jpg",
+            "assets/product-images/Baby-Appraels/Toddler-Legging/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Toddler-Legging/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Toddler-Legging/a-3.jpg"
+        ],
+        'AC- 035': [
+            "assets/product-images/Baby-Appraels/Short-Sleeve-Toddler-Crew-Neck-Tee/a.jpg",
+            "assets/product-images/Baby-Appraels/Short-Sleeve-Toddler-Crew-Neck-Tee/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Short-Sleeve-Toddler-Crew-Neck-Tee/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Short-Sleeve-Toddler-Crew-Neck-Tee/a-3.jpg"
+        ],
+        'AC- 036': [
+            "assets/product-images/Baby-Appraels/Toddler-Brief/a.jpg",
+            "assets/product-images/Baby-Appraels/Toddler-Brief/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Toddler-Brief/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Toddler-Brief/a-3.jpg"
+        ],
+        'AC- 037': [
+            "assets/product-images/Baby-Appraels/Men’s-Crew-Neck-Tee/a.jpg",
+            "assets/product-images/Baby-Appraels/Men’s-Crew-Neck-Tee/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Men’s-Crew-Neck-Tee/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Men’s-Crew-Neck-Tee/a-3.jpg"
+        ],
+        'AC- 038': [
+            "assets/product-images/Baby-Appraels/Bamboo-Jersey-Tank-Jogger-Set/a.jpg",
+            "assets/product-images/Baby-Appraels/Bamboo-Jersey-Tank-Jogger-Set/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Bamboo-Jersey-Tank-Jogger-Set/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Bamboo-Jersey-Tank-Jogger-Set/a-3.jpg"
+        ],
+        'AC- 039': [
+            "assets/product-images/Baby-Appraels/Bamboo-Jersey-Short-Sleeve-Jogger-Set/a.jpg",
+            "assets/product-images/Baby-Appraels/Bamboo-Jersey-Short-Sleeve-Jogger-Set/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Bamboo-Jersey-Short-Sleeve-Jogger-Set/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Bamboo-Jersey-Short-Sleeve-Jogger-Set/a-3.jpg"
+        ],
+        'AC- 040': [
+            "assets/product-images/Baby-Appraels/Bubble-Romper/a.jpg",
+            "assets/product-images/Baby-Appraels/Bubble-Romper/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Bubble-Romper/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Bubble-Romper/a-3.jpg"
+        ],
+        'AC- 042': [
+            "assets/product-images/Baby-Appraels/Twirl-Bodysuit-Dress/a.jpg",
+            "assets/product-images/Baby-Appraels/Twirl-Bodysuit-Dress/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Twirl-Bodysuit-Dress/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Twirl-Bodysuit-Dress/a-3.jpg"
+        ],
+        'AC- 045': [
+            "assets/product-images/Baby-Appraels/Dangarees/a.jpg",
+            "assets/product-images/Baby-Appraels/Dangarees/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Dangarees/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Dangarees/a-3.jpg"
+        ],
+        'AC- 046': [
+            "assets/product-images/Baby-Appraels/Onesie/a.jpg",
+            "assets/product-images/Baby-Appraels/Onesie/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Onesie/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Onesie/a-3.jpg"
+        ],
+        'AC- 047': [
+            "assets/product-images/Baby-Appraels/Two-piece-pajamas/a.jpg",
+            "assets/product-images/Baby-Appraels/Two-piece-pajamas/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Two-piece-pajamas/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Two-piece-pajamas/a-3.jpg"
+        ],
+        'AC- 048': [
+            "assets/product-images/Baby-Appraels/T-shirt/a.jpg",
+            "assets/product-images/Baby-Appraels/T-shirt/a-1.jpg",
+            "assets/product-images/Baby-Appraels/T-shirt/a-2.jpg",
+            "assets/product-images/Baby-Appraels/T-shirt/a-3.jpg"
+        ],
+        'AC- 049': [
+            "assets/product-images/Baby-Appraels/Legging/a.jpg",
+            "assets/product-images/Baby-Appraels/Legging/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Legging/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Legging/a-3.jpg"
+        ],
+        'AC- 050': [
+            "assets/product-images/Baby-Appraels/Swimsuit/a.jpg",
+            "assets/product-images/Baby-Appraels/Swimsuit/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Swimsuit/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Swimsuit/a-3.jpg"
+        ],
+        'AC- 051': [
+            "assets/product-images/Baby-Appraels/Sweat-shirt/a.jpg",
+            "assets/product-images/Baby-Appraels/Sweat-shirt/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Sweat-shirt/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Sweat-shirt/a-3.jpg"
+        ],
+        'AC- 052': [
+            "assets/product-images/Baby-Appraels/Sweat-pants/a.jpg",
+            "assets/product-images/Baby-Appraels/Sweat-pants/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Sweat-pants/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Sweat-pants/a-3.jpg"
+        ],
+        'AC- 053': [
+            "assets/product-images/Baby-Appraels/Baby-Gown/a.jpg",
+            "assets/product-images/Baby-Appraels/Baby-Gown/a-1.jpg",
+            "assets/product-images/Baby-Appraels/Baby-Gown/a-2.jpg",
+            "assets/product-images/Baby-Appraels/Baby-Gown/a-3.jpg"
+        ],
 
-        // --- DIAPERING ---
-        'AC - 025': ["assets/product-images/changing-pad-cover.jpg", "assets/product-images/changing-pad-cover1.jpg", "assets/product-images/changing-pad-cover2.jpg", "assets/product-images/changing-pad-cover3.jpg"],
-        'AC - 026': ["assets/product-images/diaper-changing-mat.jpg", "assets/product-images/diaper-changing-mat1.jpg", "assets/product-images/diaper-changing-mat2.jpg", "assets/product-images/diaper-changing-mat3.jpg"],
-        'AC - 027': ["assets/product-images/cloth-diaper.jpg", "assets/product-images/cloth-diaper1.jpg", "assets/product-images/cloth-diaper2.jpg", "assets/product-images/cloth-diaper3.jpg"],
-        'AC - 028': ["assets/product-images/diaper-insert.jpg", "assets/product-images/diaper-insert1.jpg", "assets/product-images/diaper-insert2.jpg", "assets/product-images/diaper-insert3.jpg"],
-        'AC - 029': ["assets/product-images/pre-fold.jpg", "assets/product-images/pre-fold1.jpg", "assets/product-images/pre-fold2.jpg", "assets/product-images/pre-fold3.jpg"],
-        'AC - 030': ["assets/product-images/sanitary-pads.jpg", "assets/product-images/sanitary-pads1.jpg", "assets/product-images/sanitary-pads2.jpg", "assets/product-images/sanitary-pads3.jpg"],
-        'AC - 031': ["assets/product-images/training-pants.jpg", "assets/product-images/training-pants1.jpg", "assets/product-images/training-pants2.jpg", "assets/product-images/training-pants3.jpg"],
-        'AC - 032': ["assets/product-images/wet-bags.jpg", "assets/product-images/wet-bags1.jpg", "assets/product-images/wet-bags2.jpg", "assets/product-images/wet-bags3.jpg"],
+        // --- BABY ACCESSORIES ---
+        'AC- 054': [
+            "assets/product-images/Baby-Accessories/Hats/a.jpg",
+            "assets/product-images/Baby-Accessories/Hats/a-1.jpg",
+            "assets/product-images/Baby-Accessories/Hats/a-2.jpg",
+            "assets/product-images/Baby-Accessories/Hats/a-3.jpg"
+        ],
+        'AC- 055': [
+            "assets/product-images/Baby-Accessories/bow/a.jpg",
+            "assets/product-images/Baby-Accessories/bow/a-1.jpg",
+            "assets/product-images/Baby-Accessories/bow/a-2.jpg",
+            "assets/product-images/Baby-Accessories/bow/a-3.jpg"
+        ],
+        'AC- 056': [
+            "assets/product-images/Baby-Accessories/lovey/a.jpg",
+            "assets/product-images/Baby-Accessories/lovey/a-1.jpg",
+            "assets/product-images/Baby-Accessories/lovey/a-2.jpg",
+            "assets/product-images/Baby-Accessories/lovey/a-3.jpg"
+        ],
+        'AC- 057': [
+            "assets/product-images/Baby-Accessories/Booties/a.jpg",
+            "assets/product-images/Baby-Accessories/Booties/a-1.jpg",
+            "assets/product-images/Baby-Accessories/Booties/a-2.jpg",
+            "assets/product-images/Baby-Accessories/Booties/a-3.jpg"
+        ],
+        'AC- 058': [
+            "assets/product-images/Baby-Accessories/Mittens/a.jpg",
+            "assets/product-images/Baby-Accessories/Mittens/a-1.jpg",
+            "assets/product-images/Baby-Accessories/Mittens/a-2.jpg",
+            "assets/product-images/Baby-Accessories/Mittens/a-3.jpg"
+        ],
+        'AC- 059': [
+            "assets/product-images/Baby-Accessories/Bonnets/a.jpg",
+            "assets/product-images/Baby-Accessories/Bonnets/a-1.jpg",
+            "assets/product-images/Baby-Accessories/Bonnets/a-2.jpg",
+            "assets/product-images/Baby-Accessories/Bonnets/a-3.jpg"
+        ],
+        'AC- 060': [
+            "assets/product-images/Baby-Accessories/Knot-hats/a.jpg",
+            "assets/product-images/Baby-Accessories/Knot-hats/a-1.jpg",
+            "assets/product-images/Baby-Accessories/Knot-hats/a-2.jpg",
+            "assets/product-images/Baby-Accessories/Knot-hats/a-3.jpg"
+        ],
+        'AC- 061': [
+            "assets/product-images/Baby-Accessories/Beanie-hats/a.jpg",
+            "assets/product-images/Baby-Accessories/Beanie-hats/a-1.jpg",
+            "assets/product-images/Baby-Accessories/Beanie-hats/a-2.jpg",
+            "assets/product-images/Baby-Accessories/Beanie-hats/a-3.jpg"
+        ],
+        'AC- 062': [
+            "assets/product-images/Baby-Accessories/Beach-hats/a.jpg",
+            "assets/product-images/Baby-Accessories/Beach-hats/a-1.jpg",
+            "assets/product-images/Baby-Accessories/Beach-hats/a-2.jpg",
+            "assets/product-images/Baby-Accessories/Beach-hats/a-3.jpg"
+        ],
+        'AC- 063': [
+            "assets/product-images/Baby-Accessories/Wash-clothes/a.jpg",
+            "assets/product-images/Baby-Accessories/Wash-clothes/a-1.jpg",
+            "assets/product-images/Baby-Accessories/Wash-clothes/a-2.jpg",
+            "assets/product-images/Baby-Accessories/Wash-clothes/a-3.jpg"
+        ],
+        'AC- 064': [
+            "assets/product-images/Baby-Accessories/Hooded-towel/a.jpg",
+            "assets/product-images/Baby-Accessories/Hooded-towel/a-1.jpg",
+            "assets/product-images/Baby-Accessories/Hooded-towel/a-2.jpg",
+            "assets/product-images/Baby-Accessories/Hooded-towel/a-3.jpg"
+        ],
+        'AC- 065': [
+            "assets/product-images/Baby-Accessories/Milestone-Blanket/a.jpg",
+            "assets/product-images/Baby-Accessories/Milestone-Blanket/a-1.jpg",
+            "assets/product-images/Baby-Accessories/Milestone-Blanket/a-2.jpg",
+            "assets/product-images/Baby-Accessories/Milestone-Blanket/a-3.jpg"
+        ],
 
-        // --- ACCESSORIES ---
-        'AC - 033': ["assets/product-images/mittens.jpg", "assets/product-images/mittens1.jpg", "assets/product-images/mittens2.jpg", "assets/product-images/mittens3.jpg"],
-        'AC - 034': ["assets/product-images/bonnets.jpg", "assets/product-images/bonnets1.jpg", "assets/product-images/bonnets2.jpg", "assets/product-images/bonnets3.jpg"],
-        'AC - 035': ["assets/product-images/booties.jpg", "assets/product-images/booties1.jpg", "assets/product-images/booties2.jpg", "assets/product-images/booties3.jpg"],
-        'AC - 036': ["assets/product-images/knot-hats.jpg", "assets/product-images/knot-hats1.jpg", "assets/product-images/knot-hats2.jpg", "assets/product-images/knot-hats3.jpg"],
-        'AC - 037': ["assets/product-images/beanie-hats.jpg", "assets/product-images/beanie-hats1.jpg", "assets/product-images/beanie-hats2.jpg", "assets/product-images/beanie-hats3.jpg"],
-        'AC - 038': ["assets/product-images/beach-hats.jpg", "assets/product-images/beach-hats1.jpg", "assets/product-images/beach-hats2.jpg", "assets/product-images/beach-hats3.jpg"],
-        'AC - 039': ["assets/product-images/wash-clothes.jpg", "assets/product-images/wash-clothes1.jpg", "assets/product-images/wash-clothes2.jpg", "assets/product-images/wash-clothes3.jpg"],
-        'AC - 040': ["assets/product-images/hooded-towels.jpg", "assets/product-images/hooded-towels1.jpg", "assets/product-images/hooded-towels2.jpg", "assets/product-images/hooded-towels3.jpg"],
-        'AC - 041': ["assets/product-images/milestone-blanket.jpg", "assets/product-images/milestone-blanket1.jpg", "assets/product-images/milestone-blanket2.jpg", "assets/product-images/milestone-blanket3.jpg"],
+        // --- BABY FEEDING ---
+        'AC- 066': [
+            "assets/product-images/Baby-Feeding/Cushy-bibs/a.jpg",
+            "assets/product-images/Baby-Feeding/Cushy-bibs/a-1.jpg",
+            "assets/product-images/Baby-Feeding/Cushy-bibs/a-2.jpg",
+            "assets/product-images/Baby-Feeding/Cushy-bibs/a-3.jpg"
+        ],
+        'AC- 067': [
+            "assets/product-images/Baby-Feeding/Bibs/a.jpg",
+            "assets/product-images/Baby-Feeding/Bibs/a-1.jpg",
+            "assets/product-images/Baby-Feeding/Bibs/a-2.jpg",
+            "assets/product-images/Baby-Feeding/Bibs/a-3.jpg"
+        ],
+        'AC- 068': [
+            "assets/product-images/Baby-Feeding/Reminder-Band/a.jpg",
+            "assets/product-images/Baby-Feeding/Reminder-Band/a-1.jpg",
+            "assets/product-images/Baby-Feeding/Reminder-Band/a-2.jpg",
+            "assets/product-images/Baby-Feeding/Reminder-Band/a-3.jpg"
+        ],
+        'AC- 069': [
+            "assets/product-images/Baby-Feeding/Nursing-pad/a.jpg",
+            "assets/product-images/Baby-Feeding/Nursing-pad/a-1.jpg",
+            "assets/product-images/Baby-Feeding/Nursing-pad/a-2.jpg",
+            "assets/product-images/Baby-Feeding/Nursing-pad/a-3.jpg"
+        ],
+        'AC- 070': [
+            "assets/product-images/Baby-Feeding/Waterproof-Bibs/a.jpg",
+            "assets/product-images/Baby-Feeding/Waterproof-Bibs/a-1.jpg",
+            "assets/product-images/Baby-Feeding/Waterproof-Bibs/a-2.jpg",
+            "assets/product-images/Baby-Feeding/Waterproof-Bibs/a-3.jpg"
+        ],
+        'AC- 071': [
+            "assets/product-images/Baby-Feeding/Teether-pad-cover/a.jpg",
+            "assets/product-images/Baby-Feeding/Teether-pad-cover/a-1.jpg",
+            "assets/product-images/Baby-Feeding/Teether-pad-cover/a-2.jpg",
+            "assets/product-images/Baby-Feeding/Teether-pad-cover/a-3.jpg"
+        ],
+        'AC- 072': [
+            "assets/product-images/Baby-Feeding/Bandana-drool-bibs/a.jpg",
+            "assets/product-images/Baby-Feeding/Bandana-drool-bibs/a-1.jpg",
+            "assets/product-images/Baby-Feeding/Bandana-drool-bibs/a-2.jpg",
+            "assets/product-images/Baby-Feeding/Bandana-drool-bibs/a-3.jpg"
+        ],
+        'AC- 073': [
+            "assets/product-images/Baby-Feeding/Muslin-bibs/a.jpg",
+            "assets/product-images/Baby-Feeding/Muslin-bibs/a-1.jpg",
+            "assets/product-images/Baby-Feeding/Muslin-bibs/a-2.jpg",
+            "assets/product-images/Baby-Feeding/Muslin-bibs/a-3.jpg"
+        ],
+        'AC- 074': [
+            "assets/product-images/Baby-Feeding/Pocket-bibs/a.jpg",
+            "assets/product-images/Baby-Feeding/Pocket-bibs/a-1.jpg",
+            "assets/product-images/Baby-Feeding/Pocket-bibs/a-2.jpg",
+            "assets/product-images/Baby-Feeding/Pocket-bibs/a-3.jpg"
+        ],
+        'AC- 075': [
+            "assets/product-images/Baby-Feeding/Burp-cloth/a.jpg",
+            "assets/product-images/Baby-Feeding/Burp-cloth/a-1.jpg",
+            "assets/product-images/Baby-Feeding/Burp-cloth/a-2.jpg",
+            "assets/product-images/Baby-Feeding/Burp-cloth/a-3.jpg"
+        ],
+        'AC- 076': [
+            "assets/product-images/Baby-Feeding/Canopy-feeding-towel/a.jpg",
+            "assets/product-images/Baby-Feeding/Canopy-feeding-towel/a-1.jpg",
+            "assets/product-images/Baby-Feeding/Canopy-feeding-towel/a-2.jpg",
+            "assets/product-images/Baby-Feeding/Canopy-feeding-towel/a-3.jpg"
+        ],
+        'AC- 077': [
+            "assets/product-images/Baby-Feeding/Nursing-cover/a.jpg",
+            "assets/product-images/Baby-Feeding/Nursing-cover/a-1.jpg",
+            "assets/product-images/Baby-Feeding/Nursing-cover/a-2.jpg",
+            "assets/product-images/Baby-Feeding/Nursing-cover/a-3.jpg"
+        ],
+        'AC- 078': [
+            "assets/product-images/Baby-Feeding/Cuddle-Goose/a.jpg",
+            "assets/product-images/Baby-Feeding/Cuddle-Goose/a-1.jpg",
+            "assets/product-images/Baby-Feeding/Cuddle-Goose/a-2.jpg",
+            "assets/product-images/Baby-Feeding/Cuddle-Goose/a-3.jpg"
+        ],
 
-        // --- FEEDING ---
-        'AC - 042': ["assets/product-images/waterproof-bibs.jpg", "assets/product-images/waterproof-bibs1.jpg", "assets/product-images/waterproof-bibs2.jpg", "assets/product-images/waterproof-bibs3.jpg"],
-        'AC - 043': ["assets/product-images/teether-pad-cover.jpg", "assets/product-images/teether-pad-cover1.jpg", "assets/product-images/teether-pad-cover2.jpg", "assets/product-images/teether-pad-cover3.jpg"],
-        'AC - 044': ["assets/product-images/bandana-drool-bibs.jpg", "assets/product-images/bandana-drool-bibs1.jpg", "assets/product-images/bandana-drool-bibs2.jpg", "assets/product-images/bandana-drool-bibs3.jpg"],
-        'AC - 045': ["assets/product-images/muslin-bibs.jpg", "assets/product-images/muslin-bibs1.jpg", "assets/product-images/muslin-bibs2.jpg", "assets/product-images/muslin-bibs3.jpg"],
-        'AC - 046': ["assets/product-images/pocket-bibs.jpg", "assets/product-images/pocket-bibs1.jpg", "assets/product-images/pocket-bibs2.jpg", "assets/product-images/pocket-bibs3.jpg"],
-        'AC - 047': ["assets/product-images/burp-cloth.jpg", "assets/product-images/burp-cloth1.jpg", "assets/product-images/burp-cloth2.jpg", "assets/product-images/burp-cloth3.jpg"],
-        'AC - 048': ["assets/product-images/canopy-feeding-towel.jpg", "assets/product-images/canopy-feeding-towel1.jpg", "assets/product-images/canopy-feeding-towel2.jpg", "assets/product-images/canopy-feeding-towel3.jpg"],
-        'AC - 049': ["assets/product-images/nursing-cover.jpg", "assets/product-images/nursing-cover1.jpg", "assets/product-images/nursing-cover2.jpg", "assets/product-images/nursing-cover3.jpg"],
-        'AC - 050': ["assets/product-images/cuddle-goose.jpg", "assets/product-images/cuddle-goose1.jpg", "assets/product-images/cuddle-goose2.jpg", "assets/product-images/cuddle-goose3.jpg"]
+        // --- BABY BEDDING ---
+        'AC- 079': [
+            "assets/product-images/Baby-Bedding/Bedding-sheet/a.jpg",
+            "assets/product-images/Baby-Bedding/Bedding-sheet/a-1.jpg",
+            "assets/product-images/Baby-Bedding/Bedding-sheet/a-2.jpg",
+            "assets/product-images/Baby-Bedding/Bedding-sheet/a-3.jpg"
+        ],
+        'AC- 080': [
+            "assets/product-images/Baby-Bedding/Twin-Sheet/a.jpg",
+            "assets/product-images/Baby-Bedding/Twin-Sheet/a-1.jpg",
+            "assets/product-images/Baby-Bedding/Twin-Sheet/a-2.jpg",
+            "assets/product-images/Baby-Bedding/Twin-Sheet/a-3.jpg"
+        ],
+        'AC- 081': [
+            "assets/product-images/Baby-Bedding/Toddler-Pillowcase/a.jpg",
+            "assets/product-images/Baby-Bedding/Toddler-Pillowcase/a-1.jpg",
+            "assets/product-images/Baby-Bedding/Toddler-Pillowcase/a-2.jpg",
+            "assets/product-images/Baby-Bedding/Toddler-Pillowcase/a-3.jpg"
+        ],
+        'AC- 082': [
+            "assets/product-images/Baby-Bedding/Bassinet-sheet/a.jpg",
+            "assets/product-images/Baby-Bedding/Bassinet-sheet/a-1.jpg",
+            "assets/product-images/Baby-Bedding/Bassinet-sheet/a-2.jpg",
+            "assets/product-images/Baby-Bedding/Bassinet-sheet/a-3.jpg"
+        ],
+        'AC- 083': [
+            "assets/product-images/Baby-Bedding/Duvet-cover/a.jpg",
+            "assets/product-images/Baby-Bedding/Duvet-cover/a-1.jpg",
+            "assets/product-images/Baby-Bedding/Duvet-cover/a-2.jpg",
+            "assets/product-images/Baby-Bedding/Duvet-cover/a-3.jpg"
+        ],
+        'AC- 084': [
+            "assets/product-images/Baby-Bedding/Pillow-cover/a.jpg",
+            "assets/product-images/Baby-Bedding/Pillow-cover/a-1.jpg",
+            "assets/product-images/Baby-Bedding/Pillow-cover/a-2.jpg",
+            "assets/product-images/Baby-Bedding/Pillow-cover/a-3.jpg"
+        ],
+        'AC- 085': [
+            "assets/product-images/Baby-Bedding/Crib-Sheet/a.jpg",
+            "assets/product-images/Baby-Bedding/Crib-Sheet/a-1.jpg",
+            "assets/product-images/Baby-Bedding/Crib-Sheet/a-2.jpg",
+            "assets/product-images/Baby-Bedding/Crib-Sheet/a-3.jpg"
+        ],
+
+        // --- BABY DIAPERING ---
+        'AC- 086': [
+            "assets/product-images/Baby-Diapering/Changing-Pad-Cover/a.jpg",
+            "assets/product-images/Baby-Diapering/Changing-Pad-Cover/a-1.jpg",
+            "assets/product-images/Baby-Diapering/Changing-Pad-Cover/a-2.jpg",
+            "assets/product-images/Baby-Diapering/Changing-Pad-Cover/a-3.jpg"
+        ],
+        'AC- 087': [
+            "assets/product-images/Baby-Diapering/Diaper-changing-mat/a.jpg",
+            "assets/product-images/Baby-Diapering/Diaper-changing-mat/a-1.jpg",
+            "assets/product-images/Baby-Diapering/Diaper-changing-mat/a-2.jpg",
+            "assets/product-images/Baby-Diapering/Diaper-changing-mat/a-3.jpg"
+        ],
+        'AC- 088': [
+            "assets/product-images/Baby-Diapering/Cloth-Diaper/a.jpg",
+            "assets/product-images/Baby-Diapering/Cloth-Diaper/a-1.jpg",
+            "assets/product-images/Baby-Diapering/Cloth-Diaper/a-2.jpg",
+            "assets/product-images/Baby-Diapering/Cloth-Diaper/a-3.jpg"
+        ],
+        'AC- 089': [
+            "assets/product-images/Baby-Diapering/Diaper-Inserts/a.jpg",
+            "assets/product-images/Baby-Diapering/Diaper-Inserts/a-1.jpg",
+            "assets/product-images/Baby-Diapering/Diaper-Inserts/a-2.jpg",
+            "assets/product-images/Baby-Diapering/Diaper-Inserts/a-3.jpg"
+        ],
+        'AC- 090': [
+            "assets/product-images/Baby-Diapering/Pre-fold/a.jpg",
+            "assets/product-images/Baby-Diapering/Pre-fold/a-1.jpg",
+            "assets/product-images/Baby-Diapering/Pre-fold/a-2.jpg",
+            "assets/product-images/Baby-Diapering/Pre-fold/a-3.jpg"
+        ],
+        'AC- 091': [
+            "assets/product-images/Baby-Diapering/Sanitary-Pads/a.jpg",
+            "assets/product-images/Baby-Diapering/Sanitary-Pads/a-1.jpg",
+            "assets/product-images/Baby-Diapering/Sanitary-Pads/a-2.jpg",
+            "assets/product-images/Baby-Diapering/Sanitary-Pads/a-3.jpg"
+        ],
+        'AC- 092': [
+            "assets/product-images/Baby-Diapering/Training-Pants/a.jpg",
+            "assets/product-images/Baby-Diapering/Training-Pants/a-1.jpg",
+            "assets/product-images/Baby-Diapering/Training-Pants/a-2.jpg",
+            "assets/product-images/Baby-Diapering/Training-Pants/a-3.jpg"
+        ],
+        'AC- 093': [
+            "assets/product-images/Baby-Diapering/Wet-bags/a.jpg",
+            "assets/product-images/Baby-Diapering/Wet-bags/a-1.jpg",
+            "assets/product-images/Baby-Diapering/Wet-bags/a-2.jpg",
+            "assets/product-images/Baby-Diapering/Wet-bags/a-3.jpg"
+        ]
     };
 
     // --- 3. RENDER SHELVES ---
